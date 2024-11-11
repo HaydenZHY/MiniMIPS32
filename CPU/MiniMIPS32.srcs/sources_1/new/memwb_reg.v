@@ -32,7 +32,7 @@ module memwb_reg (
     output reg wb_whi,
     output reg wb_wlo,
 
-    output wire [`INST_ADDR_BUS] wb_debug_wb_pc  // 供调试使用的PC值，上板测试时务必删除该信号
+    output reg [`INST_ADDR_BUS] wb_debug_wb_pc  // 供调试使用的PC值，上板测试时务必删除该信号
 );
 
 
@@ -50,15 +50,16 @@ module memwb_reg (
       wb_wlo   <= `WRITE_DISABLE;
     end  // 将来自访存阶段的信息寄存并送至写回阶段
     else begin
-      wb_wa    <= mem_wa;
-      wb_wreg  <= mem_wreg;
-      wb_dreg  <= mem_dreg;
-      wb_whilo <= mem_whilo;
-      wb_hilo  <= mem_hilo;
-      wb_mreg  <= mem_mreg;
-      wb_dre   <= mem_dre;
-      wb_whi   <= mem_whi;
-      wb_wlo   <= mem_wlo;
+      wb_wa          <= mem_wa;
+      wb_wreg        <= mem_wreg;
+      wb_dreg        <= mem_dreg;
+      wb_whilo       <= mem_whilo;
+      wb_hilo        <= mem_hilo;
+      wb_mreg        <= mem_mreg;
+      wb_dre         <= mem_dre;
+      wb_whi         <= mem_whi;
+      wb_wlo         <= mem_wlo;
+      wb_debug_wb_pc <= mem_debug_wb_pc;
     end
   end
 

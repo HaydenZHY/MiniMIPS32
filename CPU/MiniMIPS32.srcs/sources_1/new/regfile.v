@@ -18,6 +18,7 @@ module regfile (
     input  wire [`REG_ADDR_BUS] ra2,
     output reg  [     `REG_BUS] rd2,
     input  wire                 re2
+
 );
 
   //定义32个32位寄存器
@@ -26,8 +27,10 @@ module regfile (
   always @(posedge cpu_clk_50M) begin
     if (cpu_rst_n == `RST_ENABLE) begin
       regs[0]  <= `ZERO_WORD;
-      regs[1]  <= 32'h10101010;  //注意：寄存器1和2复位后应该均是0x00000000，此处赋了其他初值是因为如果只有R-型指令是无法给寄存器赋值的。因此后续加入I-型指令后可恢复为初值为0的设置
-      regs[2]  <= 32'h01011111;
+      // regs[1]  <= 32'h10101010;  //注意：寄存器1和2复位后应该均是0x00000000，此处赋了其他初值是因为如果只有R-型指令是无法给寄存器赋值的。因此后续加入I-型指令后可恢复为初值为0的设置
+      // regs[2]  <= 32'h01011111;
+      regs[1]  <= `ZERO_WORD;
+      regs[2]  <= `ZERO_WORD;
       regs[3]  <= `ZERO_WORD;
       regs[4]  <= `ZERO_WORD;
       regs[5]  <= `ZERO_WORD;
@@ -67,8 +70,9 @@ module regfile (
   always @(*) begin
     if (cpu_rst_n == `RST_ENABLE) rd1 <= `ZERO_WORD;
     else if (ra1 == `REG_NOP) rd1 <= `ZERO_WORD;
-    else if (re1 == `READ_ENABLE) rd1 <= regs[ra1];
-    else rd1 <= `ZERO_WORD;
+    else rd1 <= regs[ra1];
+    // else if (re1 == `READ_ENABLE) rd1 <= regs[ra1];
+    // else rd1 <= `ZERO_WORD;
   end
 
   //读端口2的读操作 
@@ -76,8 +80,10 @@ module regfile (
   always @(*) begin
     if (cpu_rst_n == `RST_ENABLE) rd2 <= `ZERO_WORD;
     else if (ra2 == `REG_NOP) rd2 <= `ZERO_WORD;
-    else if (re2 == `READ_ENABLE) rd2 <= regs[ra2];
-    else rd2 <= `ZERO_WORD;
+    else rd2 <= regs[ra2];
+    // else if (re2 == `READ_ENABLE) rd2 <= regs[ra2];
+    // else rd2 <= `ZERO_WORD;
   end
+
 
 endmodule

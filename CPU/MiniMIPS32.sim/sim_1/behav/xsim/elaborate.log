@@ -4,6 +4,14 @@ Running: D:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto bb1d9b6b85
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 1 for port 'exe_whi' [E:/MiniMIPS32/CPU/MiniMIPS32.srcs/sources_1/new/MiniMIPS32.v:221]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 1 for port 'exe_wlo' [E:/MiniMIPS32/CPU/MiniMIPS32.srcs/sources_1/new/MiniMIPS32.v:222]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 1 for port 'exe_whi_i' [E:/MiniMIPS32/CPU/MiniMIPS32.srcs/sources_1/new/MiniMIPS32.v:239]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 1 for port 'exe_wlo_i' [E:/MiniMIPS32/CPU/MiniMIPS32.srcs/sources_1/new/MiniMIPS32.v:240]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'mem_din' [E:/MiniMIPS32/CPU/MiniMIPS32.srcs/sources_1/new/MiniMIPS32.v:331]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'wb_din' [E:/MiniMIPS32/CPU/MiniMIPS32.srcs/sources_1/new/MiniMIPS32.v:343]
+WARNING: [VRFC 10-5021] port 'dm' is not connected on this instance [E:/MiniMIPS32/CPU/MiniMIPS32.srcs/sources_1/new/MiniMIPS32_SYS.v:36]
+WARNING: [VRFC 10-5021] port 'cpu_rst_n' is not connected on this instance [E:/MiniMIPS32/CPU/MiniMIPS32.srcs/sources_1/new/MiniMIPS32.v:229]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
@@ -28,6 +36,7 @@ Compiling module xil_defaultlib.exemem_reg
 Compiling module xil_defaultlib.mem_stage
 Compiling module xil_defaultlib.memwb_reg
 Compiling module xil_defaultlib.wb_stage
+Compiling module xil_defaultlib.hilohilo
 Compiling module xil_defaultlib.MiniMIPS32
 Compiling module xil_defaultlib.MiniMIPS32_SYS
 Compiling module xil_defaultlib.MiniMIPS32_SYS_tb

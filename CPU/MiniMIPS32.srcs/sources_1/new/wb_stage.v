@@ -45,15 +45,14 @@ module wb_stage (
                             (wb_dre_i == 4'b0100) ? {{24{dm[23]}}, dm[23:16]} :
                             (wb_dre_i == 4'b0010) ? {{24{dm[15]}}, dm[15:8]} :
                             (wb_dre_i == 4'b0001) ? {{24{dm[7]}}, dm[7:0]} :
-                            
                             (wb_dre_i == 4'b1100) ? {{16{dm[23]}}, dm[23:16], dm[31:24]} :
                             (wb_dre_i == 4'b0011) ? {{16{dm[7]}}, dm[7:0], dm[15:8]} : `ZERO_WORD;
   // 根据存储器到寄存器使能信号mreg，选择最终待写入通用寄存器的数据
   assign wb_wd_o           = (wb_mreg_i == `MREG_ENABLE) ? data : wb_dreg_i;
 
   assign debug_wb_pc       = wb_debug_wb_pc;  // 上板测试时务必删除该语句
-  assign debug_wb_rf_wen   = wb_wreg_i;  // 上板测试时务必删除该语句 
-  assign debug_wb_rf_wnum  = wb_wa_i;  // 上板测试时务必删除该语句
-  assign debug_wb_rf_wdata = wb_dreg_i;  // 上板测试时务必删除该语句 
+  assign debug_wb_rf_wen   = wb_wreg_o;  // 上板测试时务必删除该语句 
+  assign debug_wb_rf_wdata = wb_wd_o;  // 上板测试时务必删除该语句 
+  assign debug_wb_rf_wnum  = wb_wa_o;  // 上板测试时务必删除该语句
 
 endmodule

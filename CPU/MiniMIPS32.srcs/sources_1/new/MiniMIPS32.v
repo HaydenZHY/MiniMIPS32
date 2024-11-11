@@ -153,14 +153,17 @@ module MiniMIPS32 (
 
   // 接口完整
   id_stage id_stage0 (
-      .id_pc_i     (id_pc_i),
-      .id_inst_i   (inst),
-      .rd1         (rd1),
-      .rd2         (rd2),
-      .rreg1       (re1),
-      .rreg2       (re2),
-      .ra1         (ra1),
-      .ra2         (ra2),
+      .cpu_rst_n     (cpu_rst_n),
+      .id_pc_i       (id_pc_i),
+      .id_inst_i     (inst),
+      .rd1           (rd1),
+      .rd2           (rd2),
+      .rreg1         (re1),
+      .rreg2         (re2),
+      .ra1           (ra1),
+      .ra2           (ra2),
+      .id_debug_wb_pc(id_debug_wb_pc_i),
+
       .id_aluop_o  (id_aluop_o),
       .id_alutype_o(id_alutype_o),
       .id_src1_o   (id_src1_o),
@@ -171,7 +174,8 @@ module MiniMIPS32 (
       .id_whi_o    (id_whi_o),
       .id_wlo_o    (id_wlo_o),
       .id_mreg_o   (id_mreg_o),
-      .id_din_o    (id_din_o)
+      .id_din_o    (id_din_o),
+      .debug_wb_pc (id_debug_wb_pc_o)
   );
 
   // 接口完整
@@ -191,23 +195,32 @@ module MiniMIPS32 (
 
   // 接口完整
   idexe_reg idexe_reg0 (
-      .cpu_clk_50M    (cpu_clk_50M),
-      .cpu_rst_n      (cpu_rst_n),
-      .id_alutype     (id_alutype_o),
-      .id_aluop       (id_aluop_o),
-      .id_src1        (id_src1_o),
-      .id_src2        (id_src2_o),
-      .id_din         (id_din_o),
-      .id_wa          (id_wa_o),
-      .id_wreg        (id_wreg_o),
-      .id_debug_wb_pc (id_debug_wb_pc_o),
+      .cpu_clk_50M   (cpu_clk_50M),
+      .cpu_rst_n     (cpu_rst_n),
+      .id_alutype    (id_alutype_o),
+      .id_aluop      (id_aluop_o),
+      .id_src1       (id_src1_o),
+      .id_src2       (id_src2_o),
+      .id_wa         (id_wa_o),
+      .id_wreg       (id_wreg_o),
+      .id_whilo      (id_whilo_o),
+      .id_whi        (id_whi_o),
+      .id_wlo        (id_wlo_o),
+      .id_mreg       (id_mreg_o),
+      .id_din        (id_din_o),
+      .id_debug_wb_pc(id_debug_wb_pc_o),
+
       .exe_alutype    (exe_alutype_i),
       .exe_aluop      (exe_aluop_i),
       .exe_src1       (exe_src1_i),
       .exe_src2       (exe_src2_i),
-      .exe_din        (exe_din_i),
       .exe_wa         (exe_wa_i),
       .exe_wreg       (exe_wreg_i),
+      .exe_whilo      (exe_whilo_i),
+      .exe_whi        (exe_whi_i),
+      .exe_wlo        (exe_wlo_i),
+      .exe_mreg       (exe_mreg_i),
+      .exe_din        (exe_din_i),
       .exe_debug_wb_pc(exe_debug_wb_pc_i)
   );
 
@@ -319,16 +332,16 @@ module MiniMIPS32 (
       .mem_wlo        (mem_wlo_o),
       .mem_debug_wb_pc(mem_debug_wb_pc_o),
 
-      .wb_whilo      (wb_whilo),
-      .wb_hilo       (wb_hilo),
-      .wb_wa         (wb_wa),
-      .wb_wreg       (wb_wreg),
-      .wb_dreg       (wb_dreg),
-      .wb_mreg       (wb_mreg),
-      .wb_din        (wb_din),
-      .wb_dre        (wb_dre),
-      .wb_whi        (wb_whi),
-      .wb_wlo        (wb_wlo),
+      .wb_whilo      (wb_whilo_i),
+      .wb_hilo       (wb_hilo_i),
+      .wb_wa         (wb_wa_i),
+      .wb_wreg       (wb_wreg_i),
+      .wb_dreg       (wb_dreg_i),
+      .wb_mreg       (wb_mreg_i),
+      .wb_din        (wb_din_i),
+      .wb_dre        (wb_dre_i),
+      .wb_whi        (wb_whi_i),
+      .wb_wlo        (wb_wlo_i),
       .wb_debug_wb_pc(wb_debug_wb_pc_i)
   );
 

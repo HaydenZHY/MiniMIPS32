@@ -1,36 +1,41 @@
 `include "defines.v"
 
 module exe_stage (
-    input wire                  cpu_rst_n,
+    input wire                 cpu_rst_n,
     // 从译码阶段获得的信息
-    input wire [  `ALUTYPE_BUS] exe_alutype_i,
-    input wire [    `ALUOP_BUS] exe_aluop_i,
-    input wire [      `REG_BUS] exe_src1_i,
-    input wire [      `REG_BUS] exe_src2_i,
-    input wire [ `REG_ADDR_BUS] exe_wa_i,
-    input wire                  exe_wreg_i,
-    input wire                  exe_mreg_i,
-    input wire [      `REG_BUS] exe_din_i,
-    input wire                  exe_whilo_i,
-    input wire                  exe_whi_i,
-    input wire                  exe_wlo_i,
-    input wire [`INST_ADDR_BUS] exe_debug_wb_pc,  // 供调试使用的PC值，上板测试时务必删除该信号
-    // 从hilo寄存器获得的数据       
-    input wire [      `REG_BUS] hi_i,
-    input wire [      `REG_BUS] lo_i,
+    input wire [ `ALUTYPE_BUS] exe_alutype_i,
+    input wire [   `ALUOP_BUS] exe_aluop_i,
+    input wire [     `REG_BUS] exe_src1_i,
+    input wire [     `REG_BUS] exe_src2_i,
+    input wire [`REG_ADDR_BUS] exe_wa_i,
+    input wire                 exe_wreg_i,
+    input wire                 exe_whilo_i,
+    input wire                 exe_mreg_i,
+    input wire [     `REG_BUS] exe_din_i,
 
+    input wire exe_whi_i,
+    input wire exe_wlo_i,
+
+
+    // 从hilo寄存器获得的数据       
+    input wire [`REG_BUS] hi_i,
+    input wire [`REG_BUS] lo_i,
+
+    input  wire [ `INST_ADDR_BUS] exe_debug_wb_pc,  // 供调试使用的PC值，上板测试时务必删除该信号
     // 送至执行阶段的信息
     output wire [     `ALUOP_BUS] exe_aluop_o,
     output wire [  `REG_ADDR_BUS] exe_wa_o,
     output wire                   exe_wreg_o,
     output wire [       `REG_BUS] exe_wd_o,
-    output wire                   exe_mreg_o,
-    output wire [       `REG_BUS] exe_din_o,
     output wire                   exe_whilo_o,
     output wire [`DOUBLE_REG_BUS] exe_hilo_o,
-    output wire                   exe_whi_o,
-    output wire                   exe_wlo_o,
-    output wire [ `INST_ADDR_BUS] debug_wb_pc   // 供调试使用的PC值，上板测试时务必删除该信号
+    output wire                   exe_mreg_o,
+    output wire [       `REG_BUS] exe_din_o,
+
+    output wire                  exe_whi_o,
+    output wire                  exe_wlo_o,
+    output wire [          31:0] debug_info,
+    output wire [`INST_ADDR_BUS] debug_wb_pc  // 供调试使用的PC值，上板测试时务必删除该信号
 );
 
   // 直接传到下一阶段
@@ -42,7 +47,8 @@ module exe_stage (
   assign exe_whi_o   = exe_whi_i;
   assign exe_wlo_o   = exe_wlo_i;
 
-  wire [       `REG_BUS] logicres;  // 保存逻辑运算的结果
+
+  wire [       `REG_BUS] logicres;
   wire [`DOUBLE_REG_BUS] sign_mulres;
   wire [`DOUBLE_REG_BUS] unsign_mulres;
   wire [       `REG_BUS] hi_t;
@@ -51,8 +57,6 @@ module exe_stage (
   wire [       `REG_BUS] shiftres;
   wire [       `REG_BUS] arithres;
 
-  // 根据内部操作码aluop进行逻辑运算
-  assign logicres = (exe_aluop_i == `MINIMIPS32_AND) ? (exe_src1_i & exe_src2_i) : `ZERO_WORD;
 
   assign logicres = (exe_aluop_i == `MINIMIPS32_AND )  ? (exe_src1_i & exe_src2_i) : 
                       (exe_aluop_i == `MINIMIPS32_ORI) ? (exe_src1_i | exe_src2_i) :
@@ -84,10 +88,9 @@ module exe_stage (
   assign moveres = (exe_aluop_i == `MINIMIPS32_MFHI) ? hi_t : (exe_aluop_i == `MINIMIPS32_MFLO) ? lo_t : `ZERO_WORD;
 
   wire signed [31:0] arith_shiftres;
-  assign arith_shiftres = $signed(exe_src2_i) >>> exe_src1_i;
   wire signed [31:0] arith_shiftres_v;
+  assign arith_shiftres = $signed(exe_src2_i) >>> exe_src1_i;
   assign arith_shiftres_v = $signed(exe_src2_i) >>> exe_src1_i[`REG_ADDR_BUS];
-
 
   assign shiftres = (exe_aluop_i == `MINIMIPS32_SLL) ? (exe_src2_i << exe_src1_i) : 
                       (exe_aluop_i == `MINIMIPS32_SLLV) ? (exe_src2_i << exe_src1_i[`REG_ADDR_BUS]) : 
@@ -107,12 +110,12 @@ module exe_stage (
   assign exe_hilo_o    = (exe_aluop_i == `MINIMIPS32_MULT) ? sign_mulres : (exe_aluop_i == `MINIMIPS32_MULTU) ? unsign_mulres : (exe_aluop_i == `MINIMIPS32_MTHI) ? {exe_src1_i, lo_t} : (exe_aluop_i == `MINIMIPS32_MTLO) ? {hi_t, exe_src1_i} : `ZERO_DWORD;
 
 
+
   assign exe_wa_o      = exe_wa_i;
   assign exe_wreg_o    = exe_wreg_i;
 
-  // 根据操作类型alutype确定执行阶段最终的运算结果（既可能是待写入目的寄存器的数据，也可能是访问数据存储器的地址）
-  assign exe_wd_o      = (exe_alutype_i == `LOGIC) ? logicres : (exe_alutype_i == `SHIFT) ? shiftres : (exe_alutype_i == `MOVE) ? moveres : (exe_alutype_i == `ARITH) ? arithres : `ZERO_WORD;
+  assign exe_wd_o      = (exe_alutype_i == `LOGIC) ? logicres : (exe_alutype_i == `MOVE) ? moveres : (exe_alutype_i == `SHIFT) ? shiftres : (exe_alutype_i == `ARITH) ? arithres : `ZERO_WORD;
 
-  assign debug_wb_pc   = exe_debug_wb_pc;  // 上板测试时务必删除该语句 
-
+  assign debug_wb_pc   = exe_debug_wb_pc;  // 上板测试时务必删除该语句
+  assign debug_info    = exe_src1_i;
 endmodule
