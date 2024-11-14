@@ -37,8 +37,20 @@ module id_stage (
 
     output wire id_whi_o,
     output wire id_wlo_o,
+    
+    //exe2id数据前推
+    input  wire [`REG_ADDR_BUS]     exe2id_wa,
+    input  wire                     exe2id_wreg,
+    input  wire [`REG_BUS      ]    exe2id_wd,
+    
+    //mem2id数据前推
+    input  wire [`REG_ADDR_BUS]     mem2id_wa,
+    input  wire                     mem2id_wreg,
+    input  wire [`REG_BUS      ]    mem2id_wd,  
 
     output [`INST_ADDR_BUS] debug_wb_pc  // 供调试使用的PC值，上板测试时务必删除该信号
+    
+    
 );
 
 
@@ -198,12 +210,73 @@ module id_stage (
 
   // 获得待写入目的寄存器的地址（rt或rd）
   assign id_wa_o   = (rtsel == `RT_ENABLE) ? rt : rd;
-  assign id_din_o  = rd2;
 
-  // 获得源操作数1。如果shift信号有效，则源操作数1为移位位数；否则为从读通用寄存器堆端口1获得的数据
-  assign id_src1_o = (shift == `SHIFT_ENABLE) ? {27'b0, sa} : (rreg1 == `READ_ENABLE) ? rd1 : `ZERO_WORD;
+  
+  //前推信号
+    reg [1:0] fwrd1;
+    reg [1:0] fwrd2;
+    reg [`REG_BUS] din;
+    always @(*) begin
+        if(exe2id_wreg == `WRITE_ENABLE && exe2id_wa == rs)begin
+            fwrd1 = 2'b01;
+        end
+        else if(mem2id_wreg == `WRITE_ENABLE && mem2id_wa == rs)begin
+            fwrd1 = 2'b10;
+        end
+        else begin
+            fwrd1 = 2'b00;
+        end
+        if(exe2id_wreg == `WRITE_ENABLE && exe2id_wa == rt)begin
+            fwrd2 = 2'b01;
+        end
+        else if(mem2id_wreg == `WRITE_ENABLE && mem2id_wa == rt)begin
+            fwrd2 = 2'b10;
+        end
+        else begin
+            fwrd2 = 2'b00;
+        end
+    end
+    reg [`REG_BUS      ] src1;
+    reg [`REG_BUS      ] src2;
+    always @(*) begin
+        if(fwrd2 == 2'b00)begin
+            din = rd2;
+        end
+        else if(fwrd2 == 2'b01)begin
+            din = exe2id_wd;
+        end
+        else if(fwrd2 == 2'b10)begin
+            din = mem2id_wd;
+        end
+        if(shift == `SHIFT_ENABLE)begin
+            src1 = sa;
+        end
+        else if(fwrd1 == 2'b00)begin
+            src1 = rd1;
+        end
+        else if(fwrd1 == 2'b01)begin
+            src1 = exe2id_wd;
+        end
+        else if(fwrd1 == 2'b10)begin
+            src1 = mem2id_wd;
+        end
+        if(immsel == `IMM_ENABLE)begin
+            src2 = imm_ext;
+        end
+        else if(fwrd2 == 2'b00)begin
+            src2 = rd2;
+        end
+        else if(fwrd2 == 2'b01)begin
+            src2 = exe2id_wd;
+        end
+        else if(fwrd2 == 2'b10)begin
+            src2 = mem2id_wd;
+        end
+    end
+  // 获得源操作数1
+  assign id_src1_o = src1;
 
-  // 获得源操作数2。如果immsel信号有效，则源操作数1为立即数；否则为从读通用寄存器堆端口2获得的数据
-  assign id_src2_o = (immsel == `IMM_ENABLE) ? imm_ext : (rreg2 == `READ_ENABLE) ? rd2 : `ZERO_WORD;
-
+  // 获得源操作数2
+    assign id_src2_o = src2 ;           
+    assign id_din_o = din;
 endmodule

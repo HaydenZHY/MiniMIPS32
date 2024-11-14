@@ -35,7 +35,12 @@ module exe_stage (
     output wire                  exe_whi_o,
     output wire                  exe_wlo_o,
     output wire [          31:0] debug_info,
-    output wire [`INST_ADDR_BUS] debug_wb_pc  // 供调试使用的PC值，上板测试时务必删除该信号
+    output wire [`INST_ADDR_BUS] debug_wb_pc,  // 供调试使用的PC值，上板测试时务必删除该信号
+    
+    //exe2id数据前推
+    output wire [`REG_ADDR_BUS]     exe2id_wa,
+    output  wire                    exe2id_wreg,
+    output  wire [`REG_BUS      ]   exe2id_wd
 );
 
   // 直接传到下一阶段
@@ -118,4 +123,9 @@ module exe_stage (
 
   assign debug_wb_pc   = exe_debug_wb_pc;  // 上板测试时务必删除该语句
   assign debug_info    = exe_src1_i;
+  
+  //exe2id数据前推
+  assign exe2id_wa = exe_wa_i; 
+  assign exe2id_wd = exe_wd_o;
+  assign exe2id_wreg = exe_wreg_i;
 endmodule

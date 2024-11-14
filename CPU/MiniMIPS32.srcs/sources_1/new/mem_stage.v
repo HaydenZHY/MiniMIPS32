@@ -32,7 +32,12 @@ module mem_stage (
     output wire                  dce,
     output wire [`INST_ADDR_BUS] daddr,
     output wire [     `BSEL_BUS] we,
-    output wire [      `REG_BUS] din
+    output wire [      `REG_BUS] din,
+    
+    //mem2id数据前推
+    output  wire [`REG_ADDR_BUS]     mem2id_wa,
+    output  wire                     mem2id_wreg,
+    output  wire [`REG_BUS      ]    mem2id_wd
 );
 
   // 如果当前不是访存指令，则只需要把从执行阶段获得的信息直接输出
@@ -78,6 +83,10 @@ module mem_stage (
   wire [`WORD_BUS] din_byte = {mem_din_i[7:0], {24{1'b0}}};
   assign din         = (we == 4'b1111) ? din_reverse : (we == 4'b1000) ? din_byte : (we == 4'b0100) ? din_byte : (we == 4'b0010) ? din_byte : (we == 4'b0001) ? din_byte : (we == 4'b1100) ? {din_reverse[31:16], {16{1'b0}}} : (we == 4'b0011) ? {{16{1'b0}}, din_reverse[31:16]} : `ZERO_WORD;
 
+    //mem2id数据前推
+    assign mem2id_wa    = mem_wa_i;
+    assign mem2id_wreg  = mem_wreg_i;
+    assign mem2id_wd    = mem_wd_i;
   assign debug_wb_pc = mem_debug_wb_pc;  // 上板测试时务必删除该语句 
 
 endmodule

@@ -119,6 +119,16 @@ module MiniMIPS32 (
   wire [`DOUBLE_REG_BUS] wb_hilo_o;
   wire                   wb_whi_o;
   wire                   wb_wlo_o;
+  
+  /*exe2id数据前推*/
+    wire [`REG_ADDR_BUS]   exe2id_wa;
+    wire                   exe2id_wreg;
+    wire [`REG_BUS      ]  exe2id_wd;
+    
+    /*mem2id数据前推*/
+    wire [`REG_ADDR_BUS]   mem2id_wa;
+    wire                   mem2id_wreg;
+    wire [`REG_BUS      ]  mem2id_wd;
   /*------------------------------------------*/
 
 
@@ -162,7 +172,13 @@ module MiniMIPS32 (
       .rreg2         (re2),
       .ra1           (ra1),
       .ra2           (ra2),
+      .exe2id_wa(exe2id_wa),
+    .exe2id_wreg(exe2id_wreg),
+        .exe2id_wd(exe2id_wd),
       .id_debug_wb_pc(id_debug_wb_pc_i),
+      .mem2id_wa(mem2id_wa),
+        .mem2id_wreg(mem2id_wreg),
+        .mem2id_wd(mem2id_wd),
 
       .id_aluop_o  (id_aluop_o),
       .id_alutype_o(id_alutype_o),
@@ -251,7 +267,11 @@ module MiniMIPS32 (
       .exe_hilo_o (exe_hilo_o),
       .exe_whi_o  (exe_whi_o),
       .exe_wlo_o  (exe_wlo_o),
+      .exe2id_wa(exe2id_wa),
+    .exe2id_wreg(exe2id_wreg),
+    .exe2id_wd(exe2id_wd),
       .debug_wb_pc(exe_debug_wb_pc_o)
+      
   );
 
 
@@ -312,7 +332,10 @@ module MiniMIPS32 (
       .daddr      (daddr),
       .we         (we),
       .din        (din),
-      .debug_wb_pc(mem_debug_wb_pc_o)
+      .debug_wb_pc(mem_debug_wb_pc_o),
+      .mem2id_wa(mem2id_wa),
+        .mem2id_wreg(mem2id_wreg),
+        .mem2id_wd(mem2id_wd)
   );
 
   // 接口完整
