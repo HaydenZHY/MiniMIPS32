@@ -9,7 +9,7 @@ SECTIONS
             _etext = .;
         }
 
-        . = 0x80400000;
+        . = 0x80000000;
         .data : 
         {
             *(.data)              

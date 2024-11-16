@@ -273,7 +273,7 @@ make_helper(lb) {
         imm = op_src2->val;
     }
     uint32_t addr = imm + (uint32_t)op_src1->val;
-    uint32_t val = mem_read(addr, 1);
+    uint32_t val = mem_read(addr&0x7fffffff, 1);
     if (val & 0x80) {
         val = (0xFFFFFF << 8) | val;
     }
@@ -291,7 +291,7 @@ make_helper(lbu) {
         imm = op_src2->val;
     }
     uint32_t addr = imm + (uint32_t)op_src1->val;
-    uint32_t val = mem_read(addr, 1);
+    uint32_t val = mem_read(addr&0x7fffffff, 1);
     reg_w(op_dest->reg) = val;
     sprintf(assembly, "lbu  %s, 0x%08x(%s)", REG_NAME(op_dest->reg),
             op_src2->val, REG_NAME(op_src1->reg));
@@ -315,7 +315,7 @@ make_helper(lh) {
             cpu.cp0.status.EXL = 1;
         }
     } else {
-        uint32_t val = mem_read(addr, 2);
+        uint32_t val = mem_read(addr&0x7fffffff, 2);
         if (val & 0x8000) {
             val = (0xFFFF << 16) | val;
         }
@@ -343,7 +343,7 @@ make_helper(lhu) {
             cpu.cp0.status.EXL = 1;
         }
     } else {
-        uint32_t val = mem_read(addr, 2);
+        uint32_t val = mem_read(addr&0x7fffffff, 2);
         reg_w(op_dest->reg) = val;
     }
     sprintf(assembly, "lhu  %s, 0x%08x(%s)", REG_NAME(op_dest->reg),
@@ -368,7 +368,7 @@ make_helper(lw) {
             cpu.cp0.status.EXL = 1;
         }
     } else {
-        uint32_t val = mem_read(addr, 4);
+        uint32_t val = mem_read(addr&0x7fffffff, 4);
         reg_w(op_dest->reg) = val;
     }
     sprintf(assembly, "lw  %s, 0x%08x(%s)", REG_NAME(op_dest->reg),
@@ -384,7 +384,7 @@ make_helper(sb) {
         imm = op_src2->val;
     }
     uint32_t addr = imm + (uint32_t)op_src1->val;
-    mem_write(addr, 1, reg_w(op_dest->reg));
+    mem_write(addr&0x7fffffff, 1, reg_w(op_dest->reg));
     sprintf(assembly, "sb  %s, 0x%08x(%s)", REG_NAME(op_dest->reg),
             op_src2->val, REG_NAME(op_src1->reg));
 }
@@ -407,7 +407,7 @@ make_helper(sh) {
             cpu.cp0.status.EXL = 1;
         }
     } else {
-        mem_write(addr, 2, reg_w(op_dest->reg));
+        mem_write(addr&0x7fffffff, 2, reg_w(op_dest->reg));
     }
     sprintf(assembly, "sh  %s, 0x%08x(%s)", REG_NAME(op_dest->reg),
             op_src2->val, REG_NAME(op_src1->reg));
@@ -431,7 +431,7 @@ make_helper(sw) {
             cpu.cp0.status.EXL = 1;
         }
     } else {
-        mem_write(addr, 4, reg_w(op_dest->reg));
+        mem_write(addr&0x7fffffff, 4, reg_w(op_dest->reg));
     }
     sprintf(assembly, "sw  %s, 0x%08x(%s)", REG_NAME(op_dest->reg),
             op_src2->val, REG_NAME(op_src1->reg));
