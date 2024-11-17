@@ -15,7 +15,7 @@ DEBUG := false
 
 # Compilation flags
 CC := gcc
-CFLAGS := -I$(INCLUDE_DIR) -I$(INCLUDE_DIR)/cpu -I$(INCLUDE_DIR)/memory -I$(INCLUDE_DIR)/monitor -Wall -Werror
+CFLAGS := -I$(INCLUDE_DIR) -I$(INCLUDE_DIR)/cpu -I$(INCLUDE_DIR)/memory -I$(INCLUDE_DIR)/monitor -Wall -Werror -fcommon
 LDFLAGS := -lreadline
 
 # Files to be compiled
