@@ -10,6 +10,7 @@
         li $t0, 10
         li $t1, 20
         nop
+        nop
         add $t2, $t0, $t1
         sub $t3, $t1, $t0
         and $t4, $t0, $t1
