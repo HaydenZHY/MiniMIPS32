@@ -51,7 +51,7 @@ make_helper(xor) {
 make_helper(sllv) {
 
 	decode_r_type(instr);
-	reg_w(op_dest->reg) = (op_src1->val) << (op_src2->val);
+	reg_w(op_dest->reg) = (op_src2->val) << ((op_src1->val) & 0x1f);
 	sprintf(assembly, "sllv   %s,   %s,   %s", REG_NAME(op_dest->reg), REG_NAME(op_src1->reg), REG_NAME(op_src2->reg));
 }
 
@@ -65,7 +65,7 @@ make_helper(sll) {
 make_helper(srav) {
 
 	decode_r_type(instr);
-	reg_w(op_dest->reg) = ((int32_t)op_src1->val >> (op_src2->val));
+	reg_w(op_dest->reg) = ((int32_t)op_src2->val >> ((op_src1->val)& 0x1f));
 	sprintf(assembly, "srav   %s,   %s,   %s", REG_NAME(op_dest->reg), REG_NAME(op_src1->reg), REG_NAME(op_src2->reg));
 }
 
@@ -79,7 +79,7 @@ make_helper(sra) {
 make_helper(srlv) {
 
 	decode_r_type(instr);
-	reg_w(op_dest->reg) = (uint32_t)(op_src1->val) >> (op_src2->val);
+	reg_w(op_dest->reg) = (uint32_t)(op_src2->val) >> ((op_src1->val)& 0x1f);
 	sprintf(assembly, "srlv   %s,   %s,   %s", REG_NAME(op_dest->reg), REG_NAME(op_src1->reg), REG_NAME(op_src2->reg));
 }
 
