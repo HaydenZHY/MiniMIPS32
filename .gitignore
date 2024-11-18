@@ -1,3 +1,14 @@
 */.vscode
 .vscode
 *.pdf
+
+*.log
+*.jou
+CPU/*.str
+CPU/*.wpc
+*.cache
+/CPU/.Xil/*
+/CPU/MiniMIPS32.cache/**
+/CPU/MiniMIPS32.hw/**
+/CPU/MiniMIPS32.ip_user_files/**
+/CPU/MiniMIPS32.sim/**

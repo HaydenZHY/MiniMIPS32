@@ -40,7 +40,13 @@ module exe_stage (
     //exe2id数据前推
     output wire [`REG_ADDR_BUS]     exe2id_wa,
     output  wire                    exe2id_wreg,
-    output  wire [`REG_BUS      ]   exe2id_wd
+    output  wire [`REG_BUS      ]   exe2id_wd,
+    
+    //hilo寄存器数据前推
+    input wire [1 : 0]             mem2exe_whilo,
+    input wire [`DOUBLE_REG_BUS]   mem2exe_hilo,
+    input wire [1 : 0]             wb2exe_whilo,
+    input wire [`DOUBLE_REG_BUS]   wb2exe_hilo
 );
 
   // 直接传到下一阶段
@@ -86,10 +92,16 @@ module exe_stage (
       (exe_src1_i + exe_src2_i) : (exe_aluop_i == `MINIMIPS32_LH) ? (exe_src1_i + exe_src2_i) : (exe_aluop_i == `MINIMIPS32_LHU) ? (exe_src1_i + exe_src2_i) : (exe_aluop_i == `MINIMIPS32_SH) ? (exe_src1_i + exe_src2_i) : `ZERO_WORD;
 
 
-  assign hi_t = hi_i;
+//  assign hi_t = hi_i;
 
-  assign lo_t = lo_i;
-
+//  assign lo_t = lo_i;
+  // hilo寄存器数据相关
+  assign hi_t = (mem2exe_whilo[1] == `WHILO_ENABLE) ? mem2exe_hilo[63 : 32] : (wb2exe_whilo[1] == `WHILO_ENABLE) ?
+  wb2exe_hilo[63 : 32] : hi_i;
+  
+  assign lo_t = (mem2exe_whilo[0] == `WHILO_ENABLE) ? mem2exe_hilo[31 : 0] : (wb2exe_whilo[0] == `WHILO_ENABLE) ?
+  wb2exe_hilo[31 : 0] : lo_i; 
+   
   assign moveres = (exe_aluop_i == `MINIMIPS32_MFHI) ? hi_t : (exe_aluop_i == `MINIMIPS32_MFLO) ? lo_t : `ZERO_WORD;
 
   wire signed [31:0] arith_shiftres;
@@ -128,4 +140,5 @@ module exe_stage (
   assign exe2id_wa = exe_wa_i; 
   assign exe2id_wd = exe_wd_o;
   assign exe2id_wreg = exe_wreg_i;
+  
 endmodule

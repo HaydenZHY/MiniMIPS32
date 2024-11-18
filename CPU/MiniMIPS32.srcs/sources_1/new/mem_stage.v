@@ -37,7 +37,11 @@ module mem_stage (
     //mem2id数据前推
     output  wire [`REG_ADDR_BUS]     mem2id_wa,
     output  wire                     mem2id_wreg,
-    output  wire [`REG_BUS      ]    mem2id_wd
+    output  wire [`REG_BUS      ]    mem2id_wd,
+    
+    //hilo寄存器数据相关
+    output wire [1 : 0]                 mem2exe_whilo,
+    output wire [`DOUBLE_REG_BUS]       mem2exe_hilo
 );
 
   // 如果当前不是访存指令，则只需要把从执行阶段获得的信息直接输出

@@ -129,6 +129,14 @@ module MiniMIPS32 (
     wire [`REG_ADDR_BUS]   mem2id_wa;
     wire                   mem2id_wreg;
     wire [`REG_BUS      ]  mem2id_wd;
+    
+    /*mem2exe hilo数据相关*/
+    wire [1 : 0]           mem2exe_whilo;
+    wire [`DOUBLE_REG_BUS] mem2exe_hilo;
+    
+    /*wb2exe hilo数据相关*/
+    wire [1 : 0]           wb2exe_whilo;
+    wire [`DOUBLE_REG_BUS] wb2exe_hilo;
   /*------------------------------------------*/
 
 
@@ -255,6 +263,10 @@ module MiniMIPS32 (
       .exe_wlo_i      (exe_wlo_i),
       .hi_i           (hi_i),
       .lo_i           (lo_i),
+      .mem2exe_whilo(mem2exe_whilo),
+      .mem2exe_hilo(mem2exe_hilo),
+      .wb2exe_whilo(wb2exe_whilo), 
+      .wb2exe_hilo(wb2exe_hilo),
       .exe_debug_wb_pc(exe_debug_wb_pc_i),
 
       .exe_aluop_o(exe_aluop_o),
@@ -336,7 +348,9 @@ module MiniMIPS32 (
       .debug_wb_pc(mem_debug_wb_pc_o),
       .mem2id_wa(mem2id_wa),
         .mem2id_wreg(mem2id_wreg),
-        .mem2id_wd(mem2id_wd)
+        .mem2id_wd(mem2id_wd),
+        .mem2exe_whilo(mem2exe_whilo), 
+        .mem2exe_hilo(mem2exe_hilo)
   );
 
   // 接口完整
@@ -390,6 +404,8 @@ module MiniMIPS32 (
       .wb_hilo_o (wb_hilo_o),
       .wb_whi_o  (wb_whi_o),
       .wb_wlo_o  (wb_wlo_o),
+      .wb2exe_whilo(wb2exe_whilo), 
+      .wb2exe_hilo(wb2exe_hilo),
 
       .debug_wb_pc      (debug_wb_pc),
       .debug_wb_rf_wen  (debug_wb_rf_wen),

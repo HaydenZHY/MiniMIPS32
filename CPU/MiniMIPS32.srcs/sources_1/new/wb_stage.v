@@ -24,6 +24,10 @@ module wb_stage (
     output wire [`DOUBLE_REG_BUS] wb_hilo_o,
     output wire                   wb_whi_o,
     output wire                   wb_wlo_o,
+    
+    //hilo寄存器数据相关
+    output wire [1 : 0]           wb2exe_whilo,
+    output wire [`DOUBLE_REG_BUS] wb2exe_hilo,
 
     output wire [`INST_ADDR_BUS] debug_wb_pc,       // 供调试使用的PC值，上板测试时务必删除该信号
     output wire                  debug_wb_rf_wen,   // 供调试使用的PC值，上板测试时务必删除该信号
