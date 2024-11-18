@@ -59,6 +59,8 @@ module idexe_reg (
       exe_whilo       <= id_whilo;
       exe_mreg        <= id_mreg;
       exe_din         <= id_din;
+      exe_whi         <= id_whi;
+      exe_wlo         <= id_wlo;
       exe_debug_wb_pc <= id_debug_wb_pc;  // 上板测试时务必删除该语句
     end
   end

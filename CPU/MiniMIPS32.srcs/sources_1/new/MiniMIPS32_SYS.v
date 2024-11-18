@@ -37,6 +37,15 @@ module MiniMIPS32_SYS(
       .douta(inst)  // output wire [31 : 0] douta
     );
     
+    data_rom data_rom0 (
+      .clka(cpu_clk_50M),
+      .ena(dce),
+      .wea(we),
+      .addra(daddr[12:2]),
+      .dina(din),
+      .douta(dout)
+    );
+    
 
     MiniMIPS32 minimips32 (
         .cpu_clk_50M(cpu_clk_50M),
@@ -44,6 +53,11 @@ module MiniMIPS32_SYS(
         .iaddr(iaddr),
         .ice(ice),
         .inst(inst),
+        .dce(dce),
+        .daddr(daddr),
+        .we(we),
+        .din(din),
+        .dm(dout),
         .debug_wb_pc(debug_wb_pc),            // 供调试使用的PC值，上板测试时务必删除该信号
         .debug_wb_rf_wen(debug_wb_rf_wen),    // 供调试使用的PC值，上板测试时务必删除该信号
         .debug_wb_rf_wnum(debug_wb_rf_wnum),  // 供调试使用的PC值，上板测试时务必删除该信号

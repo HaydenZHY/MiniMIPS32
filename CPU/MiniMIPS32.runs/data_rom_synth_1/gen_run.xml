@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="data_rom_synth_1" LaunchPart="xc7k325tffg900-2" LaunchTime="1731546480">
+<GenRun Id="data_rom_synth_1" LaunchPart="xc7k325tffg900-2" LaunchTime="1731847747">
   <File Type="PA-TCL" Name="data_rom.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="data_rom_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="data_rom_reports.tcl"/>
   <File Type="RDS-RDS" Name="data_rom.vds"/>
   <File Type="RDS-UTIL" Name="data_rom_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="data_rom_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="data_rom.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="data_rom_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="data_rom_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/data_rom">
-    <File Path="$PSRCDIR/sources_1/ip/data_rom/data_rom.xci">
+    <File Path="$PSRCDIR/sources_1/ip/data_rom_1/data_rom.xci">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -20,7 +23,7 @@
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="BlockSrcs" RelSrcDir="$PSRCDIR/data_rom">
-    <File Path="$PSRCDIR/sources_1/ip/data_rom/data_rom.xci">
+    <File Path="$PSRCDIR/sources_1/ip/data_rom_1/data_rom.xci">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>

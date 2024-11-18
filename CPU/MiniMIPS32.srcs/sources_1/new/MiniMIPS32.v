@@ -290,6 +290,7 @@ module MiniMIPS32 (
       .exe_wlo        (exe_wlo_o),
       .exe_mreg       (exe_mreg_o),
       .exe_debug_wb_pc(exe_debug_wb_pc_o),
+      .exe_din        (exe_din_o),
 
       .mem_aluop      (mem_aluop_i),
       .mem_wa         (mem_wa_i),
@@ -379,6 +380,7 @@ module MiniMIPS32 (
       .wb_hilo_i     (wb_hilo_i),
       .wb_whi_i      (wb_whi_i),
       .wb_wlo_i      (wb_wlo_i),
+      .dm(dm),
       .wb_debug_wb_pc(wb_debug_wb_pc_i),
 
       .wb_wa_o   (wb_wa_o),

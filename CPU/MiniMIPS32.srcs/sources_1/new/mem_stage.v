@@ -80,7 +80,7 @@ module mem_stage (
 
   //确定待写入存储器的数据
   wire [`WORD_BUS] din_reverse = {mem_din_i[7:0], mem_din_i[15:8], mem_din_i[23:16], mem_din_i[31:24]};
-  wire [`WORD_BUS] din_byte = {mem_din_i[7:0], {24{1'b0}}};
+  wire [`WORD_BUS] din_byte = {{24{1'b0}},mem_din_i[7:0]};
   assign din         = (we == 4'b1111) ? din_reverse : (we == 4'b1000) ? din_byte : (we == 4'b0100) ? din_byte : (we == 4'b0010) ? din_byte : (we == 4'b0001) ? din_byte : (we == 4'b1100) ? {din_reverse[31:16], {16{1'b0}}} : (we == 4'b0011) ? {{16{1'b0}}, din_reverse[31:16]} : `ZERO_WORD;
 
     //mem2id数据前推
