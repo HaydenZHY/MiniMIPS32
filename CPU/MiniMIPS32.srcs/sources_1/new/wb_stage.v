@@ -58,5 +58,7 @@ module wb_stage (
   assign debug_wb_rf_wen   = wb_wreg_o;  // 上板测试时务必删除该语句 
   assign debug_wb_rf_wdata = wb_wd_o;  // 上板测试时务必删除该语句 
   assign debug_wb_rf_wnum  = wb_wa_o;  // 上板测试时务必删除该语句
+  assign wb2exe_whilo = {wb_whi_i, wb_wlo_i};
+  assign wb2exe_hilo = wb_hilo_i;
 
 endmodule
