@@ -74,17 +74,18 @@ make_helper(exec) {
 	opcode_table[ ops_decoded.opcode ](pc);
 
 	/*----------Gloden_trace----------*/
+
 	if(temu_state != END){
 	int Rd_num = op_dest->reg;
 	//根据测试更新
 	if(Rd_num==-1)
-	Trace("%08x		%02d(%s)		%08x\n", cpu.pc, -1, "$HI", cpu.hi);
+	Trace("%08x		%s		%08x\n", cpu.pc, "HI", cpu.hi);
 	else if(Rd_num==-2)
-	Trace("%08x		%02d(%s)		%08x\n", cpu.pc, -1, "$LO", cpu.lo);
+	Trace("%08x		%s		%08x\n", cpu.pc, "LO", cpu.lo);
 	else if(Rd_num==-3)
-	Trace("%08x		%08x(%s)		%08x(%s)\n", cpu.pc, cpu.hi, "$HI", cpu.lo, "$LO");
+	Trace("%08x		%08x		%08x(%s)\n", cpu.pc, cpu.hi, cpu.lo, "$LO");
 	else
-	Trace("%08x		%02d(%s)		%08x\n", cpu.pc, Rd_num, REG_NAME(Rd_num), reg_w(Rd_num));
+	Trace("%08x		%02d		%08x\n", cpu.pc, Rd_num, reg_w(Rd_num));
 	}
 }
 
