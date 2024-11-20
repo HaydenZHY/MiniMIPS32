@@ -1,0 +1,36 @@
+bfc00000:   24 08 00 00         addiu $t0, $zero, 0x0000
+bfc00004:   24 09 00 01         addiu $t1, $zero, 0x0001
+bfc00008:   11 09 00 01         beq $t0, $t1, 0x0001
+bfc00014:   15 09 00 02         bne   $t0, $t1, 0x0002
+bfc00018:   24 08 00 01         addiu $t0, $zero, 0x0001
+bfc00024:   1d 00 00 02         bgtz $t0, 0x0002
+bfc00028:   24 08 ff ff         addiu $t0, $zero, 0xffff
+bfc00034:   05 00 00 02         bltz $t0, 0x0002
+bfc00038:   24 08 ff ff         addiu $t0, $zero, 0xffff
+bfc0001c:   05 10 ff f8         BLTZAL $t0, 0xfff8
+bfc00020:   24 08 00 00         addiu $t0, $zero, 0x0000
+bfc0002c:   19 00 00 02         blez $t0, 0x0002
+bfc00030:   24 08 00 00         addiu $t0, $zero, 0x0000
+bfc0003c:   05 11 00 02         BGEZAL $t0, 0x0002
+bfc00040:   3c 08 12 34         lui   $t0,   0x1234
+bfc00044:   35 08 56 78         ori   $t0,   $t0,   0x5678
+bfc00048:   3c 09 12 34         lui   $t1,   0x1234
+bfc0004c:   35 29 56 77         ori   $t1,   $t1,   0x5677
+bfc00050:   11 09 00 10         beq $t0, $t1, 0x0010
+bfc00054:   3c 09 12 34         lui   $t1,   0x1234
+bfc00058:   35 29 56 78         ori   $t1,   $t1,   0x5678
+bfc0005c:   15 09 00 0d         bne   $t0, $t1, 0x000d
+bfc00060:   24 08 ff ff         addiu $t0, $zero, 0xffff
+bfc00064:   05 01 00 0b         bgez $t0, 0x000b
+bfc00068:   24 08 00 00         addiu $t0, $zero, 0x0000
+bfc0006c:   1d 00 00 09         bgtz $t0, 0x0009
+bfc00070:   24 08 00 01         addiu $t0, $zero, 0x0001
+bfc00074:   19 00 00 07         blez $t0, 0x0007
+bfc00078:   24 08 00 00         addiu $t0, $zero, 0x0000
+bfc0007c:   05 00 00 05         bltz $t0, 0x0005
+bfc00080:   24 08 ff ff         addiu $t0, $zero, 0xffff
+bfc00084:   05 11 00 03         BGEZAL $t0, 0x0003
+bfc00088:   24 08 00 00         addiu $t0, $zero, 0x0000
+bfc0008c:   05 10 00 01         BLTZAL $t0, 0x0001
+bfc0008c:   05 10 00 01         BLTZAL $t0, 0x0001
+

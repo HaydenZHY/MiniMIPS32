@@ -37,6 +37,8 @@
 `define LOGIC           3'b010
 `define MOVE            3'b011
 `define SHIFT           3'b100
+`define STORE           3'b101
+`define JUMP            3'b110
 
 // 内部操作码aluop
 // TODO:more inst
@@ -97,7 +99,6 @@
 `define MINIMIPS32_SB              8'h98
 `define MINIMIPS32_SH              8'h99
 `define MINIMIPS32_SW              8'h9A
-
 
 /*------------------- 通用寄存器堆参数 -------------------*/
 `define REG_BUS         31: 0               // 寄存器数据宽度

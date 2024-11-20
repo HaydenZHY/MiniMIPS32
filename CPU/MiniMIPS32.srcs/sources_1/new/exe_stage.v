@@ -16,6 +16,8 @@ module exe_stage (
     input wire exe_whi_i,
     input wire exe_wlo_i,
 
+    input wire [`INST_ADDR_BUS]    exe_ret_addr,
+
 
     // 从hilo寄存器获得的数据       
     input wire [`REG_BUS] hi_i,
@@ -67,6 +69,7 @@ module exe_stage (
   wire [       `REG_BUS] moveres;
   wire [       `REG_BUS] shiftres;
   wire [       `REG_BUS] arithres;
+  wire [       `REG_BUS] jumpres;
 
 
   assign logicres = (exe_aluop_i == `MINIMIPS32_AND )  ? (exe_src1_i & exe_src2_i) : 
@@ -115,6 +118,8 @@ module exe_stage (
                       (exe_aluop_i == `MINIMIPS32_SRL) ? (exe_src2_i >> exe_src1_i) :
                       (exe_aluop_i == `MINIMIPS32_SRAV) ? arith_shiftres_v :
                       (exe_aluop_i == `MINIMIPS32_SRLV) ? (exe_src2_i >> exe_src1_i[`REG_ADDR_BUS]) : `ZERO_WORD;
+  assign jumpres = (exe_aluop_i == `MINIMIPS32_BGEZAL) ? exe_ret_addr : (exe_aluop_i == `MINIMIPS32_BLTZAL) ? exe_ret_addr
+  : (exe_aluop_i == `MINIMIPS32_JAL) ? exe_ret_addr : (exe_aluop_i == `MINIMIPS32_JALR) ? exe_ret_addr : `ZERO_WORD;
 
   wire                                                                                                                       [31 : 0] exe_src2_t = (exe_aluop_i == `MINIMIPS32_SUB) ? (~exe_src2_i) + 1 : exe_src2_i;
   wire                                                                                                                       [31 : 0] arith_tmp = exe_src1_i + exe_src2_t;
@@ -131,7 +136,8 @@ module exe_stage (
   assign exe_wa_o      = exe_wa_i;
   assign exe_wreg_o    = exe_wreg_i;
 
-  assign exe_wd_o      = (exe_alutype_i == `LOGIC) ? logicres : (exe_alutype_i == `MOVE) ? moveres : (exe_alutype_i == `SHIFT) ? shiftres : (exe_alutype_i == `ARITH) ? arithres : `ZERO_WORD;
+  assign exe_wd_o      = (exe_alutype_i == `LOGIC) ? logicres : (exe_alutype_i == `MOVE) ? moveres : (exe_alutype_i == `SHIFT) ? shiftres : 
+  (exe_alutype_i == `ARITH) ? arithres : (exe_alutype_i == `JUMP) ? jumpres : `ZERO_WORD;
 
   assign debug_wb_pc   = exe_debug_wb_pc;  // 上板测试时务必删除该语句
   assign debug_info    = exe_src1_i;

@@ -7,11 +7,20 @@ module if_stage (
     output reg                  ice,
     output reg [`INST_ADDR_BUS] pc,
     output     [`INST_ADDR_BUS] iaddr,
-    output     [`INST_ADDR_BUS] debug_wb_pc  // 供调试使用的PC值，上板测试时务必删除该信号
+    output     [`INST_ADDR_BUS] debug_wb_pc,  // 供调试使用的PC值，上板测试时务必删除该信号
+
+    // 转移相关 绿线
+    input wire  [1:0]               jtsel,
+    input wire [`INST_ADDR_BUS]     jump_addr_1,
+    input wire [`INST_ADDR_BUS]     jump_addr_2,
+    input wire [`INST_ADDR_BUS]     jump_addr_3
 );
 
   wire [`INST_ADDR_BUS] pc_next;
-  assign pc_next = pc + 4;  // 计算下一条指令的地址
+//  assign pc_next = pc + 4;  // 计算下一条指令的地址
+    assign pc_next = (jtsel == 2'b01) ? jump_addr_1 : (jtsel == 2'b10) ? jump_addr_2 :
+    (jtsel == 2'b11) ? jump_addr_3 : pc + 4;
+    
   always @(posedge cpu_clk_50M) begin
     if (cpu_rst_n == `RST_ENABLE) begin
       ice <= `CHIP_DISABLE;  // 复位的时候指令存储器禁用  
