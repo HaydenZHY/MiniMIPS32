@@ -32,6 +32,14 @@ module memwb_reg (
     output reg wb_whi,
     output reg wb_wlo,
 
+    //cp0
+    input  wire                 mem_cp0_we,
+    input  wire [`REG_ADDR_BUS] mem_cp0_wa,
+    input  wire [     `REG_BUS] mem_cp0_wd,
+    output reg                  wb_cp0_we,
+    output reg  [`REG_ADDR_BUS] wb_cp0_wa,
+    output reg  [     `REG_BUS] wb_cp0_wd,
+
     output reg [`INST_ADDR_BUS] wb_debug_wb_pc  // 供调试使用的PC值，上板测试时务必删除该信号
 );
 
@@ -39,15 +47,19 @@ module memwb_reg (
   always @(posedge cpu_clk_50M) begin
     // 复位的时候将送至写回阶段的信息清0
     if (cpu_rst_n == `RST_ENABLE) begin
-      wb_wa    <= `REG_NOP;
-      wb_wreg  <= `WRITE_DISABLE;
-      wb_dreg  <= `ZERO_WORD;
-      wb_whilo <= `WRITE_DISABLE;
-      wb_hilo  <= `ZERO_DWORD;
-      wb_dre   <= 4'b0;
-      wb_mreg  <= `WRITE_DISABLE;
-      wb_whi   <= `WRITE_DISABLE;
-      wb_wlo   <= `WRITE_DISABLE;
+      wb_wa     <= `REG_NOP;
+      wb_wreg   <= `WRITE_DISABLE;
+      wb_dreg   <= `ZERO_WORD;
+      wb_whilo  <= `WRITE_DISABLE;
+      wb_hilo   <= `ZERO_DWORD;
+      wb_dre    <= 4'b0;
+      wb_mreg   <= `WRITE_DISABLE;
+      wb_whi    <= `WRITE_DISABLE;
+      wb_wlo    <= `WRITE_DISABLE;
+      //cp0
+      wb_cp0_we <= 0;
+      wb_cp0_wa <= `REG_NOP;
+      wb_cp0_wd <= `ZERO_WORD;
     end  // 将来自访存阶段的信息寄存并送至写回阶段
     else begin
       wb_wa          <= mem_wa;
@@ -59,6 +71,11 @@ module memwb_reg (
       wb_dre         <= mem_dre;
       wb_whi         <= mem_whi;
       wb_wlo         <= mem_wlo;
+      //cp0
+      wb_cp0_we      <= mem_cp0_we;
+      wb_cp0_wa      <= mem_cp0_wa;
+      wb_cp0_wd      <= mem_cp0_wd;
+
       wb_debug_wb_pc <= mem_debug_wb_pc;
     end
   end

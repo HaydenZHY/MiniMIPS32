@@ -4,7 +4,7 @@ module exemem_reg (
     input wire cpu_clk_50M,
     input wire cpu_rst_n,
 
-    // 来自执行阶段的信息
+    // ?????????
     input  wire [     `ALUOP_BUS] exe_aluop,
     input  wire [  `REG_ADDR_BUS] exe_wa,
     input  wire                   exe_wreg,
@@ -17,8 +17,8 @@ module exemem_reg (
     input  wire [       `REG_BUS] exe_din,
     input  wire [`DOUBLE_REG_BUS]exe_mulres,
     input  wire [ `INST_ADDR_BUS] exe_debug_wb_pc,  //delete
-    input  wire [3 : 0]         stall, //暂停机制相关 蓝线
-    // 送到访存阶段的信息 
+    input  wire [3 : 0]         stall, //?????? ??
+    // ????????? 
     output reg  [     `ALUOP_BUS] mem_aluop,
     output reg  [  `REG_ADDR_BUS] mem_wa,
     output reg                    mem_wreg,
@@ -30,7 +30,7 @@ module exemem_reg (
     output reg                    mem_mreg,
     output reg  [       `REG_BUS] mem_din,
     output reg [`DOUBLE_REG_BUS]mem_mulres,
-    output reg  [ `INST_ADDR_BUS] mem_debug_wb_pc,   //delete
+    output reg  [ `INST_ADDR_BUS] mem_debug_wb_pc,,  //delete
     
     //cp0
     input  wire                     flush,
@@ -47,6 +47,23 @@ module exemem_reg (
     output  reg                       mem_cp0_we,
     output  reg  [`REG_ADDR_BUS ]     mem_cp0_wa,
 	output  reg  [`REG_BUS      ]     mem_cp0_wd
+
+    //cp0
+    input  wire                  flush,
+    input  wire                  exe_c_ds,
+    input  wire [  `EXCTYPE_BUS] exe_exctype,
+    input  wire [`INST_ADDR_BUS] exe_cur_pc,
+    output reg                   mem_c_ds,
+    output reg  [  `EXCTYPE_BUS] mem_exctype,
+    output reg  [`INST_ADDR_BUS] mem_cur_pc,
+
+    //cp02
+    input  wire                 exe_cp0_we,
+    input  wire [`REG_ADDR_BUS] exe_cp0_wa,
+    input  wire [     `REG_BUS] exe_cp0_wd,
+    output reg                  mem_cp0_we,
+    output reg  [`REG_ADDR_BUS] mem_cp0_wa,
+    output reg  [     `REG_BUS] mem_cp0_wd
 );
 
     always @(posedge cpu_clk_50M) begin
@@ -59,7 +76,7 @@ module exemem_reg (
             mem_wd                 <= `ZERO_WORD;
             mem_mulres             <= `ZERO_DWORD;
             mem_din                <= `ZERO_WORD;
-            mem_debug_wb_pc        <= `PC_INIT;   // 上板测试时务必删除该语句
+            mem_debug_wb_pc        <= `PC_INIT;   // ????????????
             //cp0
             mem_c_ds           <= 0;
             mem_exctype        <= `noexe;
@@ -98,7 +115,7 @@ module exemem_reg (
                 mem_wd                 <= exe_wd;
                 mem_mulres             <= exe_mulres;
                 mem_din                <= exe_din;
-                mem_debug_wb_pc        <= exe_debug_wb_pc;   // 上板测试时务必删除该语句
+                mem_debug_wb_pc        <= exe_debug_wb_pc;   // ????????????
                 //cp0
                 mem_c_ds           <= exe_c_ds;
                 mem_exctype        <= exe_exctype;

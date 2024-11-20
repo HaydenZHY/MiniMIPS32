@@ -1,36 +1,36 @@
 `include "defines.v"
 
 module id_stage (
-    input wire [`INST_ADDR_BUS] id_debug_wb_pc,  // 供调试使用的PC值，上板测试时务必删除该信号
+    input wire [`INST_ADDR_BUS] id_debug_wb_pc,  // ??????PC??????????????
     input wire                  cpu_rst_n,
-    // 从取指阶段获得的PC值
+    // ????????PC?
     input wire [`INST_ADDR_BUS] id_pc_i,
 
-    // 从指令存储器读出的指令字
+    // ????????????
     input wire [`INST_BUS] id_inst_i,
 
-    // 从通用寄存器堆读出的数据 
+    // ???????????? 
     input wire [`REG_BUS] rd1,
     input wire [`REG_BUS] rd2,
 
-    // 送至执行阶段的译码信息
+    // ???????????
     output wire [ `ALUTYPE_BUS] id_alutype_o,
     output wire [   `ALUOP_BUS] id_aluop_o,
     output wire [`REG_ADDR_BUS] id_wa_o,
     output wire                 id_wreg_o,
     output wire [`INST_ADDR_BUS]    ret_addr,
-    output wire                     stallreg_id, //暂停机制相关
-    //自己添加的信号
+    output wire                     stallreg_id, //??????
+    //???????
     output wire                 id_whilo_o,
     output wire                 id_mreg_o,
     output wire [     `REG_BUS] id_din_o,
 
-    // 送至执行阶段的源操作数1、源操作数2
+    // ???????????1?????2
     output wire [`REG_BUS] id_src1_o,
     output wire [`REG_BUS] id_src2_o,
 
 
-    // 送至读通用寄存器堆端口的使能和地址
+    // ?????????????????
     output wire                 rreg1,
     output wire [`REG_ADDR_BUS] ra1,
     output wire                 rreg2,
@@ -39,20 +39,20 @@ module id_stage (
 
     output wire id_whi_o,
     output wire id_wlo_o,
-    
-    //exe2id数据前推
-    input  wire [`REG_ADDR_BUS]     exe2id_wa,
-    input  wire                     exe2id_wreg,
-    input  wire [`REG_BUS      ]    exe2id_wd,
-    
-    //mem2id数据前推
+
+    //exe2id????
+    input wire [`REG_ADDR_BUS] exe2id_wa,
+    input wire                 exe2id_wreg,
+    input wire [     `REG_BUS] exe2id_wd,
+
+    //mem2id????
     input  wire [`REG_ADDR_BUS]     mem2id_wa,
     input  wire                     mem2id_wreg,
     input  wire [`REG_BUS      ]    mem2id_wd, 
     input  wire                     exe2id_mreg,
     input  wire                     mem2id_mreg, 
 
-    //转移相关 绿线
+    //???? ??
     output wire  [1:0]              jtsel,
     output wire [`INST_ADDR_BUS]    jump_addr_1,
     output wire [`INST_ADDR_BUS]    jump_addr_2,
@@ -68,7 +68,7 @@ module id_stage (
     //cp02
     output wire [`REG_ADDR_BUS]     cp0_rt,
     
-    output [`INST_ADDR_BUS] debug_wb_pc  // 供调试使用的PC值，上板测试时务必删除该信号
+    output [`INST_ADDR_BUS] debug_wb_pc  // ??????PC??????????????
     
     
 );
@@ -84,7 +84,7 @@ module id_stage (
   wire [25:0] instr_index = id_inst[25: 0];
   assign debug_wb_pc = id_debug_wb_pc;
 
-  /*-------------------- 第一级译码逻辑：确定当前需要译码的指令 --------------------*/
+  /*-------------------- ??????????????????? --------------------*/
   wire inst_reg = ~|op;
   wire inst_add = inst_reg & func[5] & ~func[4] & ~func[3] & ~func[2] & ~func[1] & ~func[0];
   wire inst_subu = inst_reg & func[5] & ~func[4] & ~func[3] & ~func[2] & func[1] & func[0];
@@ -158,8 +158,8 @@ module id_stage (
 
   /*------------------------------------------------------------------------------*/
 
-  /*-------------------- 第二级译码逻辑：生成具体控制信号 --------------------*/
-  // 操作类型alutype
+  /*-------------------- ???????????????? --------------------*/
+  // ????alutype
   assign id_alutype_o[2] = (inst_sll | inst_sllv | inst_srl | inst_srlv | inst_sra | inst_srav |
   inst_beq | inst_bne | inst_bgez | inst_bgtz | inst_blez | inst_bltz| inst_bltzal|inst_bgezal |
   inst_j | inst_jal | inst_jr | inst_jalr);
@@ -169,7 +169,7 @@ module id_stage (
   inst_jalr);
   assign id_alutype_o[0] = (inst_mfhi | inst_mflo | inst_lb | inst_lw | inst_sb | inst_sh | inst_sw | inst_add | inst_subu | inst_slt | inst_addiu | inst_sltiu | inst_addi | inst_slti | inst_addu | inst_sub | inst_sltu | inst_mtlo | inst_mthi | inst_lbu | inst_lh | inst_lhu);
 
-  // 内部操作码aluop
+  // ?????aluop
   assign id_aluop_o[7] = (inst_lb | inst_lw | inst_sb | inst_sw | inst_lbu | inst_lh | inst_lhu | inst_sh | inst_syscall | inst_eret | inst_break | inst_mfc0 | inst_mtc0);
   assign id_aluop_o[6] = (inst_bgez | inst_bgtz | inst_blez | inst_bltz | inst_bltzal | inst_bgezal | inst_jalr | inst_div | inst_divu);
   assign id_aluop_o[5] = (inst_slt | inst_sltiu | inst_slti | inst_sltu | inst_or | inst_xor | inst_xori | inst_sra | inst_srl | inst_srav | inst_srlv | inst_j | inst_jr | inst_jal | inst_beq | inst_bne);
@@ -192,7 +192,7 @@ module id_stage (
   assign id_aluop_o[0] = (inst_subu | inst_mflo | inst_sll | inst_addiu | inst_sltiu | inst_ori | inst_lui | inst_addu | inst_sltu | inst_multu | inst_nor | inst_xor | inst_srav | inst_srlv | inst_mtlo | inst_lbu | inst_sh | inst_jr | inst_bgtz | inst_bgezal | inst_divu | inst_eret | inst_mtc0);
 
 
-  // 写通用寄存器使能信号
+  // ??????????
   assign id_wreg_o       = (inst_add | inst_subu | inst_slt | inst_and | inst_mfhi | inst_mflo | inst_sll |
                               inst_ori | inst_addiu | inst_lui | inst_sltiu | inst_lb | inst_lw | inst_addi |
                               inst_addu | inst_sub | inst_slti | inst_sltu | inst_andi | inst_nor | inst_or |
@@ -200,7 +200,7 @@ module id_stage (
                               inst_lbu | inst_lh | inst_lhu | inst_jal | inst_jalr | inst_bgezal | inst_bltzal |
                               inst_mfc0);
 
-  // 读通用寄存器堆端口1使能信号
+  // ?????????1????
   assign rreg1 = (inst_add | inst_subu | inst_slt | inst_and | inst_mult |
                               inst_addiu | inst_ori | inst_sltiu | inst_lb | inst_lw | inst_sb | inst_sw |
                               inst_addi | inst_addu | inst_sub | inst_slti | inst_sltu | inst_multu |
@@ -209,14 +209,14 @@ module id_stage (
                               inst_sh | inst_jr | inst_beq | inst_bne | inst_bgez | inst_bgtz | inst_blez | 
                               inst_bltz | inst_bltzal | inst_bgezal | inst_jalr | inst_div | inst_divu);
 
-  // 读通用寄存器堆读端口2使能信号
+  // ??????????2????
   assign rreg2 = (cpu_rst_n == `RST_ENABLE) ? 1'b0 : 
                              (inst_add | inst_subu | inst_slt | inst_and | inst_mult | inst_sll | inst_sb | 
                               inst_sw | inst_addu | inst_sub | inst_sltu | inst_multu | inst_nor | inst_or |
                               inst_xor | inst_sllv | inst_sra | inst_srl | inst_srav | inst_srlv | inst_sh |
                               inst_beq | inst_bne | inst_div | inst_divu | inst_mtc0);
 
-  //  l指令
+  //  l??
   assign id_mreg_o = (inst_lb | inst_lw | inst_lbu | inst_lh | inst_lhu);
   assign id_whilo_o = (inst_mult | inst_multu | inst_div | inst_divu);
 
@@ -235,7 +235,7 @@ module id_stage (
 
   /*------------------------------------------------------------------------------*/
 
-  // 读通用寄存器堆端口1的地址为rs字段，读端口2的地址为rt字段
+  // ?????????1????rs??????2????rt??
   assign ra1      = rs;
   assign ra2      = rt;
   assign id_whi_o = inst_mthi;
@@ -243,86 +243,90 @@ module id_stage (
 
   wire [31:0] imm_ext = (upper == `UPPER_ENABLE) ? (imm << 16) : (sext == `SIGNED_EXT) ? {{16{imm[15]}}, imm} : {{16{1'b0}}, imm};
 
-  // 获得待写入目的寄存器的地址（rt或rd）
+  // ??????????????rt?rd?
     assign id_wa_o = (rtsel == `RT_ENABLE) ? rt : (inst_bltzal || inst_bgezal || inst_jal) ?31 : rd;
 
-  
-  //前推信号
-    reg [1:0] fwrd1;
-    reg [1:0] fwrd2;
-    reg [`REG_BUS] din;
-    always @(*) begin
-        if(exe2id_wreg == `WRITE_ENABLE && exe2id_wa == rs)begin
-            fwrd1 = 2'b01;
-        end
-        else if(mem2id_wreg == `WRITE_ENABLE && mem2id_wa == rs)begin
-            fwrd1 = 2'b10;
-        end
-        else begin
-            fwrd1 = 2'b00;
-        end
-        if(exe2id_wreg == `WRITE_ENABLE && exe2id_wa == rt)begin
-            fwrd2 = 2'b01;
-        end
-        else if(mem2id_wreg == `WRITE_ENABLE && mem2id_wa == rt)begin
-            fwrd2 = 2'b10;
-        end
-        else begin
-            fwrd2 = 2'b00;
-        end
+
+  //????
+  reg [     1:0 ] fwrd1;
+  reg [     1:0 ] fwrd2;
+  reg [`REG_BUS]  din;
+  always @(*) begin
+    if (exe2id_wreg == `WRITE_ENABLE && exe2id_wa == rs) begin
+      fwrd1 = 2'b01;
+    end else if (mem2id_wreg == `WRITE_ENABLE && mem2id_wa == rs) begin
+      fwrd1 = 2'b10;
+    end else begin
+      fwrd1 = 2'b00;
     end
-    reg [`REG_BUS      ] src1;
-    reg [`REG_BUS      ] src2;
-    always @(*) begin
-        if(fwrd2 == 2'b00)begin
-            din = rd2;
-        end
-        else if(fwrd2 == 2'b01)begin
-            din = exe2id_wd;
-        end
-        else if(fwrd2 == 2'b10)begin
-            din = mem2id_wd;
-        end
-        if(shift == `SHIFT_ENABLE)begin
-            src1 = sa;
-        end
-        else if(fwrd1 == 2'b00)begin
-            src1 = rd1;
-        end
-        else if(fwrd1 == 2'b01)begin
-            src1 = exe2id_wd;
-        end
-        else if(fwrd1 == 2'b10)begin
-            src1 = mem2id_wd;
-        end
-        if(immsel == `IMM_ENABLE)begin
-            src2 = imm_ext;
-        end
-        else if(fwrd2 == 2'b00)begin
-            src2 = rd2;
-        end
-        else if(fwrd2 == 2'b01)begin
-            src2 = exe2id_wd;
-        end
-        else if(fwrd2 == 2'b10)begin
-            src2 = mem2id_wd;
-        end
+    if (exe2id_wreg == `WRITE_ENABLE && exe2id_wa == rt) begin
+      fwrd2 = 2'b01;
+    end else if (mem2id_wreg == `WRITE_ENABLE && mem2id_wa == rt) begin
+      fwrd2 = 2'b10;
+    end else begin
+      fwrd2 = 2'b00;
     end
-  // 获得源操作数1
+  end
+  reg [`REG_BUS] src1;
+  reg [`REG_BUS] src2;
+  always @(*) begin
+    if (fwrd2 == 2'b00) begin
+      din = rd2;
+    end else if (fwrd2 == 2'b01) begin
+      din = exe2id_wd;
+    end else if (fwrd2 == 2'b10) begin
+      din = mem2id_wd;
+    end
+    if (shift == `SHIFT_ENABLE) begin
+      src1 = sa;
+    end else if (fwrd1 == 2'b00) begin
+      src1 = rd1;
+    end else if (fwrd1 == 2'b01) begin
+      src1 = exe2id_wd;
+    end else if (fwrd1 == 2'b10) begin
+      src1 = mem2id_wd;
+    end
+    if (immsel == `IMM_ENABLE) begin
+      src2 = imm_ext;
+    end else if (fwrd2 == 2'b00) begin
+      src2 = rd2;
+    end else if (fwrd2 == 2'b01) begin
+      src2 = exe2id_wd;
+    end else if (fwrd2 == 2'b10) begin
+      src2 = mem2id_wd;
+    end
+  end
+  // ??????1
   assign id_src1_o = src1;
 
-  // 获得源操作数2
-    assign id_src2_o = src2 ;           
-    assign id_din_o = din;
+  // ??????2
+  assign id_src2_o = src2;
+  assign id_din_o  = din;
+
+  //
+  //exp part
+  assign c_ds_o    = c_ds_i;
+  assign cur_pc    = id_pc_i;
+  assign n_ds      = (inst_beq || inst_bne || inst_bgez || inst_bgtz || inst_blez || inst_bltz || inst_bgezal || inst_bltzal || inst_j || inst_jal || inst_jalr || inst_jr) ? 1 : 0;
+  always @(*) begin
+    if (inst_syscall) exctype = `Sys;
+    else if (inst_break) exctype = `BP;
+    else if (inst_eret) exctype = `Eret;
+    else if ((id_aluop_o < 8'h10 || id_aluop_o > 8'h48) && id_pc_i != 32'hBFC00000) exctype = `RI;
+    else if (id_pc_i[1:0] != 2'b00) exctype = `ADEL;
+    else exctype = `noexe;
+  end
+  //cp02
+  assign cp0_rt = rt;
     
-    //跳转相关
+    //????
     assign ret_addr = id_pc_i+8;
     wire [`INST_ADDR_BUS] pcadd4 = id_pc_i+4;
     wire [`INST_ADDR_BUS] offsetleft = {{14{imm[15]}}, imm, 2'b00};
     assign jump_addr_1 = {pcadd4[31:28], instr_index, 2'b00};
     assign jump_addr_2 = id_src1_o;
     assign jump_addr_3 = offsetleft+pcadd4;
-    reg jumpe; //结合具体指令判断是否跳转
+    reg jumpe; //????????????
      always @(*) begin
         if(inst_beq&&id_src1_o == id_src2_o)jumpe = 1;
         else if (inst_bne&&id_src1_o != id_src2_o)jumpe = 1;
@@ -337,7 +341,7 @@ module id_stage (
      end
     assign jtsel[0] = jumpe&(inst_bgez|inst_bgtz|inst_blez|inst_bltz|inst_bltzal|inst_bgezal|inst_j|inst_jal|inst_beq|inst_bne);
     assign jtsel[1] = jumpe&(inst_bgez|inst_bgtz|inst_blez|inst_bltz|inst_bltzal|inst_bgezal|inst_jr|inst_jalr|inst_beq|inst_bne);
-    //暂停机制相关 蓝线
+    //?????? ??
     assign stallreg_id = (exe2id_mreg == 1'b1 && exe2id_wreg == 1'b1 && (rs == exe2id_wa || rt == exe2id_wa)) ||
                          (mem2id_mreg == 1'b1 && mem2id_wreg == 1'b1 && (rs == mem2id_wa || rt == exe2id_wa)) ? 1'b1 : 1'b0;
     //cp0

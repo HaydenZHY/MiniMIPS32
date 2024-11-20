@@ -7,7 +7,11 @@ module if_stage (
     output reg                  ice,
     output reg [`INST_ADDR_BUS] pc,
     output     [`INST_ADDR_BUS] iaddr,
-    output     [`INST_ADDR_BUS] debug_wb_pc,  // 供调试使用的PC值，上板测试时务必删除该信号
+    output     [`INST_ADDR_BUS] debug_wb_pc,, // 供调试使用的PC值，上板测试时务必删除该信号
+
+    //signal from cp0
+    input wire                  flush,
+    input wire [`INST_ADDR_BUS] excaddr,
 
     // 转移相关 绿线
     input wire  [1:0]               jtsel,
