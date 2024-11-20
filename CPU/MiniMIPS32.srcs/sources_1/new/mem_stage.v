@@ -92,5 +92,13 @@ module mem_stage (
     assign mem2id_wreg  = mem_wreg_i;
     assign mem2id_wd    = mem_wd_i;
   assign debug_wb_pc = mem_debug_wb_pc;  // 上板测试时务必删除该语句 
+  
+  //hilo寄存器数据相关
+  assign mem2exe_whilo = (mem_aluop_i == `MINIMIPS32_MTHI) ? 2'b10 : 
+                           (mem_aluop_i == `MINIMIPS32_MTLO) ? 2'b01 :
+                           {mem_whi_i, mem_wlo_i};
+    assign mem2exe_hilo = (mem_aluop_i == `MINIMIPS32_MTHI) ? {mem_wd_i, 32'h0000} : 
+                          (mem_aluop_i == `MINIMIPS32_MTLO) ? {32'h0000, mem_wd_i} :
+                           mem_hilo_i;
 
 endmodule
