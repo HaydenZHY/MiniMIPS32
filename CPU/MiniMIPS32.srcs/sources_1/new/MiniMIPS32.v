@@ -22,7 +22,12 @@ module MiniMIPS32 (
     output wire [     `WORD_BUS] debug_wb_rf_wdata  // 供调试使用的PC值，上板测试时务必删除该信号
 );
 
-  wire [      `WORD_BUS] pc;
+    wire [      `WORD_BUS] pc;
+    //跳转相关
+    wire  [1:0]            jtsel;
+    wire [`INST_ADDR_BUS]  jump_addr_1;
+    wire [`INST_ADDR_BUS]  jump_addr_2;
+    wire [`INST_ADDR_BUS]  jump_addr_3;
 
   /*---------------id阶段信号------------------*/
   // 连接IF/ID模块与译码阶段ID模块的变量 
@@ -48,6 +53,10 @@ module MiniMIPS32 (
   wire [       `REG_BUS] id_din_o;
   wire                   id_whi_o;
   wire                   id_wlo_o;
+
+  //跳转相关
+  wire [`INST_ADDR_BUS]  ret_addr;
+  wire [`INST_ADDR_BUS]  id_ret_addr;
   /*------------------------------------------*/
 
   /*---------------exe阶段信号------------------*/
@@ -76,6 +85,7 @@ module MiniMIPS32 (
   wire [`DOUBLE_REG_BUS] exe_hilo_o;
   wire                   exe_whi_o;
   wire                   exe_wlo_o;
+  wire [`INST_ADDR_BUS]  exe_ret_addr;
   /*------------------------------------------*/
 
   /*----------------mem阶段信号-----------------*/
@@ -156,7 +166,11 @@ module MiniMIPS32 (
       .pc         (pc),
       .ice        (ice),
       .iaddr      (iaddr),
-      .debug_wb_pc(if_debug_wb_pc)
+      .debug_wb_pc(if_debug_wb_pc),
+      .jtsel      (jtsel),
+      .jump_addr_1(jump_addr_1),
+      .jump_addr_2(jump_addr_2),
+      .jump_addr_3(jump_addr_3)
   );
 
   // 接口完整
@@ -181,12 +195,16 @@ module MiniMIPS32 (
       .ra1           (ra1),
       .ra2           (ra2),
       .exe2id_wa(exe2id_wa),
-    .exe2id_wreg(exe2id_wreg),
-        .exe2id_wd(exe2id_wd),
+      .exe2id_wreg(exe2id_wreg),
+      .exe2id_wd(exe2id_wd),
       .id_debug_wb_pc(id_debug_wb_pc_i),
       .mem2id_wa(mem2id_wa),
-        .mem2id_wreg(mem2id_wreg),
-        .mem2id_wd(mem2id_wd),
+      .mem2id_wreg(mem2id_wreg),
+      .mem2id_wd(mem2id_wd),
+      .jtsel      (jtsel),
+      .jump_addr_1(jump_addr_1),
+      .jump_addr_2(jump_addr_2),
+      .jump_addr_3(jump_addr_3),
 
       .id_aluop_o  (id_aluop_o),
       .id_alutype_o(id_alutype_o),
@@ -199,6 +217,7 @@ module MiniMIPS32 (
       .id_wlo_o    (id_wlo_o),
       .id_mreg_o   (id_mreg_o),
       .id_din_o    (id_din_o),
+      .ret_addr    (id_ret_addr),
       .debug_wb_pc (id_debug_wb_pc_o)
   );
 
@@ -233,6 +252,7 @@ module MiniMIPS32 (
       .id_mreg       (id_mreg_o),
       .id_din        (id_din_o),
       .id_debug_wb_pc(id_debug_wb_pc_o),
+      .id_ret_addr(id_ret_addr),
 
       .exe_alutype    (exe_alutype_i),
       .exe_aluop      (exe_aluop_i),
@@ -245,6 +265,7 @@ module MiniMIPS32 (
       .exe_wlo        (exe_wlo_i),
       .exe_mreg       (exe_mreg_i),
       .exe_din        (exe_din_i),
+      .exe_ret_addr(exe_ret_addr),
       .exe_debug_wb_pc(exe_debug_wb_pc_i)
   );
 
@@ -267,6 +288,7 @@ module MiniMIPS32 (
       .mem2exe_hilo(mem2exe_hilo),
       .wb2exe_whilo(wb2exe_whilo), 
       .wb2exe_hilo(wb2exe_hilo),
+      .exe_ret_addr(exe_ret_addr),
       .exe_debug_wb_pc(exe_debug_wb_pc_i),
 
       .exe_aluop_o(exe_aluop_o),

@@ -48,6 +48,13 @@ module id_stage (
     input  wire                     mem2id_wreg,
     input  wire [`REG_BUS      ]    mem2id_wd,  
 
+    //转移相关 绿线
+    output wire  [1:0]              jtsel,
+    output wire [`INST_ADDR_BUS]    jump_addr_1,
+    output wire [`INST_ADDR_BUS]    jump_addr_2,
+    output wire [`INST_ADDR_BUS]    jump_addr_3,
+    output wire [`INST_ADDR_BUS]    ret_addr,
+
     output [`INST_ADDR_BUS] debug_wb_pc  // 供调试使用的PC值，上板测试时务必删除该信号
     
     
@@ -63,6 +70,7 @@ module id_stage (
   wire [      4:0                                                                                  ] rt = id_inst[20:16];
   wire [      4:0                                                                                  ] sa = id_inst[10:6];
   wire [     15:0                                                                                  ] imm = id_inst[15:0];
+  wire [25:0                                                                                       ] instr_index = id_inst[25: 0];
   assign debug_wb_pc = id_debug_wb_pc;
 
 
@@ -127,13 +135,30 @@ module id_stage (
   wire inst_eret = ~op[5] & op[4] & ~op[3] & ~op[2] & ~op[1] & ~op[0] & ~func[5] & func[4] & func[3] & ~func[2] & ~func[1] & ~func[0];
   wire inst_mfc0 = ~op[5] & op[4] & ~op[3] & ~op[2] & ~op[1] & ~op[0] & ~id_inst[23];
   wire inst_mtc0 = ~op[5] & op[4] & ~op[3] & ~op[2] & ~op[1] & ~op[0] & id_inst[23];
+  wire inst_beq = ~op[5]&~op[4]&~op[3]&op[2]&~op[1]&~op[0];
+  wire inst_bne = ~op[5]&~op[4]&~op[3]&op[2]&~op[1]&op[0];
+  wire inst_bgez = ~op[5]&~op[4]&~op[3]&~op[2]&~op[1]&op[0]&rt[0]&~rt[4];
+  wire inst_bgtz = ~op[5]&~op[4]&~op[3]&op[2]&op[1]&op[0];
+  wire inst_blez = ~op[5]&~op[4]&~op[3]&op[2]&op[1]&~op[0];
+  wire inst_bltz = ~op[5]&~op[4]&~op[3]&~op[2]&~op[1]&op[0]&~rt[0]&~rt[4];
+  wire inst_bltzal = ~op[5]&~op[4]&~op[3]&~op[2]&~op[1]&op[0]&~rt[0]&rt[4];
+  wire inst_bgezal = ~op[5]&~op[4]&~op[3]&~op[2]&~op[1]&op[0]&rt[0]&rt[4];
+  wire inst_j = ~op[5]&~op[4]&~op[3]&~op[2]&op[1]&~op[0];
+  wire inst_jal = ~op[5]&~op[4]&~op[3]&~op[2]&op[1]&op[0];
+  wire inst_jr = inst_reg & ~func[5]&~func[4]&func[3]&~func[2]&~func[1]&~func[0];
+  wire inst_jalr = inst_reg & ~func[5]&~func[4]&func[3]&~func[2]&~func[1]&func[0];
 
   /*------------------------------------------------------------------------------*/
 
   /*-------------------- 第二级译码逻辑：生成具体控制信号 --------------------*/
   // 操作类型alutype
-  assign id_alutype_o[2] = (inst_sll | inst_sllv | inst_srl | inst_srlv | inst_sra | inst_srav);
-  assign id_alutype_o[1] = (inst_and | inst_mfhi | inst_mflo | inst_ori | inst_lui | inst_andi | inst_xori | inst_or | inst_xor | inst_nor | inst_mtlo | inst_mthi);
+  assign id_alutype_o[2] = (inst_sll | inst_sllv | inst_srl | inst_srlv | inst_sra | inst_srav |
+  inst_beq | inst_bne | inst_bgez | inst_bgtz | inst_blez | inst_bltz| inst_bltzal|inst_bgezal |
+  inst_j | inst_jal | inst_jr | inst_jalr);
+  assign id_alutype_o[1] = (inst_and | inst_mfhi | inst_mflo | inst_ori | inst_lui | inst_andi |
+  inst_xori | inst_or | inst_xor | inst_nor | inst_mtlo | inst_mthi | inst_beq| inst_bne | inst_bgez
+  | inst_bgtz | inst_blez | inst_bltz | inst_bltzal| inst_bgezal | inst_j | inst_jal | inst_jr | 
+  inst_jalr);
   assign id_alutype_o[0] = (inst_mfhi | inst_mflo | inst_lb | inst_lw | inst_sb | inst_sh | inst_sw | inst_add | inst_subu | inst_slt | inst_addiu | inst_sltiu | inst_addi | inst_slti | inst_addu | inst_sub | inst_sltu | inst_mtlo | inst_mthi | inst_lbu | inst_lh | inst_lhu);
 
   // 内部操作码aluop
@@ -197,6 +222,8 @@ module id_stage (
 
   wire upper = inst_lui;
 
+  wire jal = inst_bltzal | inst_bgezal | inst_jal;
+
 
   /*------------------------------------------------------------------------------*/
 
@@ -209,7 +236,7 @@ module id_stage (
   wire [31:0] imm_ext = (upper == `UPPER_ENABLE) ? (imm << 16) : (sext == `SIGNED_EXT) ? {{16{imm[15]}}, imm} : {{16{1'b0}}, imm};
 
   // 获得待写入目的寄存器的地址（rt或rd）
-  assign id_wa_o   = (rtsel == `RT_ENABLE) ? rt : rd;
+    assign id_wa_o = (rtsel == `RT_ENABLE) ? rt : (inst_bltzal || inst_bgezal || inst_jal) ?31 : rd;
 
   
   //前推信号
@@ -279,4 +306,27 @@ module id_stage (
   // 获得源操作数2
     assign id_src2_o = src2 ;           
     assign id_din_o = din;
+    
+    //跳转相关
+    assign ret_addr = id_pc_i+8;
+    wire [`INST_ADDR_BUS] pcadd4 = id_pc_i+4;
+    wire [`INST_ADDR_BUS] offsetleft = {{14{imm[15]}}, imm, 2'b00};
+    assign jump_addr_1 = {pcadd4[31:28], instr_index, 2'b00};
+    assign jump_addr_2 = id_src1_o;
+    assign jump_addr_3 = offsetleft+pcadd4;
+    reg jumpe; //结合具体指令判断是否跳转
+     always @(*) begin
+        if(inst_beq&&id_src1_o == id_src2_o)jumpe = 1;
+        else if (inst_bne&&id_src1_o != id_src2_o)jumpe = 1;
+        else if (inst_bgez&&id_src1_o[31]==0)jumpe = 1;
+        else if (inst_bgtz&&id_src1_o[31]==0&&id_src1_o>0)jumpe = 1;
+        else if (inst_blez&&(id_src1_o ==0||id_src1_o[31]==1))jumpe = 1;
+        else if (inst_bltz&&id_src1_o[31]==1)jumpe = 1;
+        else if (inst_bgezal&&id_src1_o[31]==0)jumpe = 1;
+        else if (inst_bltzal&&id_src1_o[31]==1)jumpe = 1;
+        else if (inst_j||inst_jal||inst_jr||inst_jalr)jumpe = 1;
+        else jumpe = 0;
+     end
+    assign jtsel[0] = jumpe&(inst_bgez|inst_bgtz|inst_blez|inst_bltz|inst_bltzal|inst_bgezal|inst_j|inst_jal|inst_beq|inst_bne);
+    assign jtsel[1] = jumpe&(inst_bgez|inst_bgtz|inst_blez|inst_bltz|inst_bltzal|inst_bgezal|inst_jr|inst_jalr|inst_beq|inst_bne);
 endmodule
