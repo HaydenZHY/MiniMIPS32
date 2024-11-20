@@ -2,6 +2,7 @@
    .set noat
    .globl main
    .text
+   .set noreorder
 main:
     li $t0, 0x0 
     li $t1, 0x1
