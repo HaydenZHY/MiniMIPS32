@@ -48,7 +48,31 @@ module exe_stage (
     input wire [1 : 0]             mem2exe_whilo,
     input wire [`DOUBLE_REG_BUS]   mem2exe_hilo,
     input wire [1 : 0]             wb2exe_whilo,
-    input wire [`DOUBLE_REG_BUS]   wb2exe_hilo
+    input wire [`DOUBLE_REG_BUS]   wb2exe_hilo,
+    
+    //ÔÝÍ£»úÖÆÏà¹Ø À¶Ïß
+    output wire                     stallreg_exe,
+    //cp0
+    input  wire                     exe_c_ds_i,
+    input  wire [`EXCTYPE_BUS  ]    exe_exctype_i,
+    input  wire [`INST_ADDR_BUS]    exe_cur_pc_i,
+    output  wire                     exe_c_ds_o,
+    output  reg [`EXCTYPE_BUS  ]    exe_exctype_o,
+    output  wire [`INST_ADDR_BUS]    exe_cur_pc_o,
+    //cp02
+    input   wire [`REG_ADDR_BUS]      exe_cp0_rt,
+    input   wire [`REG_BUS      ]     cp0_din,
+    output  wire                      exe_cp0_we_o,
+    output  wire [`REG_ADDR_BUS ]     exe_cp0_ra_o,
+    output  wire [`REG_ADDR_BUS ]     exe_cp0_wa_o,
+	output  wire [`REG_BUS      ]     exe_cp0_wd_o,
+    //cp0 datarel
+    input   wire                      mem_cp0_we_o,
+    input   wire [`REG_ADDR_BUS ]     mem_cp0_wa_o,
+	input   wire [`REG_BUS      ]     mem_cp0_wd_o,
+    input   wire                      wb_cp0_we_o,
+    input   wire [`REG_ADDR_BUS ]     wb_cp0_wa_o,
+	input   wire [`REG_BUS      ]     wb_cp0_wd_o
 );
 
   // Ö±½Ó´«µ½ÏÂÒ»½×¶Î
@@ -71,7 +95,11 @@ module exe_stage (
   wire [       `REG_BUS] arithres;
   wire [       `REG_BUS] jumpres;
 
-
+//ÔÝÍ£»úÖÆÏà¹Ø À¶Ïß
+  reg                  div_rd;
+  wire                 div_start;
+  assign stallreg_exe = ((exe_aluop_i == `MINIMIPS32_DIV || exe_aluop_i == `MINIMIPS32_DIVU) && div_rd == `DIV_NOT_READY ) ? `STOP : `START;
+  assign div_start = ((exe_aluop_i == `MINIMIPS32_DIV || exe_aluop_i == `MINIMIPS32_DIVU) && div_rd == `DIV_NOT_READY ) ? `DIV_START : `DIV_STOP;
   assign logicres = (exe_aluop_i == `MINIMIPS32_AND )  ? (exe_src1_i & exe_src2_i) : 
                       (exe_aluop_i == `MINIMIPS32_ORI) ? (exe_src1_i | exe_src2_i) :
                       (exe_aluop_i == `MINIMIPS32_LUI) ? exe_src2_i : 
@@ -146,5 +174,35 @@ module exe_stage (
   assign exe2id_wa = exe_wa_i; 
   assign exe2id_wd = exe_wd_o;
   assign exe2id_wreg = exe_wreg_i;
+  
+  reg [`REG_BUS] result
+    //cp0
+    assign exe_c_ds_o = exe_c_ds_i;
+    assign exe_cur_pc_o = exe_cur_pc_i;
+    always @(*) begin
+        if((exe_aluop_i == `MINIMIPS32_ADD||exe_aluop_i == `MINIMIPS32_ADDI||exe_aluop_i == `MINIMIPS32_SUB)&&ov==1)exe_exctype_o=`Ov;
+        else exe_exctype_o = exe_exctype_i; 
+    end
+    //cp02
+    assign exe_cp0_we_o = (exe_aluop_i == `MINIMIPS32_MTC0)?1:0;
+    assign exe_cp0_ra_o = exe_wa_i;
+    assign exe_cp0_wa_o = exe_wa_i;
+    assign exe_cp0_wd_o = exe_src2_i;
+
+    assign exe_wa_o   = (exe_aluop_i == `MINIMIPS32_MFC0)?exe_cp0_rt:exe_wa_i;
+    assign exe2id_wa = (exe_aluop_i == `MINIMIPS32_MFC0)?exe_cp0_rt:exe_wa_i;  
+    assign exe_wd_o =(exe_aluop_i != `MINIMIPS32_MFC0) ?
+                      result:(mem_cp0_we_o==1&&mem_cp0_wa_o==exe_cp0_wa_o)?mem_cp0_wd_o:
+                     (wb_cp0_we_o==1&&wb_cp0_wa_o==exe_cp0_wa_o)?wb_cp0_wd_o:cp0_din;
+    assign exe2id_wd = (exe_aluop_i != `MINIMIPS32_MFC0) ?
+                      result:(mem_cp0_we_o==1&&mem_cp0_wa_o==exe_cp0_wa_o)?mem_cp0_wd_o:
+                     (wb_cp0_we_o==1&&wb_cp0_wa_o==exe_cp0_wa_o)?wb_cp0_wd_o:cp0_din;
+    assign exe2id_mreg = exe_mreg_i;
+    assign debug_wb_pc = exe_debug_wb_pc;    // ï¿½Ï°ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿? 
+    assign exe2id_wreg = exe_wreg_i;
+    assign exe_wreg_o = exe_wreg_i;
+    assign exe_mreg_o = exe_mreg_i;
+    assign exe_whilo_o = exe_whilo_i;
+    assign exe_din_o = exe_din_i;
   
 endmodule

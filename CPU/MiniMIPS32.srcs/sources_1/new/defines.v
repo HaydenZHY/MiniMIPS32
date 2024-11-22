@@ -26,6 +26,12 @@
 `define BSEL_BUS        3 : 0               // 数据存储器字节选择信号宽度
 `define PC_INIT         32'hbfc00000        // PC初始值
 `define WHILO_ENABLE    1'b1                //写hilo使能
+`define STOP_ENABLE     1'b1                // 暂停使能信号有效
+`define STOP_DISABLE    1'b0                // 暂停使能信号无效
+`define MREG_ENABLE     1'b1                // 存储器到寄存器使能信号有效
+`define MREG_DISABLE    1'b0                // 存储器到寄存器使能信号无效
+`define WHILO_ENABLE    1'b1                //使能写hilo
+`define WHILO_DISABLE   1'b0                //禁止写hilo
 
 /*------------------- 指令字参数 -------------------*/
 `define INST_ADDR_BUS   31: 0               // 指令的地址宽度
@@ -98,10 +104,44 @@
 `define MINIMIPS32_LHU             8'h96
 `define MINIMIPS32_SB              8'h98
 `define MINIMIPS32_SH              8'h99
-`define MINIMIPS32_SW              8'h9A
+`define MINIMIPS32_SW              8'h9A、
+
+`define STOP                       1'b1
+`define START                      1'b0
+`define DIV_NOT_READY              1'b0
+`define DIV_READY                  1'b1
+`define DIV_START                  1'b1
+`define DIV_STOP                   1'b0
+`define DIV_FREE                   2'b00
+`define DIV_ON                     2'b01
+`define DIV_FINISHED               2'b10
+`define DIV_ZERO                   2'b11
 
 /*------------------- 通用寄存器堆参数 -------------------*/
 `define REG_BUS         31: 0               // 寄存器数据宽度
 `define REG_ADDR_BUS    4 : 0               // 寄存器的地址宽度
 `define REG_NUM         32                  // 寄存器数量32个
 `define REG_NOP         5'b00000            // 零号寄存器
+
+//.....exception argument
+// need for exetype
+`define Int             0               
+`define ADEL            4              
+`define ADES            5                  
+`define Sys             8           
+`define BP              9                
+`define RI              10 
+`define Ov              12
+`define noexe           1
+`define Eret            26  //a way to realize eret instruction
+`define EXCTYPE_BUS     4:0  
+`define EXEADDR         32'hbfc00380  
+//cp0 regfile
+`define BadVAddr_ID     8               
+`define Status_ID       12              
+`define Cause_ID        13                  
+`define EPC_ID          14   
+`define BadVAddr_init   32'h00000000
+`define Status_init     32'h00000000              
+`define Cause_init      32'h00000004                  
+`define EPC_init        32'h00000000 
