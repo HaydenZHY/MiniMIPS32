@@ -18,6 +18,8 @@ module id_stage (
     output wire [   `ALUOP_BUS] id_aluop_o,
     output wire [`REG_ADDR_BUS] id_wa_o,
     output wire                 id_wreg_o,
+    output wire [`INST_ADDR_BUS]    ret_addr,
+    output wire                     stallreg_id, //暂停机制相关
     //自己添加的信号
     output wire                 id_whilo_o,
     output wire                 id_mreg_o,
@@ -46,7 +48,9 @@ module id_stage (
     //mem2id数据前推
     input  wire [`REG_ADDR_BUS]     mem2id_wa,
     input  wire                     mem2id_wreg,
-    input  wire [`REG_BUS      ]    mem2id_wd,  
+    input  wire [`REG_BUS      ]    mem2id_wd, 
+    input  wire                     exe2id_mreg,
+    input  wire                     mem2id_mreg, 
 
     //转移相关 绿线
     output wire  [1:0]              jtsel,
@@ -55,26 +59,30 @@ module id_stage (
     output wire [`INST_ADDR_BUS]    jump_addr_3,
     output wire [`INST_ADDR_BUS]    ret_addr,
 
+    // cp0
+    input  wire                     c_ds_i,
+    output wire                     c_ds_o,
+    output reg [`EXCTYPE_BUS  ]     exctype,
+    output wire [`INST_ADDR_BUS]    cur_pc,
+    output wire                      n_ds,
+    //cp02
+    output wire [`REG_ADDR_BUS]     cp0_rt,
+    
     output [`INST_ADDR_BUS] debug_wb_pc  // 供调试使用的PC值，上板测试时务必删除该信号
     
     
 );
 
-
-
   wire [`INST_BUS] id_inst = {id_inst_i[7:0], id_inst_i[15:8], id_inst_i[23:16], id_inst_i[31:24]};
-  wire [      5:0                                                                                  ] op = id_inst[31:26];
-  wire [      5:0                                                                                  ] func = id_inst[5 : 0];
-  wire [      4:0                                                                                  ] rd = id_inst[15:11];
-  wire [      4:0                                                                                  ] rs = id_inst[25:21];
-  wire [      4:0                                                                                  ] rt = id_inst[20:16];
-  wire [      4:0                                                                                  ] sa = id_inst[10:6];
-  wire [     15:0                                                                                  ] imm = id_inst[15:0];
-  wire [25:0                                                                                       ] instr_index = id_inst[25: 0];
+  wire [5:0] op = id_inst[31:26];
+  wire [5:0] func = id_inst[5 : 0];
+  wire [4:0] rd = id_inst[15:11];
+  wire [4:0] rs = id_inst[25:21];
+  wire [ 4:0] rt = id_inst[20:16];
+  wire [4:0] sa = id_inst[10:6];
+  wire [15:0] imm = id_inst[15:0];
+  wire [25:0] instr_index = id_inst[25: 0];
   assign debug_wb_pc = id_debug_wb_pc;
-
-
-
 
   /*-------------------- 第一级译码逻辑：确定当前需要译码的指令 --------------------*/
   wire inst_reg = ~|op;
@@ -329,4 +337,22 @@ module id_stage (
      end
     assign jtsel[0] = jumpe&(inst_bgez|inst_bgtz|inst_blez|inst_bltz|inst_bltzal|inst_bgezal|inst_j|inst_jal|inst_beq|inst_bne);
     assign jtsel[1] = jumpe&(inst_bgez|inst_bgtz|inst_blez|inst_bltz|inst_bltzal|inst_bgezal|inst_jr|inst_jalr|inst_beq|inst_bne);
+    //暂停机制相关 蓝线
+    assign stallreg_id = (exe2id_mreg == 1'b1 && exe2id_wreg == 1'b1 && (rs == exe2id_wa || rt == exe2id_wa)) ||
+                         (mem2id_mreg == 1'b1 && mem2id_wreg == 1'b1 && (rs == mem2id_wa || rt == exe2id_wa)) ? 1'b1 : 1'b0;
+    //cp0
+    assign c_ds_o = c_ds_i;
+    assign cur_pc = id_pc_i;
+    assign n_ds = (inst_beq||inst_bne||inst_bgez||inst_bgtz||inst_blez||inst_bltz
+                   ||inst_bgezal||inst_bltzal||inst_j||inst_jal||inst_jalr||inst_jr)?1:0;
+    always @(*) begin 
+        if(inst_syscall) exctype = `Sys;
+        else if(inst_break) exctype = `BP;
+        else if(inst_eret)  exctype = `Eret;
+        else if((id_aluop_o<8'h10||id_aluop_o>8'h48)&&id_pc_i!=32'hBFC00000) exctype = `RI;
+        else if(id_pc_i[1:0]!=2'b00) exctype = `ADEL;
+        else exctype = `noexe;
+    end
+    //cp02
+    assign cp0_rt = rt;
 endmodule
