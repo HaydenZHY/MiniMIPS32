@@ -1,0 +1,2913 @@
+/*
+
+Xilinx Vivado v2019.2 (64-bit) [Major: 2019, Minor: 2]
+SW Build: 2708876 on Wed Nov  6 21:40:23 MST 2019
+IP Build: 2700528 on Thu Nov  7 00:09:20 MST 2019
+
+Process ID (PID): 9588
+License: Customer
+
+Current time: 	Wed Oct 27 10:36:55 CST 2021
+Time zone: 	China Standard Time (Asia/Shanghai)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 8
+
+Screen size: 1920x1080
+Screen resolution (DPI): 125
+Available screens: 1
+Available disk space: 7 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=15
+
+Java version: 	9.0.4 64-bit
+Java home: 	E:/vivado201902suit/Vivado/2019.2/tps/win64/jre9.0.4
+Java executable location: 	E:/vivado201902suit/Vivado/2019.2/tps/win64/jre9.0.4/bin/java.exe
+Java initial memory (-Xms): 	128 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	Dell
+User home directory: C:/Users/Dell
+User working directory: F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace
+User country: 	CN
+User language: 	zh
+User locale: 	zh_CN
+
+RDI_BASEROOT: E:/vivado201902suit/Vivado
+HDI_APPROOT: E:/vivado201902suit/Vivado/2019.2
+RDI_DATADIR: E:/vivado201902suit/Vivado/2019.2/data
+RDI_BINDIR: E:/vivado201902suit/Vivado/2019.2/bin
+
+Vivado preferences file location: C:/Users/Dell/AppData/Roaming/Xilinx/Vivado/2019.2/vivado.xml
+Vivado preferences directory: C:/Users/Dell/AppData/Roaming/Xilinx/Vivado/2019.2/
+Vivado layouts directory: C:/Users/Dell/AppData/Roaming/Xilinx/Vivado/2019.2/layouts
+PlanAhead jar file location: 	E:/vivado201902suit/Vivado/2019.2/lib/classes/planAhead.jar
+Vivado log file location: 	F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/vivado.log
+Vivado journal file location: 	F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/vivado.jou
+Engine tmp dir: 	F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/.Xil/Vivado-9588-DESKTOP-98UFVIK
+
+Xilinx Environment Variables
+----------------------------
+ANDROID_SDK_HOME: D:\android_avd
+CUDA_SDK_BIN_PATH: C:\ProgramData\NVIDIA Corporation\CUDA Samples\v8.0\bin\win64
+CUDA_SDK_LIB_PATH: C:\ProgramData\NVIDIA Corporation\CUDA Samples\v8.0\common\lib\x64
+CUDA_SDK_PATH: C:\ProgramData\NVIDIA Corporation\CUDA Samples\v8.0
+XILINX: E:/vivado201902suit/Vivado/2019.2/ids_lite/ISE
+XILINX_DSP: E:/vivado201902suit/Vivado/2019.2/ids_lite/ISE
+XILINX_PLANAHEAD: E:/vivado201902suit/Vivado/2019.2
+XILINX_VIVADO: E:/vivado201902suit/Vivado/2019.2
+XILINX_VIVADO_HLS: E:/vivado201902suit/Vivado/2019.2
+
+
+GUI allocated memory:	128 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 611 MB
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// WARNING: HEventQueue.dispatchEvent() is taking  1923 ms.
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// [GUI Memory]: 91 MB (+92706kb) [00:00:21]
+// [Engine Memory]: 610 MB (+488380kb) [00:00:21]
+// bB (cr):  Open Project : addNotify
+// Opening Vivado Project: F:\coa\nscscc\cpu132_gettrace\run_vivado\cpu132_gettrace\cpu132_gettrace.xpr. Version: Vivado v2019.2 
+// WARNING: HEventQueue.dispatchEvent() is taking  1327 ms.
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// Tcl Message: open_project F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.xpr 
+// HMemoryUtils.trashcanNow. Engine heap size: 614 MB. GUI used memory: 52 MB. Current time: 10/27/21, 10:36:56 AM CST
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILESET_TARGET_UCF_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_NEW
+// [Engine Memory]: 795 MB (+161914kb) [00:00:42]
+// [GUI Memory]: 97 MB (+1540kb) [00:00:43]
+// [GUI Memory]: 108 MB (+6423kb) [00:00:45]
+// [Engine Memory]: 846 MB (+11663kb) [00:00:46]
+// WARNING: HEventQueue.dispatchEvent() is taking  6613 ms.
+// Tcl Message: open_project F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/vivado201902suit/Vivado/2019.2/data/ip'. 
+// HMemoryUtils.trashcanNow. Engine heap size: 846 MB. GUI used memory: 58 MB. Current time: 10/27/21, 10:37:21 AM CST
+// Tcl Message: open_project: Time (s): cpu = 00:00:20 ; elapsed = 00:00:25 . Memory (MB): peak = 878.176 ; gain = 231.688 
+// Project name: cpu132_gettrace; location: F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace; part: xc7k325tffg900-2
+dismissDialog("Open Project"); // bB (cr)
+// a (cr): Critical Messages: addNotify
+// Tcl Message: update_compile_order -fileset sources_1 
+selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK"); // f (a)
+dismissDialog("Critical Messages"); // a (cr)
+// [GUI Memory]: 117 MB (+3792kb) [00:00:59]
+// WARNING: HTimer (ActiveMsgMonitor Process Messages Timer) is taking 223ms to process. Increasing delay to 2000 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1853 ms.
+// TclEventType: FILE_SET_CHANGE
+// WARNING: HEventQueue.dispatchEvent() is taking  4993 ms.
+// WARNING: HSwingWorker (Refresh Filesets Swing Worker) is taking 6400 ms. Increasing delay to 19200 ms.
+// WARNING: HSwingWorker (Refresh Filesets Swing Worker) is taking 6 ms. Decreasing delay to 2006 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1164 ms.
+// TclEventType: FILE_SET_CHANGE
+// WARNING: HEventQueue.dispatchEvent() is taking  1511 ms.
+// Elapsed time: 1101 seconds
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, soc_lite_top (soc_lite_top.v)]", 1); // B (F, cr)
+// PAPropertyPanels.initPanels (inst_ram0.xci) elapsed time: 1.1s
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, soc_lite_top (soc_lite_top.v), inst_ram : inst_ram0 (inst_ram0.xci)]", 3, false); // B (F, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  2197 ms.
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, soc_lite_top (soc_lite_top.v), inst_ram : inst_ram0 (inst_ram0.xci)]", 3, false, false, false, false, false, true); // B (F, cr) - Double Click
+// Run Command: PAResourceCommand.PACommandNames_RECUSTOMIZE_CORE
+// O (cr):  Re-customize IP : addNotify
+// TclEventType: LOAD_FEATURE
+// r (cr): Re-customize IP: addNotify
+// WARNING: HEventQueue.dispatchEvent() is taking  3594 ms.
+dismissDialog("Re-customize IP"); // O (cr)
+// Elapsed time: 45 seconds
+selectTab(PAResourceEtoH.HACGCTabbedPane_TABBED_PANE, (HResource) null, "Other Options", 2); // bh (E, r)
+selectButton(PAResourceEtoH.HACGCCoeFileWidget_BROWSE, "Browse"); // a (E, r)
+// Elapsed time: 43 seconds
+setFileChooser("F:/coa/nscscc/soft/func/obj/inst_ram.coe");
+// WARNING: HEventQueue.dispatchEvent() is taking  6067 ms.
+// Elapsed time: 39 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (r)
+dismissDialog("Re-customize IP"); // r (cr)
+// r (cr): Re-customize IP: addNotify
+// bB (r):  Re-customize IP : addNotify
+// Tcl Message: set_property -dict [list CONFIG.Coe_File {F:/coa/nscscc/soft/func/obj/inst_ram.coe}] [get_ips inst_ram0] 
+// Tcl Message: INFO: [IP_Flow 19-3484] Absolute path of file 'f:/coa/nscscc/soft/func/obj/inst_ram.coe' provided. It will be converted relative to IP Instance files '../../../../../../../soft/func/obj/inst_ram.coe' 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILESET_UPDATE_IP
+// aI (cr): Generate Output Products: addNotify
+// Elapsed time: 12 seconds
+dismissDialog("Re-customize IP"); // bB (r)
+selectButton(PAResourceQtoS.SimpleOutputProductDialog_GENERATE_OUTPUT_PRODUCTS_IMMEDIATELY, "Generate"); // a (aI)
+// bB (cr):  Managing Output Products : addNotify
+// Tcl Message: generate_target all [get_files  F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.srcs/sources_1/ip/inst_ram0/inst_ram0.xci] 
+// Tcl Message: INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'inst_ram0'... INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'inst_ram0'... 
+// Tcl Message: INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'inst_ram0'... 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: INFO: [IP_Flow 19-1686] Generating 'Miscellaneous' target for IP 'inst_ram0'... INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'inst_ram0'... 
+// Tcl Message: generate_target: Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 992.137 ; gain = 2.320 
+// Tcl Message: export_ip_user_files -of_objects [get_files F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.srcs/sources_1/ip/inst_ram0/inst_ram0.xci] -no_script -sync -force -quiet 
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// Tcl Message: reset_run inst_ram0_synth_1 
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs -jobs 8 inst_ram0_synth_1 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// [GUI Memory]: 124 MB (+943kb) [00:22:35]
+// Tcl Message: [Wed Oct 27 10:59:08 2021] Launched inst_ram0_synth_1... Run output will be captured here: F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.runs/inst_ram0_synth_1/runme.log 
+// TclEventType: RUN_STATUS_CHANGE
+// Elapsed time: 77 seconds
+selectButton("OptionPane.button", "OK"); // JButton (A, G)
+// WARNING: HEventQueue.dispatchEvent() is taking  1386 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1529 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 64 MB. Current time: 10/27/21, 11:07:24 AM CST
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// WARNING: HSwingWorker (Update Runs Swing Worker) is taking 1358 ms. Increasing delay to 3000 ms.
+// WARNING: HTimer (ExpRunMgr Pending Runs Timer) is taking 1632ms to process. Increasing delay to 3000 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1632 ms.
+// Elapsed time: 536 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation, Run Simulation]", 10, false); // u (O, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1115 ms.
+selectMenuItem(PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL, "Run Behavioral Simulation"); // ai (ao, cr)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL
+// e (cr):  Run Simulation : addNotify
+// TclEventType: LAUNCH_SIM
+// Tcl Message: launch_simulation 
+// Tcl Message: Command: launch_simulation  
+// Tcl Message: INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator... 
+// Tcl Message: INFO: [Vivado 12-5682] Launching behavioral simulation in 'F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.sim/sim_1/behav/xsim' INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs 
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Message: INFO: [SIM-utils-51] Simulation object is 'sim_1' 
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// Tcl Message: INFO: [USF-XSim-97] Finding global include files... INFO: [USF-XSim-98] Fetching design files from 'sim_1'... 
+// Tcl Message: INFO: [USF-XSim-2] XSim::Compile design 
+// Tcl Message: INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.sim/sim_1/behav/xsim' 
+// Tcl Message: "xvlog --incr --relax -prj tb_top_vlog.prj" 
+// TclEventType: LAUNCH_SIM_LOG
+// Tcl Message: run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:13 . Memory (MB): peak = 1013.340 ; gain = 0.000 
+// Tcl Message: INFO: [USF-XSim-69] 'compile' step finished in '13' seconds INFO: [USF-XSim-3] XSim::Elaborate design INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.sim/sim_1/behav/xsim' 
+// Tcl Message: "xelab -wto 8be32c0e75274db89ff01e49e80abbee --incr --debug typical --relax --mt 2 -L xil_defaultlib -L blk_mem_gen_v8_4_4 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_top_behav xil_defaultlib.tb_top xil_defaultlib.glbl -log elaborate.log" 
+// Tcl Message: Vivado Simulator 2019.2 Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved. Running: E:/vivado201902suit/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 8be32c0e75274db89ff01e49e80abbee --incr --debug typical --relax --mt 2 -L xil_defaultlib -L blk_mem_gen_v8_4_4 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_top_behav xil_defaultlib.tb_top xil_defaultlib.glbl -log elaborate.log  Using 2 slave threads. Starting static elaboration 
+// Tcl Message: Starting simulation data flow analysis 
+// Tcl Message: Built simulation snapshot tb_top_behav 
+// TclEventType: LAUNCH_SIM
+// Tcl Message: run_program: Time (s): cpu = 00:00:01 ; elapsed = 00:00:34 . Memory (MB): peak = 1013.340 ; gain = 0.000 
+// Tcl Message: INFO: [USF-XSim-69] 'elaborate' step finished in '34' seconds INFO: [USF-XSim-4] XSim::Simulate design INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.sim/sim_1/behav/xsim' INFO: [USF-XSim-98] *** Running xsim 
+// Tcl Message:    with args "tb_top_behav -key {Behavioral:sim_1:Functional:tb_top} -tclbatch {tb_top.tcl} -log {simulate.log}" 
+// Tcl Message: INFO: [USF-XSim-8] Loading simulator feature 
+// TclEventType: LOAD_FEATURE
+// Tcl Message: Vivado Simulator 2019.2 
+// TclEventType: SIMULATION_CREATE_SIMULATION_OBJECT
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_PROTOCOL_INSTANCE_TREE
+// WARNING: HEventQueue.dispatchEvent() is taking  2286 ms.
+// Tcl Message: Time resolution is 1 ps 
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_PROTOCOL_INSTANCE_TREE
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_PROTOCOL_INSTANCE_TREE
+// Elapsed time: 68 seconds
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // v
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_PROTOCOL_INSTANCE_TREE
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_PROTOCOL_INSTANCE_TREE
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// TclEventType: WAVEFORM_OPEN_WCFG
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_PROTOCOL_INSTANCE_TREE
+// TclEventType: WAVEFORM_OPEN_WCFG
+// TclEventType: WAVEFORM_DELAYED_MODEL_EVENT
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// Waveform: addNotify
+// TclEventType: WAVEFORM_MODEL_EVENT
+// Tcl Message: source tb_top.tcl 
+// Tcl Message: # set curr_wave [current_wave_config] # if { [string length $curr_wave] == 0 } { #   if { [llength [get_objects]] > 0} { #     add_wave / #     set_property needs_save false [current_wave_config] #   } else { #      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console." #   } # } 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_MODEL_EVENT
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:10:06 AM CST
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// TclEventType: WAVEFORM_DELAYED_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// Tcl Message: # log_wave -r / 
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// TclEventType: SIMULATION_CLEAR_CURRENT_LINE
+// Tcl Message: # run 1000 
+// Tcl Message:  Block Memory Generator module loading initial data... 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:  Block Memory Generator data initialization complete. Block Memory Generator module tb_top.soc_lite.inst_ram.inst.native_mem_module.blk_mem_gen_v8_4_4_inst is using a behavioral model for simulation which will not precisely model memory collision behavior. Block Memory Generator module tb_top.soc_lite.data_ram.inst.native_mem_module.blk_mem_gen_v8_4_4_inst is using a behavioral model for simulation which will not precisely model memory collision behavior. 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: SIMULATION_OBJECT_TREE_RESTORED
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_DELAYED_MODEL_EVENT
+// TclEventType: SIMULATION_CURRENT_SCOPE_CHANGED
+// TclEventType: SIMULATION_CURRENT_STACK_CHANGED
+// TclEventType: SIMULATION_UPDATE_STACK_FRAMES
+// TclEventType: SIMULATION_CURRENT_STACK_FRAME_CHANGED
+// TclEventType: SIMULATION_UPDATE_LOCALS
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// Tcl Message: xsim: Time (s): cpu = 00:00:08 ; elapsed = 00:00:13 . Memory (MB): peak = 1092.379 ; gain = 79.039 
+// Tcl Message: INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_top_behav' loaded. INFO: [USF-XSim-97] XSim simulation ran for 1000 
+// Tcl Message: launch_simulation: Time (s): cpu = 00:00:12 ; elapsed = 00:01:14 . Memory (MB): peak = 1092.379 ; gain = 79.039 
+// 'd' command handler elapsed time: 75 seconds
+dismissDialog("Run Simulation"); // e (cr)
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_MODEL_EVENT
+selectButton(PAResourceCommand.PACommandNames_SIMULATION_LIVE_RUN_ALL, "simulation_live_run_all"); // E (f, cr)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_LIVE_RUN_ALL
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// TclEventType: SIMULATION_CLEAR_CURRENT_LINE
+// Tcl Message: run all 
+// Tcl Message: ============================================================== Test begin! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[  14015 ns] Number 8'd01 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// WARNING: HEventQueue.dispatchEvent() is taking  1709 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:10:23 AM CST
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [  22000 ns] Test is running, debug_wb_pc = 0xbfc5b9fc         [  32000 ns] Test is running, debug_wb_pc = 0xbfc5c99c ----[  40515 ns] Number 8'd02 Functional Test Point PASS!!!         [  42000 ns] Test is running, debug_wb_pc = 0xbfc89898 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[  49435 ns] Number 8'd03 Functional Test Point PASS!!!         [  52000 ns] Test is running, debug_wb_pc = 0xbfc84c14 
+// Tcl Message:         [  62000 ns] Test is running, debug_wb_pc = 0xbfc85f60 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:10:25 AM CST
+// Tcl Message:         [  72000 ns] Test is running, debug_wb_pc = 0xbfc87218 ----[  73805 ns] Number 8'd04 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [  82000 ns] Test is running, debug_wb_pc = 0xbfc169ec 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [  92000 ns] Test is running, debug_wb_pc = 0xbfc17b64 
+// Tcl Message:         [ 102000 ns] Test is running, debug_wb_pc = 0xbfc19104 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:10:28 AM CST
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[ 111675 ns] Number 8'd05 Functional Test Point PASS!!!         [ 112000 ns] Test is running, debug_wb_pc = 0xbfc14248 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:10:31 AM CST
+// Tcl Message:         [ 122000 ns] Test is running, debug_wb_pc = 0xbfc14f68 ----[ 127315 ns] Number 8'd06 Functional Test Point PASS!!!         [ 132000 ns] Test is running, debug_wb_pc = 0xbfc604d8 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 142000 ns] Test is running, debug_wb_pc = 0xbfc61478 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 152000 ns] Test is running, debug_wb_pc = 0xbfc62418 ----[ 153735 ns] Number 8'd07 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:10:34 AM CST
+// Tcl Message:         [ 162000 ns] Test is running, debug_wb_pc = 0xbfc4ad80 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 172000 ns] Test is running, debug_wb_pc = 0xbfc4bd20 ----[ 177185 ns] Number 8'd08 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 182000 ns] Test is running, debug_wb_pc = 0xbfc630ec 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:10:37 AM CST
+// Tcl Message:         [ 192000 ns] Test is running, debug_wb_pc = 0xbfc6408c ----[ 195125 ns] Number 8'd09 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 202000 ns] Test is running, debug_wb_pc = 0xbfc3476c 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 212000 ns] Test is running, debug_wb_pc = 0xbfc3570c ----[ 213065 ns] Number 8'd10 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:10:40 AM CST
+// Tcl Message:         [ 222000 ns] Test is running, debug_wb_pc = 0xbfc88684 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 232000 ns] Test is running, debug_wb_pc = 0xbfc89624 ----[ 232365 ns] Number 8'd11 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 242000 ns] Test is running, debug_wb_pc = 0xbfc02148 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 78 MB. Current time: 10/27/21, 11:10:43 AM CST
+// Tcl Message: ----[ 249795 ns] Number 8'd12 Functional Test Point PASS!!!         [ 252000 ns] Test is running, debug_wb_pc = 0xbfc35f0c 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 262000 ns] Test is running, debug_wb_pc = 0xbfc370c0 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 272000 ns] Test is running, debug_wb_pc = 0xbfc38264 ----[ 278015 ns] Number 8'd13 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 78 MB. Current time: 10/27/21, 11:10:46 AM CST
+// Tcl Message:         [ 282000 ns] Test is running, debug_wb_pc = 0xbfc4f270 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 292000 ns] Test is running, debug_wb_pc = 0xbfc50390 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 78 MB. Current time: 10/27/21, 11:10:49 AM CST
+// Tcl Message:         [ 302000 ns] Test is running, debug_wb_pc = 0xbfc5149c 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 312000 ns] Test is running, debug_wb_pc = 0xbfc525dc ----[ 316225 ns] Number 8'd14 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 322000 ns] Test is running, debug_wb_pc = 0xbfc7b94c 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 78 MB. Current time: 10/27/21, 11:10:53 AM CST
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 332000 ns] Test is running, debug_wb_pc = 0xbfc7caa8 
+// Tcl Message:         [ 342000 ns] Test is running, debug_wb_pc = 0xbfc7dc04 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 352000 ns] Test is running, debug_wb_pc = 0xbfc7ed5c 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 78 MB. Current time: 10/27/21, 11:10:56 AM CST
+// Tcl Message: ----[ 354955 ns] Number 8'd15 Functional Test Point PASS!!! ----[ 358225 ns] Number 8'd16 Functional Test Point PASS!!! ----[ 361495 ns] Number 8'd17 Functional Test Point PASS!!!         [ 362000 ns] Test is running, debug_wb_pc = 0xbfc313b4 ----[ 363455 ns] Number 8'd18 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[ 365935 ns] Number 8'd19 Functional Test Point PASS!!! ----[ 368415 ns] Number 8'd20 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 372000 ns] Test is running, debug_wb_pc = 0xbfc76810 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 78 MB. Current time: 10/27/21, 11:10:59 AM CST
+// Tcl Message:         [ 382000 ns] Test is running, debug_wb_pc = 0xbfc777b0 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// Tcl Message: ----[ 390265 ns] Number 8'd21 Functional Test Point PASS!!!         [ 392000 ns] Test is running, debug_wb_pc = 0xbfc0bce4 
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 402000 ns] Test is running, debug_wb_pc = 0xbfc0cc84 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[ 410705 ns] Number 8'd22 Functional Test Point PASS!!!         [ 412000 ns] Test is running, debug_wb_pc = 0xbfc7437c 
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 78 MB. Current time: 10/27/21, 11:11:02 AM CST
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 422000 ns] Test is running, debug_wb_pc = 0xbfc7531c 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 432000 ns] Test is running, debug_wb_pc = 0xbfc762bc ----[ 432105 ns] Number 8'd23 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 78 MB. Current time: 10/27/21, 11:11:05 AM CST
+// Tcl Message:         [ 442000 ns] Test is running, debug_wb_pc = 0xbfc0f7a4 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 452000 ns] Test is running, debug_wb_pc = 0xbfc10744 
+// Tcl Message: ----[ 458555 ns] Number 8'd24 Functional Test Point PASS!!!         [ 462000 ns] Test is running, debug_wb_pc = 0xbfc054c8 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 78 MB. Current time: 10/27/21, 11:11:08 AM CST
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 472000 ns] Test is running, debug_wb_pc = 0xbfc06468 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 482000 ns] Test is running, debug_wb_pc = 0xbfc07408 ----[ 482005 ns] Number 8'd25 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 78 MB. Current time: 10/27/21, 11:11:11 AM CST
+// Tcl Message:         [ 492000 ns] Test is running, debug_wb_pc = 0xbfc71d9c 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 502000 ns] Test is running, debug_wb_pc = 0xbfc72d3c 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[ 507385 ns] Number 8'd26 Functional Test Point PASS!!!         [ 512000 ns] Test is running, debug_wb_pc = 0xbfc447fc 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 78 MB. Current time: 10/27/21, 11:11:14 AM CST
+// Tcl Message:         [ 522000 ns] Test is running, debug_wb_pc = 0xbfc4579c ----[ 525325 ns] Number 8'd27 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 532000 ns] Test is running, debug_wb_pc = 0xbfc8ae34 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 542000 ns] Test is running, debug_wb_pc = 0xbfc8bdd4 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 78 MB. Current time: 10/27/21, 11:11:17 AM CST
+// Tcl Message: ----[ 551755 ns] Number 8'd28 Functional Test Point PASS!!!         [ 552000 ns] Test is running, debug_wb_pc = 0xbfc00d4c 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 562000 ns] Test is running, debug_wb_pc = 0xbfc285e8 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 572000 ns] Test is running, debug_wb_pc = 0xbfc29588 ----[ 572195 ns] Number 8'd29 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:11:20 AM CST
+// Tcl Message:         [ 582000 ns] Test is running, debug_wb_pc = 0xbfc3b6a0 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 592000 ns] Test is running, debug_wb_pc = 0xbfc3c640 
+// Tcl Message: ----[ 598645 ns] Number 8'd30 Functional Test Point PASS!!!         [ 602000 ns] Test is running, debug_wb_pc = 0xbfc078d4 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 78 MB. Current time: 10/27/21, 11:11:23 AM CST
+// Tcl Message:         [ 612000 ns] Test is running, debug_wb_pc = 0xbfc08874 
+// Tcl Message: ----[ 619085 ns] Number 8'd31 Functional Test Point PASS!!!         [ 622000 ns] Test is running, debug_wb_pc = 0xbfc6accc 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 632000 ns] Test is running, debug_wb_pc = 0xbfc6bc6c 
+// Tcl Message: ----[ 641255 ns] Number 8'd32 Functional Test Point PASS!!!         [ 642000 ns] Test is running, debug_wb_pc = 0xbfc6f188 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:11:26 AM CST
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 652000 ns] Test is running, debug_wb_pc = 0xbfc70128 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[ 660495 ns] Number 8'd33 Functional Test Point PASS!!!         [ 662000 ns] Test is running, debug_wb_pc = 0xbfc11660 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 78 MB. Current time: 10/27/21, 11:11:30 AM CST
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 672000 ns] Test is running, debug_wb_pc = 0xbfc12600 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 682000 ns] Test is running, debug_wb_pc = 0xbfc135a0 ----[ 682905 ns] Number 8'd34 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 78 MB. Current time: 10/27/21, 11:11:33 AM CST
+// Tcl Message:         [ 692000 ns] Test is running, debug_wb_pc = 0xbfc03fcc 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 702000 ns] Test is running, debug_wb_pc = 0xbfc04f6c ----[ 702275 ns] Number 8'd35 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 712000 ns] Test is running, debug_wb_pc = 0xbfc59a30 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 78 MB. Current time: 10/27/21, 11:11:36 AM CST
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 722000 ns] Test is running, debug_wb_pc = 0xbfc5a9d0 ----[ 724695 ns] Number 8'd36 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 732000 ns] Test is running, debug_wb_pc = 0xbfc2cb70 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:11:39 AM CST
+// Tcl Message:         [ 742000 ns] Test is running, debug_wb_pc = 0xbfc2deb0 
+// Tcl Message:         [ 752000 ns] Test is running, debug_wb_pc = 0xbfc2f288 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 762000 ns] Test is running, debug_wb_pc = 0xbfc30650 ----[ 767905 ns] Number 8'd37 Functional Test Point PASS!!! 
+// Tcl Message:         [ 772000 ns] Test is running, debug_wb_pc = 0xbfc7f9cc 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:11:42 AM CST
+// Tcl Message:         [ 782000 ns] Test is running, debug_wb_pc = 0xbfc80dc0 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 792000 ns] Test is running, debug_wb_pc = 0xbfc8215c 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 802000 ns] Test is running, debug_wb_pc = 0xbfc8356c 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:11:45 AM CST
+// Tcl Message: ----[ 810835 ns] Number 8'd38 Functional Test Point PASS!!!         [ 812000 ns] Test is running, debug_wb_pc = 0xbfc655a0 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 822000 ns] Test is running, debug_wb_pc = 0xbfc669b0 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 832000 ns] Test is running, debug_wb_pc = 0xbfc67d5c 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:11:48 AM CST
+// Tcl Message:         [ 842000 ns] Test is running, debug_wb_pc = 0xbfc690d8 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 852000 ns] Test is running, debug_wb_pc = 0xbfc6a4d0 ----[ 854045 ns] Number 8'd39 Functional Test Point PASS!!! 
+// Tcl Message:         [ 862000 ns] Test is running, debug_wb_pc = 0xbfc47254 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 872000 ns] Test is running, debug_wb_pc = 0xbfc4847c 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:11:51 AM CST
+// Tcl Message:         [ 882000 ns] Test is running, debug_wb_pc = 0xbfc496f4 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[ 887635 ns] Number 8'd40 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 892000 ns] Test is running, debug_wb_pc = 0xbfc1b6f0 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:11:54 AM CST
+// Tcl Message:         [ 902000 ns] Test is running, debug_wb_pc = 0xbfc1c930 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 912000 ns] Test is running, debug_wb_pc = 0xbfc1db48 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 922000 ns] Test is running, debug_wb_pc = 0xbfc1eda0 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:11:57 AM CST
+// Tcl Message:         [ 932000 ns] Test is running, debug_wb_pc = 0xbfc20050 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[ 935425 ns] Number 8'd41 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 942000 ns] Test is running, debug_wb_pc = 0xbfc538c4 
+// Tcl Message:         [ 952000 ns] Test is running, debug_wb_pc = 0xbfc54b74 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:00 AM CST
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 962000 ns] Test is running, debug_wb_pc = 0xbfc55dc4 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 972000 ns] Test is running, debug_wb_pc = 0xbfc5701c 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:03 AM CST
+// Tcl Message:         [ 982000 ns] Test is running, debug_wb_pc = 0xbfc5824c ----[ 985385 ns] Number 8'd42 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 992000 ns] Test is running, debug_wb_pc = 0xbfc3f3b4 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1002000 ns] Test is running, debug_wb_pc = 0xbfc403bc 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:06 AM CST
+// Tcl Message:         [1012000 ns] Test is running, debug_wb_pc = 0xbfc413b0 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1022000 ns] Test is running, debug_wb_pc = 0xbfc423c8 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:09 AM CST
+// Tcl Message:         [1032000 ns] Test is running, debug_wb_pc = 0xbfc433d0 
+// Tcl Message: ----[1040375 ns] Number 8'd43 Functional Test Point PASS!!!         [1042000 ns] Test is running, debug_wb_pc = 0xbfc38d90 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1052000 ns] Test is running, debug_wb_pc = 0xbfc39258 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1062000 ns] Test is running, debug_wb_pc = 0xbfc396f8         [1072000 ns] Test is running, debug_wb_pc = 0xbfc39b90 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:12 AM CST
+// Tcl Message:         [1082000 ns] Test is running, debug_wb_pc = 0xbfc3a038 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1092000 ns] Test is running, debug_wb_pc = 0xbfc3a4f8 ----[1098045 ns] Number 8'd44 Functional Test Point PASS!!!         [1102000 ns] Test is running, debug_wb_pc = 0xbfc4c6e0 
+// Tcl Message:         [1112000 ns] Test is running, debug_wb_pc = 0xbfc4cba0 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1122000 ns] Test is running, debug_wb_pc = 0xbfc4d048 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:15 AM CST
+// Tcl Message:         [1132000 ns] Test is running, debug_wb_pc = 0xbfc4d4e0 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1142000 ns] Test is running, debug_wb_pc = 0xbfc4d980         [1152000 ns] Test is running, debug_wb_pc = 0xbfc4de48 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// Tcl Message:         [1162000 ns] Test is running, debug_wb_pc = 0xbfc4e2e0 
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1172000 ns] Test is running, debug_wb_pc = 0xbfc4e778 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:18 AM CST
+// Tcl Message: ----[1181955 ns] Number 8'd45 Functional Test Point PASS!!!         [1182000 ns] Test is running, debug_wb_pc = 0xbfc009d0 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1192000 ns] Test is running, debug_wb_pc = 0xbfc256bc 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1202000 ns] Test is running, debug_wb_pc = 0xbfc25bd0 
+// Tcl Message:         [1212000 ns] Test is running, debug_wb_pc = 0xbfc260d0 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:21 AM CST
+// Tcl Message:         [1222000 ns] Test is running, debug_wb_pc = 0xbfc265bc 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1232000 ns] Test is running, debug_wb_pc = 0xbfc26ab0 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1242000 ns] Test is running, debug_wb_pc = 0xbfc26fcc 
+// Tcl Message:         [1252000 ns] Test is running, debug_wb_pc = 0xbfc2746c ----[1256415 ns] Number 8'd46 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:25 AM CST
+// Tcl Message:         [1262000 ns] Test is running, debug_wb_pc = 0xbfc6cd94         [1272000 ns] Test is running, debug_wb_pc = 0xbfc6d280 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1282000 ns] Test is running, debug_wb_pc = 0xbfc6d76c 
+// Tcl Message:         [1292000 ns] Test is running, debug_wb_pc = 0xbfc6dc88 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1302000 ns] Test is running, debug_wb_pc = 0xbfc6e180 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:28 AM CST
+// Tcl Message:         [1312000 ns] Test is running, debug_wb_pc = 0xbfc6e668         [1322000 ns] Test is running, debug_wb_pc = 0xbfc6eb2c ----[1323195 ns] Number 8'd47 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1332000 ns] Test is running, debug_wb_pc = 0xbfc0e770 ----[1332765 ns] Number 8'd48 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1342000 ns] Test is running, debug_wb_pc = 0xbfc6536c ----[1342315 ns] Number 8'd49 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:31 AM CST
+// Tcl Message: ----[1351245 ns] Number 8'd50 Functional Test Point PASS!!!         [1352000 ns] Test is running, debug_wb_pc = 0xbfc1a5ac ----[1356415 ns] Number 8'd51 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1362000 ns] Test is running, debug_wb_pc = 0xbfc03108 ----[1364505 ns] Number 8'd52 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1372000 ns] Test is running, debug_wb_pc = 0xbfc0142c ----[1373235 ns] Number 8'd53 Functional Test Point PASS!!! ----[1381645 ns] Number 8'd54 Functional Test Point PASS!!!         [1382000 ns] Test is running, debug_wb_pc = 0xbfc73a64 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:34 AM CST
+// Tcl Message: ----[1390375 ns] Number 8'd55 Functional Test Point PASS!!!         [1392000 ns] Test is running, debug_wb_pc = 0xbfc5f490 
+// Tcl Message: ----[1399745 ns] Number 8'd56 Functional Test Point PASS!!!         [1402000 ns] Test is running, debug_wb_pc = 0xbfc096c8 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[1408475 ns] Number 8'd57 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1412000 ns] Test is running, debug_wb_pc = 0xbfc463ac ----[1414855 ns] Number 8'd58 Functional Test Point PASS!!! 
+// Tcl Message:         [1422000 ns] Test is running, debug_wb_pc = 0xbfc2a27c 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:37 AM CST
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1432000 ns] Test is running, debug_wb_pc = 0xbfc2af88 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1442000 ns] Test is running, debug_wb_pc = 0xbfc2bc80 ----[1442655 ns] Number 8'd59 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:40 AM CST
+// Tcl Message:         [1452000 ns] Test is running, debug_wb_pc = 0xbfc79548 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1462000 ns] Test is running, debug_wb_pc = 0xbfc7a264 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1472000 ns] Test is running, debug_wb_pc = 0xbfc7af48 ----[1472405 ns] Number 8'd60 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:43 AM CST
+// Tcl Message:         [1482000 ns] Test is running, debug_wb_pc = 0xbfc212e4 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1492000 ns] Test is running, debug_wb_pc = 0xbfc22034 ----[1494255 ns] Number 8'd61 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1502000 ns] Test is running, debug_wb_pc = 0xbfc0a4c0 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:46 AM CST
+// Tcl Message:         [1512000 ns] Test is running, debug_wb_pc = 0xbfc0b1e0 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[1519085 ns] Number 8'd62 Functional Test Point PASS!!!         [1522000 ns] Test is running, debug_wb_pc = 0xbfc22c68 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1532000 ns] Test is running, debug_wb_pc = 0xbfc239c4 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:49 AM CST
+// Tcl Message:         [1542000 ns] Test is running, debug_wb_pc = 0xbfc24774 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[1550115 ns] Number 8'd63 Functional Test Point PASS!!!         [1552000 ns] Test is running, debug_wb_pc = 0xbfc31870 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1562000 ns] Test is running, debug_wb_pc = 0xbfc325d0 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:52 AM CST
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1572000 ns] Test is running, debug_wb_pc = 0xbfc33380 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[1579355 ns] Number 8'd64 Functional Test Point PASS!!!         [1582000 ns] Test is running, debug_wb_pc = 0xbfc00400 ----[1584985 ns] Number 8'd65 Functional Test Point PASS!!! 
+// Tcl Message: ----[1590825 ns] Number 8'd66 Functional Test Point PASS!!!         [1592000 ns] Test is running, debug_wb_pc = 0xbfc73634 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:56 AM CST
+// Tcl Message: ----[1597505 ns] Number 8'd67 Functional Test Point PASS!!!         [1602000 ns] Test is running, debug_wb_pc = 0xbfc00480 ----[1604095 ns] Number 8'd68 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[1610775 ns] Number 8'd69 Functional Test Point PASS!!!         [1612000 ns] Test is running, debug_wb_pc = 0xbfc35948 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[1618145 ns] Number 8'd70 Functional Test Point PASS!!!         [1622000 ns] Test is running, debug_wb_pc = 0xbfc006a4 ----[1625535 ns] Number 8'd71 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:12:59 AM CST
+// Tcl Message:         [1632000 ns] Test is running, debug_wb_pc = 0xbfc113e8 ----[1632905 ns] Number 8'd72 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[1640565 ns] Number 8'd73 Functional Test Point PASS!!!         [1642000 ns] Test is running, debug_wb_pc = 0xbfc00388 
+// Tcl Message: ----[1648225 ns] Number 8'd74 Functional Test Point PASS!!!         [1652000 ns] Test is running, debug_wb_pc = 0xbfc00574 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[1655785 ns] Number 8'd75 Functional Test Point PASS!!!         [1662000 ns] Test is running, debug_wb_pc = 0xbfc8ce34 ----[1662715 ns] Number 8'd76 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:13:02 AM CST
+// Tcl Message: ----[1671925 ns] Number 8'd77 Functional Test Point PASS!!!         [1672000 ns] Test is running, debug_wb_pc = 0xbfc00d10 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1682000 ns] Test is running, debug_wb_pc = 0xbfc003bc 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[1687215 ns] Number 8'd78 Functional Test Point PASS!!!         [1692000 ns] Test is running, debug_wb_pc = 0xbfc0048c 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:13:05 AM CST
+// Tcl Message:         [1702000 ns] Test is running, debug_wb_pc = 0xbfc003c4 ----[1702505 ns] Number 8'd79 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1712000 ns] Test is running, debug_wb_pc = 0xbfc004c4 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[1717795 ns] Number 8'd80 Functional Test Point PASS!!!         [1722000 ns] Test is running, debug_wb_pc = 0xbfc00488 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:13:08 AM CST
+// Tcl Message:         [1732000 ns] Test is running, debug_wb_pc = 0xbfc1590c ----[1733085 ns] Number 8'd81 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1742000 ns] Test is running, debug_wb_pc = 0xbfc004d4 
+// Tcl Message: ----[1748375 ns] Number 8'd82 Functional Test Point PASS!!!         [1752000 ns] Test is running, debug_wb_pc = 0xbfc0049c 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1762000 ns] Test is running, debug_wb_pc = 0xbfc005bc ----[1763665 ns] Number 8'd83 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:13:11 AM CST
+// Tcl Message:         [1772000 ns] Test is running, debug_wb_pc = 0xbfc877d0 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[1778965 ns] Number 8'd84 Functional Test Point PASS!!!         [1782000 ns] Test is running, debug_wb_pc = 0xbfc00494 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1792000 ns] Test is running, debug_wb_pc = 0xbfc00698 ----[1794275 ns] Number 8'd85 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:13:14 AM CST
+// Tcl Message:         [1802000 ns] Test is running, debug_wb_pc = 0xbfc00388 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message: ----[1809575 ns] Number 8'd86 Functional Test Point PASS!!!         [1812000 ns] Test is running, debug_wb_pc = 0xbfc00468 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1822000 ns] Test is running, debug_wb_pc = 0xbfc006b4 ----[1824875 ns] Number 8'd87 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:13:17 AM CST
+// Tcl Message:         [1832000 ns] Test is running, debug_wb_pc = 0xbfc00390 
+// Tcl Message: ----[1840175 ns] Number 8'd88 Functional Test Point PASS!!! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1842000 ns] Test is running, debug_wb_pc = 0xbfc0045c 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 11:13:20 AM CST
+// Tcl Message:         [1852000 ns] Test is running, debug_wb_pc = 0xbfc141a8 ----[1855475 ns] Number 8'd89 Functional Test Point PASS!!! ============================================================== gettrace end! ----Succeed in generating trace file! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: SIMULATION_OBJECT_TREE_RESTORED
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_DELAYED_MODEL_EVENT
+// TclEventType: SIMULATION_CURRENT_SCOPE_CHANGED
+// TclEventType: SIMULATION_CURRENT_STACK_CHANGED
+// TclEventType: SIMULATION_UPDATE_STACK_FRAMES
+// TclEventType: SIMULATION_CURRENT_STACK_FRAME_CHANGED
+// TclEventType: SIMULATION_UPDATE_LOCALS
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_STOPPED
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// Tcl Message: $finish called at time : 1856075 ns : File "F:/coa/nscscc/cpu132_gettrace/testbench/tb_top.v" Line 221 
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// Tcl Message: run: Time (s): cpu = 00:01:41 ; elapsed = 00:03:04 . Memory (MB): peak = 1092.379 ; gain = 0.000 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_MODEL_EVENT
+// [GUI Memory]: 136 MB (+6996kb) [00:39:08]
+// WARNING: HSwingWorker (Refresh Filesets Swing Worker) is taking 1468 ms. Increasing delay to 4404 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  3549 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 78 MB. Current time: 10/27/21, 11:43:26 AM CST
+// WARNING: HTimer (ActiveMsgMonitor Process Messages Timer) is taking 264ms to process. Increasing delay to 2000 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1231 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 73 MB. Current time: 10/27/21, 12:13:24 PM CST
+// WARNING: HEventQueue.dispatchEvent() is taking  5109 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1706 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1108 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1379 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1255 ms.
+// WARNING: HSwingWorker (Refresh Filesets Swing Worker) is taking 4491 ms. Increasing delay to 13473 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  2577 ms.
+// WARNING: HSwingWorker (Refresh Filesets Swing Worker) is taking 190 ms. Decreasing delay to 2190 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  2435 ms.
+// WARNING: HSwingWorker (Monitor File Timestamp Swing Worker) is taking 4147 ms to process. Increasing delay to 2000 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1283 ms.
+// WARNING: HSwingWorker (Refresh Filesets Swing Worker) is taking 4669 ms. Increasing delay to 14007 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  4017 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  4150 ms.
+// WARNING: HSwingWorker (Refresh Filesets Swing Worker) is taking 277 ms. Decreasing delay to 2277 ms.
+// WARNING: HSwingWorker (Refresh Filesets Swing Worker) is taking 1957 ms. Increasing delay to 5871 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  3490 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  38810 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 73 MB. Current time: 10/27/21, 12:44:02 PM CST
+// WARNING: HEventQueue.dispatchEvent() is taking  3064 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1164 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1421 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  4702 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1024 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  225454 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 74 MB. Current time: 10/27/21, 1:17:18 PM CST
+// WARNING: HEventQueue.dispatchEvent() is taking  1235 ms.
+// WARNING: HSwingWorker (Update Runs Swing Worker) is taking 1669 ms. Increasing delay to 4000 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1163 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  3795 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 73 MB. Current time: 10/27/21, 1:43:32 PM CST
+// WARNING: HEventQueue.dispatchEvent() is taking  2865 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 73 MB. Current time: 10/27/21, 2:13:32 PM CST
+// WARNING: HEventQueue.dispatchEvent() is taking  11450 ms.
+// WARNING: HTimer (HSTRUtils Dump STR Log Timer) is taking 1077ms to process. Increasing delay to 4000 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1320 ms.
+// WARNING: HTimer (FileMgr Design Graph Update Timer) is taking 3701ms to process. Increasing delay to 3000 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  3741 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  22650 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 74 MB. Current time: 10/27/21, 2:43:57 PM CST
+// WARNING: HEventQueue.dispatchEvent() is taking  2396 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  2203 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 73 MB. Current time: 10/27/21, 3:13:37 PM CST
+// WARNING: HEventQueue.dispatchEvent() is taking  30981 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 73 MB. Current time: 10/27/21, 3:44:06 PM CST
+// TclEventType: FILE_SET_CHANGE
+// WARNING: HEventQueue.dispatchEvent() is taking  2871 ms.
+// WARNING: HSwingWorker (Refresh Filesets Swing Worker) is taking 3618 ms. Increasing delay to 10854 ms.
+// TclEventType: FILE_SET_CHANGE
+// PAPropertyPanels.initPanels (inst_ram0.xci) elapsed time: 1.4s
+// WARNING: HEventQueue.dispatchEvent() is taking  1927 ms.
+// WARNING: HSwingWorker (Refresh Filesets Swing Worker) is taking 1933 ms. Decreasing delay to 3933 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1246 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1063 ms.
+// Elapsed time: 17361 seconds
+selectButton(PAResourceTtoZ.TaskBanner_CLOSE, (String) null); // k (aA, cr)
+closeTask("Simulation", "Behavioral Simulation - Functional - sim_1 - tb_top", "DesignTask.SIMULATION");
+// A (cr): Confirm Close: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (A)
+// WARNING: updateGUI() is taking  1517 ms.
+// bB (cr):  Close : addNotify
+// WARNING: HEventQueue.dispatchEvent() is taking  1975 ms.
+dismissDialog("Confirm Close"); // A (cr)
+// Tcl Message: close_sim 
+// TclEventType: WAVEFORM_CLOSE_WCFG
+// TclEventType: SIMULATION_CLOSE_SIMULATION
+// WARNING: HEventQueue.dispatchEvent() is taking  2015 ms.
+// Tcl Message: INFO: [Simtcl 6-16] Simulation closed 
+// Tcl Message: close_sim: Time (s): cpu = 00:00:01 ; elapsed = 00:00:14 . Memory (MB): peak = 1177.750 ; gain = 0.000 
+// Elapsed time: 14 seconds
+dismissDialog("Close"); // bB (cr)
+// Elapsed time: 57 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, soc_lite_top (soc_lite_top.v), inst_ram : inst_ram0 (inst_ram0.xci)]", 3, false); // B (F, cr)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, soc_lite_top (soc_lite_top.v), inst_ram : inst_ram0 (inst_ram0.xci)]", 3, false, false, false, false, false, true); // B (F, cr) - Double Click
+// Run Command: PAResourceCommand.PACommandNames_RECUSTOMIZE_CORE
+// O (cr):  Re-customize IP : addNotify
+// r (cr): Re-customize IP: addNotify
+// WARNING: HEventQueue.dispatchEvent() is taking  1720 ms.
+dismissDialog("Re-customize IP"); // O (cr)
+// Elapsed time: 19 seconds
+selectTab(PAResourceEtoH.HACGCTabbedPane_TABBED_PANE, (HResource) null, "Other Options", 2); // bh (E, r)
+selectButton(PAResourceEtoH.HACGCCoeFileWidget_BROWSE, "Browse"); // a (E, r)
+// WARNING: HEventQueue.dispatchEvent() is taking  1315 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1253 ms.
+// Elapsed time: 34 seconds
+setFileChooser("F:/coa/nscscc/soft/func/obj/inst_ram.coe");
+// WARNING: HEventQueue.dispatchEvent() is taking  7360 ms.
+// Elapsed time: 29 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (r)
+dismissDialog("Re-customize IP"); // r (cr)
+// r (cr): Re-customize IP: addNotify
+// bB (r):  Re-customize IP : addNotify
+// Tcl Message: set_property -dict [list CONFIG.Coe_File {F:/coa/nscscc/soft/func/obj/inst_ram.coe}] [get_ips inst_ram0] 
+// Tcl Message: INFO: [IP_Flow 19-3484] Absolute path of file 'f:/coa/nscscc/soft/func/obj/inst_ram.coe' provided. It will be converted relative to IP Instance files '../../../../../../../soft/func/obj/inst_ram.coe' 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILESET_UPDATE_IP
+// aI (cr): Generate Output Products: addNotify
+// Elapsed time: 12 seconds
+dismissDialog("Re-customize IP"); // bB (r)
+selectButton(PAResourceQtoS.SimpleOutputProductDialog_GENERATE_OUTPUT_PRODUCTS_IMMEDIATELY, "Generate"); // a (aI)
+// bB (cr):  Managing Output Products : addNotify
+// Tcl Message: generate_target all [get_files  F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.srcs/sources_1/ip/inst_ram0/inst_ram0.xci] 
+// Tcl Message: INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'inst_ram0'... INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'inst_ram0'... 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'inst_ram0'... INFO: [IP_Flow 19-1686] Generating 'Miscellaneous' target for IP 'inst_ram0'... INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'inst_ram0'... 
+// Tcl Message: generate_target: Time (s): cpu = 00:00:16 ; elapsed = 00:00:21 . Memory (MB): peak = 1177.750 ; gain = 0.000 
+// Tcl Message: export_ip_user_files -of_objects [get_files F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.srcs/sources_1/ip/inst_ram0/inst_ram0.xci] -no_script -sync -force -quiet 
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// Tcl Message: reset_run inst_ram0_synth_1 
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: launch_runs -jobs 8 inst_ram0_synth_1 
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Wed Oct 27 16:03:07 2021] Launched inst_ram0_synth_1... Run output will be captured here: F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.runs/inst_ram0_synth_1/runme.log 
+// TclEventType: RUN_STATUS_CHANGE
+// Elapsed time: 29 seconds
+selectButton("OptionPane.button", "OK"); // JButton (A, G)
+// WARNING: HTimer (FileMgr Design Graph Update Timer) is taking 945ms to process. Increasing delay to 4000 ms.
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// WARNING: HTimer (ExpRunMgr Pending Runs Timer) is taking 1131ms to process. Increasing delay to 4000 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  1131 ms.
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// WARNING: HEventQueue.dispatchEvent() is taking  1245 ms.
+// [GUI Memory]: 147 MB (+3527kb) [05:34:39]
+// Elapsed time: 518 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Simulation, Run Simulation]", 10, false); // u (O, cr)
+// WARNING: HEventQueue.dispatchEvent() is taking  1068 ms.
+selectMenuItem(PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL, "Run Behavioral Simulation"); // ai (ao, cr)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_RUN_BEHAVIORAL
+// e (cr):  Run Simulation : addNotify
+// TclEventType: LAUNCH_SIM
+// Tcl Message: launch_simulation 
+// Tcl Message: Command: launch_simulation  
+// Tcl Message: INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator... 
+// Tcl Message: INFO: [Vivado 12-5682] Launching behavioral simulation in 'F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.sim/sim_1/behav/xsim' INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs 
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// Tcl Message: INFO: [USF-XSim-97] Finding global include files... INFO: [USF-XSim-98] Fetching design files from 'sim_1'... 
+// Tcl Message: INFO: [USF-XSim-2] XSim::Compile design INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.sim/sim_1/behav/xsim' 
+// Tcl Message: "xvlog --incr --relax -prj tb_top_vlog.prj" 
+// TclEventType: LAUNCH_SIM_LOG
+// Tcl Message: run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:10 . Memory (MB): peak = 1177.750 ; gain = 0.000 
+// Tcl Message: INFO: [USF-XSim-69] 'compile' step finished in '9' seconds INFO: [USF-XSim-3] XSim::Elaborate design INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.sim/sim_1/behav/xsim' 
+// Tcl Message: "xelab -wto 8be32c0e75274db89ff01e49e80abbee --incr --debug typical --relax --mt 2 -L xil_defaultlib -L blk_mem_gen_v8_4_4 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_top_behav xil_defaultlib.tb_top xil_defaultlib.glbl -log elaborate.log" 
+// Tcl Message: Vivado Simulator 2019.2 Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved. Running: E:/vivado201902suit/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 8be32c0e75274db89ff01e49e80abbee --incr --debug typical --relax --mt 2 -L xil_defaultlib -L blk_mem_gen_v8_4_4 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_top_behav xil_defaultlib.tb_top xil_defaultlib.glbl -log elaborate.log  Using 2 slave threads. Starting static elaboration Pass Through NonSizing Optimizer 
+// Tcl Message: Built simulation snapshot tb_top_behav 
+// TclEventType: LAUNCH_SIM
+// Tcl Message: run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:17 . Memory (MB): peak = 1177.750 ; gain = 0.000 
+// Tcl Message: INFO: [USF-XSim-69] 'elaborate' step finished in '18' seconds INFO: [USF-XSim-4] XSim::Simulate design INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'F:/coa/nscscc/cpu132_gettrace/run_vivado/cpu132_gettrace/cpu132_gettrace.sim/sim_1/behav/xsim' INFO: [USF-XSim-98] *** Running xsim 
+// Tcl Message:    with args "tb_top_behav -key {Behavioral:sim_1:Functional:tb_top} -tclbatch {tb_top.tcl} -log {simulate.log}" 
+// Tcl Message: INFO: [USF-XSim-8] Loading simulator feature 
+// Tcl Message: Vivado Simulator 2019.2 
+// TclEventType: SIMULATION_CREATE_SIMULATION_OBJECT
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_PROTOCOL_INSTANCE_TREE
+// PAPropertyPanels.initPanels (inst_ram0.xci) elapsed time: 0.2s
+// WARNING: HEventQueue.dispatchEvent() is taking  2006 ms.
+// Tcl Message: Time resolution is 1 ps 
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_PROTOCOL_INSTANCE_TREE
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_PROTOCOL_INSTANCE_TREE
+// Elapsed time: 42 seconds
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // v
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_PROTOCOL_INSTANCE_TREE
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_PROTOCOL_INSTANCE_TREE
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_PROTOCOL_INSTANCE_TREE
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// TclEventType: WAVEFORM_OPEN_WCFG
+// Waveform: addNotify
+// TclEventType: WAVEFORM_DELAYED_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// Tcl Message: source tb_top.tcl 
+// Tcl Message: # set curr_wave [current_wave_config] # if { [string length $curr_wave] == 0 } { #   if { [llength [get_objects]] > 0} { #     add_wave / #     set_property needs_save false [current_wave_config] #   } else { #      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console." #   } # } 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_MODEL_EVENT
+// WARNING: HEventQueue.dispatchEvent() is taking  3843 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 80 MB. Current time: 10/27/21, 4:12:41 PM CST
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// TclEventType: WAVEFORM_DELAYED_MODEL_EVENT
+// Tcl Message: add_wave: Time (s): cpu = 00:00:02 ; elapsed = 00:00:06 . Memory (MB): peak = 1177.750 ; gain = 0.000 
+// TclEventType: WAVEFORM_UPDATE_TITLE
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// TclEventType: SIMULATION_CLEAR_CURRENT_LINE
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_MODEL_EVENT
+// Tcl Message: # log_wave -r / 
+// Tcl Message: # run 1000 
+// Tcl Message:  Block Memory Generator module loading initial data... 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:  Block Memory Generator data initialization complete. Block Memory Generator module tb_top.soc_lite.inst_ram.inst.native_mem_module.blk_mem_gen_v8_4_4_inst is using a behavioral model for simulation which will not precisely model memory collision behavior. 
+// Tcl Message: Block Memory Generator module tb_top.soc_lite.data_ram.inst.native_mem_module.blk_mem_gen_v8_4_4_inst is using a behavioral model for simulation which will not precisely model memory collision behavior. 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: SIMULATION_OBJECT_TREE_RESTORED
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_DELAYED_MODEL_EVENT
+// TclEventType: SIMULATION_CURRENT_SCOPE_CHANGED
+// TclEventType: SIMULATION_CURRENT_STACK_CHANGED
+// TclEventType: SIMULATION_UPDATE_STACK_FRAMES
+// TclEventType: SIMULATION_CURRENT_STACK_FRAME_CHANGED
+// TclEventType: SIMULATION_UPDATE_LOCALS
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// Tcl Message: xsim: Time (s): cpu = 00:00:06 ; elapsed = 00:00:17 . Memory (MB): peak = 1177.750 ; gain = 0.000 
+// Tcl Message: INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_top_behav' loaded. INFO: [USF-XSim-97] XSim simulation ran for 1000 
+// Tcl Message: launch_simulation: Time (s): cpu = 00:00:07 ; elapsed = 00:00:54 . Memory (MB): peak = 1177.750 ; gain = 0.000 
+// 'd' command handler elapsed time: 53 seconds
+// Elapsed time: 11 seconds
+dismissDialog("Run Simulation"); // e (cr)
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_MODEL_EVENT
+selectButton(PAResourceCommand.PACommandNames_SIMULATION_LIVE_RUN_ALL, "simulation_live_run_all"); // E (f, cr)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_LIVE_RUN_ALL
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// TclEventType: SIMULATION_CLEAR_CURRENT_LINE
+// Tcl Message: run all 
+// Tcl Message: ============================================================== Test begin!         [  22000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [  32000 ns] Test is running, debug_wb_pc = 0xbfc00384         [  42000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 80 MB. Current time: 10/27/21, 4:12:53 PM CST
+// Tcl Message:         [  52000 ns] Test is running, debug_wb_pc = 0xbfc00384         [  62000 ns] Test is running, debug_wb_pc = 0xbfc00384         [  72000 ns] Test is running, debug_wb_pc = 0xbfc00384         [  82000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [  92000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 102000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 112000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 122000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 132000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 142000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 152000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 80 MB. Current time: 10/27/21, 4:12:57 PM CST
+// Tcl Message:         [ 162000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 172000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 182000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 192000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 202000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 212000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 222000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 232000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 242000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 80 MB. Current time: 10/27/21, 4:13:00 PM CST
+// Tcl Message:         [ 252000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 262000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 272000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [ 282000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 292000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 302000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 312000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 322000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 332000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 342000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 80 MB. Current time: 10/27/21, 4:13:04 PM CST
+// Tcl Message:         [ 352000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 362000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 372000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 382000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 392000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 402000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [ 412000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 422000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 432000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 442000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:13:07 PM CST
+// Tcl Message:         [ 452000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 462000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 472000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 482000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 492000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [ 502000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 512000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 522000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 532000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:13:10 PM CST
+// Tcl Message:         [ 542000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 552000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 562000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 572000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 582000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [ 592000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 602000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 612000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 622000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 632000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:13:13 PM CST
+// Tcl Message:         [ 642000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 652000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 662000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 672000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [ 682000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 692000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 702000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 712000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:13:16 PM CST
+// Tcl Message:         [ 722000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 732000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 742000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 752000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 762000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 772000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 782000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:13:19 PM CST
+// Tcl Message:         [ 792000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 802000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 812000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 822000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 832000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [ 842000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 852000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 862000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 872000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:13:22 PM CST
+// Tcl Message:         [ 882000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 892000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 902000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 912000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 922000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 932000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 942000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [ 952000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 962000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:13:25 PM CST
+// Tcl Message:         [ 972000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 982000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 992000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1002000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [1012000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1022000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1032000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// Tcl Message:         [1042000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1052000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:13:29 PM CST
+// Tcl Message:         [1062000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1072000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1082000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1092000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1102000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:13:32 PM CST
+// Tcl Message:         [1112000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1122000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [1132000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1142000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1152000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1162000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1172000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1182000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1192000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:13:35 PM CST
+// Tcl Message:         [1202000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1212000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [1222000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1232000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1242000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1252000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1262000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1272000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [1282000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1292000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:13:38 PM CST
+// Tcl Message:         [1302000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1312000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1322000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1332000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1342000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1352000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1362000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [1372000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1382000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:13:41 PM CST
+// Tcl Message:         [1392000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1402000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1412000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1422000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [1432000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1442000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1452000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1462000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:13:44 PM CST
+// Tcl Message:         [1472000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1482000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1492000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1502000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1512000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [1522000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1532000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1542000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1552000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:13:47 PM CST
+// Tcl Message:         [1562000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1572000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1582000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1592000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1602000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [1612000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1622000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1632000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1642000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:13:51 PM CST
+// Tcl Message:         [1652000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1662000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1672000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1682000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1692000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [1702000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1712000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1722000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1732000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:13:54 PM CST
+// Tcl Message:         [1742000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1752000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1762000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1772000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [1782000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1792000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1802000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1812000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:13:57 PM CST
+// Tcl Message:         [1822000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1832000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1842000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1852000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1862000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [1872000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1882000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1892000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1902000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:00 PM CST
+// Tcl Message:         [1912000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1922000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [1932000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1942000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1952000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1962000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [1972000 ns] Test is running, debug_wb_pc = 0xbfc00384         [1982000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [1992000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2002000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:03 PM CST
+// Tcl Message:         [2012000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2022000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2032000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2042000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2052000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2062000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [2072000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2082000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:06 PM CST
+// Tcl Message:         [2092000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2102000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2112000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2122000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [2132000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2142000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2152000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2162000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2172000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:09 PM CST
+// Tcl Message:         [2182000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2192000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2202000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2212000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [2222000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2232000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2242000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2252000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:12 PM CST
+// Tcl Message:         [2262000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2272000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [2282000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2292000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2302000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2312000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2322000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2332000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:15 PM CST
+// Tcl Message:         [2342000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2352000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2362000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2372000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2382000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [2392000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2402000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2412000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2422000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:18 PM CST
+// Tcl Message:         [2432000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2442000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2452000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2462000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2472000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [2482000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2492000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2502000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2512000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:21 PM CST
+// Tcl Message:         [2522000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2532000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [2542000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2552000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2562000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2572000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2582000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2592000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:24 PM CST
+// Tcl Message:         [2602000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2612000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2622000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [2632000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2642000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2652000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2662000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2672000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2682000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [2692000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2702000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:27 PM CST
+// Tcl Message:         [2712000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2722000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2732000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2742000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2752000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2762000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [2772000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2782000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:30 PM CST
+// Tcl Message:         [2792000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2802000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2812000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2822000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [2832000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2842000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2852000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:33 PM CST
+// Tcl Message:         [2862000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2872000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2882000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2892000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [2902000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2912000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2922000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2932000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:36 PM CST
+// Tcl Message:         [2942000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2952000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [2962000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2972000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [2982000 ns] Test is running, debug_wb_pc = 0xbfc00384         [2992000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3002000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3012000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:39 PM CST
+// Tcl Message:         [3022000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3032000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3042000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [3052000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3062000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3072000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3082000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:43 PM CST
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3092000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3102000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3112000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3122000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [3132000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3142000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3152000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3162000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:46 PM CST
+// Tcl Message:         [3172000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3182000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [3192000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3202000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3212000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3222000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3232000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3242000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [3252000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3262000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:49 PM CST
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3272000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3282000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3292000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [3302000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3312000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3322000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3332000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:52 PM CST
+// Tcl Message:         [3342000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3352000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [3362000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3372000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3382000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3392000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3402000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3412000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [3422000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3432000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:55 PM CST
+// Tcl Message:         [3442000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3452000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3462000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3472000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [3482000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3492000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3502000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3512000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:14:58 PM CST
+// Tcl Message:         [3522000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3532000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3542000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3552000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3562000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3572000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3582000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [3592000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3602000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:15:01 PM CST
+// Tcl Message:         [3612000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3622000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3632000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3642000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [3652000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3662000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3672000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3682000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:15:04 PM CST
+// Tcl Message:         [3692000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3702000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3712000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3722000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [3732000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3742000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3752000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3762000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:15:07 PM CST
+// Tcl Message:         [3772000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3782000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3792000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [3802000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3812000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3822000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:15:10 PM CST
+// Tcl Message:         [3832000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3842000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3852000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3862000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [3872000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3882000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3892000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3902000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:15:13 PM CST
+// Tcl Message:         [3912000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3922000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [3932000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3942000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3952000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3962000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [3972000 ns] Test is running, debug_wb_pc = 0xbfc00384         [3982000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [3992000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4002000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:15:16 PM CST
+// Tcl Message:         [4012000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4022000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4032000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4042000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4052000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4062000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [4072000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4082000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:15:20 PM CST
+// Tcl Message:         [4092000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4102000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [4112000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4122000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4132000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4142000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:15:23 PM CST
+// Tcl Message:         [4152000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4162000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4172000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4182000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [4192000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4202000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4212000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4222000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:15:26 PM CST
+// Tcl Message:         [4232000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4242000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4252000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4262000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4272000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [4282000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4292000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4302000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4312000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:15:29 PM CST
+// Tcl Message:         [4322000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4332000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [4342000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4352000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4362000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4372000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4382000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4392000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [4402000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4412000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:15:32 PM CST
+// Tcl Message:         [4422000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4432000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4442000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4452000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4462000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4472000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [4482000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4492000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:15:35 PM CST
+// Tcl Message:         [4502000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4512000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4522000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4532000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [4542000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4552000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4562000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4572000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:15:38 PM CST
+// Tcl Message:         [4582000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4592000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [4602000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4612000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4622000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4632000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4642000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [4652000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4662000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:15:41 PM CST
+// Tcl Message:         [4672000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4682000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4692000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4702000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4712000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4722000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [4732000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4742000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:15:44 PM CST
+// Tcl Message:         [4752000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4762000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4772000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4782000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [4792000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4802000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4812000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4822000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 80 MB. Current time: 10/27/21, 4:15:47 PM CST
+// Tcl Message:         [4832000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4842000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [4852000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4862000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4872000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4882000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4892000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4902000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4912000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 80 MB. Current time: 10/27/21, 4:15:50 PM CST
+// Tcl Message:         [4922000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4932000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4942000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4952000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [4962000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4972000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [4982000 ns] Test is running, debug_wb_pc = 0xbfc00384         [4992000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 80 MB. Current time: 10/27/21, 4:15:53 PM CST
+// Tcl Message:         [5002000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5012000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [5022000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5032000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5042000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5052000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5062000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5072000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5082000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 80 MB. Current time: 10/27/21, 4:15:56 PM CST
+// Tcl Message:         [5092000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5102000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5112000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5122000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5132000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5142000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5152000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5162000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5172000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5182000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 103 MB. Current time: 10/27/21, 4:15:59 PM CST
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_PROTOCOL_INSTANCE_TREE
+// Tcl Message:         [5192000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5202000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:16:01 PM CST
+// Tcl Message:         [5212000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5222000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5232000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5242000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5252000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5262000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:16:04 PM CST
+// Tcl Message:         [5272000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5282000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5292000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5302000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5312000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [5322000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5332000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5342000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5352000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:16:07 PM CST
+// Tcl Message:         [5362000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5372000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [5382000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5392000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5402000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5412000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5422000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5432000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [5442000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5452000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:16:10 PM CST
+// Tcl Message:         [5462000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5472000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5482000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5492000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5502000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5512000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [5522000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5532000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:16:13 PM CST
+// Tcl Message:         [5542000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5552000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5562000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5572000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [5582000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5592000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5602000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5612000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:16:16 PM CST
+// Tcl Message:         [5622000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5632000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [5642000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5652000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5662000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5672000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5682000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5692000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5702000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:16:19 PM CST
+// Tcl Message:         [5712000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5722000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5732000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5742000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [5752000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5762000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:16:22 PM CST
+// Tcl Message:         [5772000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5782000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5792000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [5802000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5812000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [5822000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5832000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Elapsed time: 213 seconds
+selectButton(PAResourceCommand.PACommandNames_SIMULATION_LIVE_BREAK, "simulation_live_break"); // E (f, cr)
+// Tcl Message:         [5842000 ns] Test is running, debug_wb_pc = 0xbfc00384         [5852000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_LIVE_BREAK
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: SIMULATION_OBJECT_TREE_RESTORED
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:16:24 PM CST
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_DELAYED_MODEL_EVENT
+// TclEventType: SIMULATION_CURRENT_SCOPE_CHANGED
+// TclEventType: SIMULATION_CURRENT_STACK_CHANGED
+// TclEventType: SIMULATION_UPDATE_STACK_FRAMES
+// TclEventType: SIMULATION_CURRENT_STACK_FRAME_CHANGED
+// TclEventType: SIMULATION_UPDATE_LOCALS
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// Tcl Message:         [5862000 ns] Test is running, debug_wb_pc = 0xbfc00384 run: Time (s): cpu = 00:01:21 ; elapsed = 00:03:33 . Memory (MB): peak = 1432.762 ; gain = 241.633 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_MODEL_EVENT
+// Elapsed time: 27 seconds
+selectButton(PAResourceCommand.PACommandNames_SIMULATION_LIVE_RESTART, "simulation_live_restart"); // E (f, cr)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_LIVE_RESTART
+// bB (cr):  Restart : addNotify
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// TclEventType: SIMULATION_CLEAR_CURRENT_LINE
+// Tcl Message: restart 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: SIMULATION_OBJECT_TREE_RESTORED
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_DELAYED_MODEL_EVENT
+// TclEventType: SIMULATION_CURRENT_SCOPE_CHANGED
+// TclEventType: SIMULATION_CURRENT_STACK_CHANGED
+// TclEventType: SIMULATION_UPDATE_STACK_FRAMES
+// TclEventType: SIMULATION_CURRENT_STACK_FRAME_CHANGED
+// TclEventType: SIMULATION_UPDATE_LOCALS
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: SIMULATION_UPDATE_OBJECT_TREE
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// TclEventType: SIMULATION_UPDATE_SCOPE_TREE
+// TclEventType: SIMULATION_UPDATE_STACKS
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_CURRENT_SCOPE_CHANGED
+// TclEventType: SIMULATION_CURRENT_STACK_CHANGED
+// TclEventType: SIMULATION_UPDATE_STACK_FRAMES
+// TclEventType: SIMULATION_CURRENT_STACK_FRAME_CHANGED
+// TclEventType: SIMULATION_UPDATE_LOCALS
+// Tcl Message: INFO: [Simtcl 6-17] Simulation restarted 
+dismissDialog("Restart"); // bB (cr)
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_MODEL_EVENT
+selectButton(PAResourceCommand.PACommandNames_SIMULATION_LIVE_RUN_ALL, "simulation_live_run_all"); // E (f, cr)
+// Run Command: PAResourceCommand.PACommandNames_SIMULATION_LIVE_RUN_ALL
+// TclEventType: SIMULATION_UPDATE_SIMULATION_STATE
+// TclEventType: SIMULATION_CLEAR_CURRENT_LINE
+// Tcl Message: run all 
+// Tcl Message:  Block Memory Generator module loading initial data... 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:  Block Memory Generator data initialization complete. Block Memory Generator module tb_top.soc_lite.inst_ram.inst.native_mem_module.blk_mem_gen_v8_4_4_inst is using a behavioral model for simulation which will not precisely model memory collision behavior. Block Memory Generator module tb_top.soc_lite.data_ram.inst.native_mem_module.blk_mem_gen_v8_4_4_inst is using a behavioral model for simulation which will not precisely model memory collision behavior. ============================================================== Test begin! 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:17:05 PM CST
+// Tcl Message:         [  22000 ns] Test is running, debug_wb_pc = 0xbfc00384         [  32000 ns] Test is running, debug_wb_pc = 0xbfc00384         [  42000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [  52000 ns] Test is running, debug_wb_pc = 0xbfc00384         [  62000 ns] Test is running, debug_wb_pc = 0xbfc00384         [  72000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [  82000 ns] Test is running, debug_wb_pc = 0xbfc00384         [  92000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 102000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 112000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:17:08 PM CST
+// Tcl Message:         [ 122000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 132000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 142000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 152000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 162000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [ 172000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 182000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 192000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 202000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:17:11 PM CST
+// Tcl Message:         [ 212000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 222000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 232000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 242000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 252000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// Tcl Message:         [ 262000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 272000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// Tcl Message:         [ 282000 ns] Test is running, debug_wb_pc = 0xbfc00384         [ 292000 ns] Test is running, debug_wb_pc = 0xbfc00384 
+// TclEventType: WAVEFORM_MODEL_EVENT
+// TclEventType: WAVEFORM_UPDATE_WAVEFORM
+// TclEventType: WAVEFORM_UPDATE_COMMANDS
+// TclEventType: SIMULATION_UPDATE_LATEST_TIME
+// HMemoryUtils.trashcanNow. Engine heap size: 876 MB. GUI used memory: 79 MB. Current time: 10/27/21, 4:17:14 PM CST

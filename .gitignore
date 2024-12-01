@@ -13,3 +13,10 @@ CPU/*.wpc
 /CPU/MiniMIPS32.ip_user_files/**
 /CPU/MiniMIPS32.sim/**
 /CPU/MiniMIPS32.runs/**
+
+**/*.Xil/**
+**/*.sim/**
+**/*.cache/**
+**/*.hw/**
+**/*.ip_user_files/**
+**/*.runs/**

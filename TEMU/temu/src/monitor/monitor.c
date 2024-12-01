@@ -1,6 +1,6 @@
 #include "temu.h"
 
-#define ENTRY_START 0xbfc00000
+
 
 char *exec_file;
 uint8_t *hw_mem;
