@@ -1,6 +1,7 @@
 `include "defines.v"
 
 module exe_stage (
+    input wire                 cpu_clk_50M,
     input wire                 cpu_rst_n,
     // ??????????
     input wire [ `ALUTYPE_BUS] exe_alutype_i,
@@ -16,7 +17,7 @@ module exe_stage (
     input wire exe_whi_i,
     input wire exe_wlo_i,
 
-    input wire [`INST_ADDR_BUS]    exe_ret_addr,
+    input wire [`INST_ADDR_BUS] exe_ret_addr,
 
 
     // ?hilo????????       
@@ -53,6 +54,7 @@ module exe_stage (
     //cp0
     input  wire                  exe_c_ds_i,
     input  wire [  `EXCTYPE_BUS] exe_exctype_i,
+    pe_i,
     input  wire [`INST_ADDR_BUS] exe_cur_pc_i,
     output wire                  exe_c_ds_o,
     output reg  [  `EXCTYPE_BUS] exe_exctype_o,
@@ -127,9 +129,9 @@ module exe_stage (
   // hilo???????
   assign hi_t = (mem2exe_whilo[1] == `WHILO_ENABLE) ? mem2exe_hilo[63 : 32] : (wb2exe_whilo[1] == `WHILO_ENABLE) ? wb2exe_hilo[63 : 32] : hi_i;
 
-  assign lo_t = (mem2exe_whilo[0] == `WHILO_ENABLE) ? mem2exe_hilo[31 : 0] : (wb2exe_whilo[0] == `WHILO_ENABLE) ? wb2exe_hilo[31 : 0] : lo_i;
+  assign lo_t    = (mem2exe_whilo[0] == `WHILO_ENABLE) ? mem2exe_hilo[31 : 0] : (wb2exe_whilo[0] == `WHILO_ENABLE) ? wb2exe_hilo[31 : 0] : lo_i;
 
-  assign moveres = (exe_aluop_i == `MINIMIPS32_MFHI) ? hi_t : (exe_aluop_i == `MINIMIPS32_MFLO) ? lo_t : `ZERO_WORD;
+  assign moveres = (exe_aluop_i == `MINIMIPS32_MFHI) ? hi_t : (exe_aluop_i == `MINIMIPS32_MFLO) ? lo_t : (exe_alutype_i == `MINIMIPS32_MTHI || exe_alutype_i == `MINIMIPS32_MTLO) ? exe_src1_i : `ZERO_WORD;
 
   wire signed [31:0] arith_shiftres;
   wire signed [31:0] arith_shiftres_v;
@@ -142,8 +144,7 @@ module exe_stage (
                       (exe_aluop_i == `MINIMIPS32_SRL) ? (exe_src2_i >> exe_src1_i) :
                       (exe_aluop_i == `MINIMIPS32_SRAV) ? arith_shiftres_v :
                       (exe_aluop_i == `MINIMIPS32_SRLV) ? (exe_src2_i >> exe_src1_i[`REG_ADDR_BUS]) : `ZERO_WORD;
-  assign jumpres = (exe_aluop_i == `MINIMIPS32_BGEZAL) ? exe_ret_addr : (exe_aluop_i == `MINIMIPS32_BLTZAL) ? exe_ret_addr
-  : (exe_aluop_i == `MINIMIPS32_JAL) ? exe_ret_addr : (exe_aluop_i == `MINIMIPS32_JALR) ? exe_ret_addr : `ZERO_WORD;
+  assign jumpres = (exe_aluop_i == `MINIMIPS32_BGEZAL) ? exe_ret_addr : (exe_aluop_i == `MINIMIPS32_BLTZAL) ? exe_ret_addr : (exe_aluop_i == `MINIMIPS32_JAL) ? exe_ret_addr : (exe_aluop_i == `MINIMIPS32_JALR) ? exe_ret_addr : `ZERO_WORD;
 
   wire                                                                                                                       [31 : 0] exe_src2_t = (exe_aluop_i == `MINIMIPS32_SUB) ? (~exe_src2_i) + 1 : exe_src2_i;
   wire                                                                                                                       [31 : 0] arith_tmp = exe_src1_i + exe_src2_t;
@@ -151,14 +152,13 @@ module exe_stage (
   wire inst_ov = (exe_aluop_i == `MINIMIPS32_ADD || exe_aluop_i == `MINIMIPS32_ADDI || exe_aluop_i == `MINIMIPS32_SUB);
 
 
-  assign sign_mulres   = ($signed(exe_src1_i) * $signed(exe_src2_i));
+  assign sign_mulres = ($signed(exe_src1_i) * $signed(exe_src2_i));
   assign unsign_mulres = ($unsigned({1'b0, exe_src1_i}) * $unsigned({1'b0, exe_src2_i}));
-  assign exe_hilo_o    = (exe_aluop_i == `MINIMIPS32_MULT) ? sign_mulres : (exe_aluop_i == `MINIMIPS32_MULTU) ? unsign_mulres : (exe_aluop_i == `MINIMIPS32_MTHI) ? {exe_src1_i, lo_t} : (exe_aluop_i == `MINIMIPS32_MTLO) ? {hi_t, exe_src1_i} : `ZERO_DWORD;
+  assign exe_hilo_o    = (exe_aluop_i == `MINIMIPS32_MULT) ? sign_mulres : (exe_aluop_i == `MINIMIPS32_MULTU) ? unsign_mulres : (exe_aluop_i == `MINIMIPS32_MTHI) ? {exe_src1_i, lo_t} : (exe_aluop_i == `MINIMIPS32_MTLO) ? {hi_t, exe_src1_i} :
+  (exe_aluop_i == `MINIMIPS32_DIV || exe_aluop_i == `MINIMIPS32_DIVU) ? divres : `ZERO_WORD;
 
 
 
-  assign exe_wa_o      = (exe_aluop_i == `MINIMIPS32_MFC0) ? exe_cp0_rt : exe_wa_i;
-  assign exe_wreg_o    = exe_wreg_i;
 
 
   reg [`REG_BUS] result;

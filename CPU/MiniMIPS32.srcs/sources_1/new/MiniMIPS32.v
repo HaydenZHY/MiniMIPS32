@@ -17,57 +17,17 @@ module MiniMIPS32 (
     input  wire [     `INST_BUS] dm,
 
     output wire [`INST_ADDR_BUS] debug_wb_pc,       // 供调试使用的PC值，上板测试时务必删除该信号
-    output wire                  debug_wb_rf_wen,   // 供调试使用的PC值，上板测试时务必删除该信号
+    output wire [     `BSEL_BUS] debug_wb_rf_wen,   // 供调试使用的PC值，上板测试时务必删除该信号
     output wire [ `REG_ADDR_BUS] debug_wb_rf_wnum,  // 供调试使用的PC值，上板测试时务必删除该信号
     output wire [     `WORD_BUS] debug_wb_rf_wdata  // 供调试使用的PC值，上板测试时务必删除该信号
 );
 
-    wire [      `WORD_BUS]  pc;
-  /*--------------cp0信号------------------*/
-  wire                    flush;
-  wire [ `INST_ADDR_BUS]  excaddr;
-  wire                    id_c_ds_i;
-  wire                    id_c_ds_o;
-  wire [   `EXCTYPE_BUS]  id_exctype_o;
-  wire [ `INST_ADDR_BUS]  id_cur_pc_o;
-  wire                    id_n_ds_o;
-  wire [  `REG_ADDR_BUS]  id_cp0_rt_o;
-  wire                    exe_c_ds_i;
-  wire [   `EXCTYPE_BUS]  exe_exctype_i;
-  wire [ `INST_ADDR_BUS]  exe_cur_pc_i;
-  wire                    exe_c_ds_o;
-  wire [   `EXCTYPE_BUS]  exe_exctype_o;
-  wire [ `INST_ADDR_BUS]  exe_cur_pc_o;
-  wire [  `REG_ADDR_BUS]  exe_cp0_rt_i;
-  wire [       `REG_BUS]  cp0_din;
-  wire                    exe_cp0_we_o;
-  wire [  `REG_ADDR_BUS]  exe_cp0_ra_o;
-  wire [  `REG_ADDR_BUS]  exe_cp0_wa_o;
-  wire [       `REG_BUS]  exe_cp0_wd_o;
-  wire                    mem_c_ds_i;
-  wire [   `EXCTYPE_BUS]  mem_exctype_i;
-  wire [ `INST_ADDR_BUS]  mem_cur_pc_i;
-  wire                    mem_cp0_we_i;
-  wire [  `REG_ADDR_BUS]  mem_cp0_wa_i;
-  wire [       `REG_BUS]  mem_cp0_wd_i;
-  wire                    mem_c_ds_o;
-  wire [   `EXCTYPE_BUS]  mem_exctype_o;
-  wire [ `INST_ADDR_BUS]  mem_cur_pc_o;
-  wire [       `REG_BUS]  mem_badvaddr_o;
-  wire                    mem_cp0_we_o;
-  wire [  `REG_ADDR_BUS]  mem_cp0_wa_o;
-  wire [       `REG_BUS]  mem_cp0_wd_o;
-  wire                    wb_cp0_we_i;
-  wire [  `REG_ADDR_BUS]  wb_cp0_wa_i;
-  wire [       `REG_BUS]  wb_cp0_wd_i;
-  wire                    wb_cp0_we_o;
-  wire [  `REG_ADDR_BUS]  wb_cp0_wa_o;
-  wire [       `REG_BUS]  wb_cp0_wd_o;
-    //跳转相关
-    wire  [1:0]            jtsel;
-    wire [`INST_ADDR_BUS]  jump_addr_1;
-    wire [`INST_ADDR_BUS]  jump_addr_2;
-    wire [`INST_ADDR_BUS]  jump_addr_3;
+  wire [      `WORD_BUS]  pc;
+  //跳转相关
+  wire [            1:0 ] jtsel;
+  wire [ `INST_ADDR_BUS]  jump_addr_1;
+  wire [ `INST_ADDR_BUS]  jump_addr_2;
+  wire [ `INST_ADDR_BUS]  jump_addr_3;
 
   /*---------------id阶段信号------------------*/
   // 连接IF/ID模块与译码阶段ID模块的变量 
@@ -95,8 +55,8 @@ module MiniMIPS32 (
   wire                    id_wlo_o;
 
   //跳转相关
-  wire [`INST_ADDR_BUS]  ret_addr;
-  wire [`INST_ADDR_BUS]  id_ret_addr;
+  wire [ `INST_ADDR_BUS]  ret_addr;
+  wire [ `INST_ADDR_BUS]  id_ret_addr;
   /*------------------------------------------*/
 
   /*---------------exe阶段信号------------------*/
@@ -125,7 +85,7 @@ module MiniMIPS32 (
   wire [`DOUBLE_REG_BUS]  exe_hilo_o;
   wire                    exe_whi_o;
   wire                    exe_wlo_o;
-  wire [`INST_ADDR_BUS]  exe_ret_addr;
+  wire [ `INST_ADDR_BUS]  exe_ret_addr;
   /*------------------------------------------*/
 
   /*----------------mem阶段信号-----------------*/
@@ -187,6 +147,49 @@ module MiniMIPS32 (
   /*wb2exe hilo数据相关*/
   wire [          1 : 0 ] wb2exe_whilo;
   wire [`DOUBLE_REG_BUS]  wb2exe_hilo;
+
+  /*cp0相关*/
+  wire                    stallreg_exe;
+  wire                    stallreg_id;
+  wire                    flush;
+  wire [ `INST_ADDR_BUS]  excaddr;
+  wire                    id_c_ds_i;
+  wire                    id_c_ds_o;
+  wire [   `EXCTYPE_BUS]  id_exctype_o;
+  wire [ `INST_ADDR_BUS]  id_cur_pc_o;
+  wire                    id_n_ds_o;
+  wire [  `REG_ADDR_BUS]  id_cp0_rt_o;
+  wire                    exe_c_ds_i;
+  wire [   `EXCTYPE_BUS]  exe_exctype_i;
+  wire [ `INST_ADDR_BUS]  exe_cur_pc_i;
+  wire                    exe_c_ds_o;
+  wire [   `EXCTYPE_BUS]  exe_exctype_o;
+  wire [ `INST_ADDR_BUS]  exe_cur_pc_o;
+  wire [  `REG_ADDR_BUS]  exe_cp0_rt_i;
+  wire [       `REG_BUS]  cp0_din;
+  wire                    exe_cp0_we_o;
+  wire [  `REG_ADDR_BUS]  exe_cp0_ra_o;
+  wire [  `REG_ADDR_BUS]  exe_cp0_wa_o;
+  wire [       `REG_BUS]  exe_cp0_wd_o;
+  wire                    mem_c_ds_i;
+  wire [   `EXCTYPE_BUS]  mem_exctype_i;
+  wire [ `INST_ADDR_BUS]  mem_cur_pc_i;
+  wire                    mem_cp0_we_i;
+  wire [  `REG_ADDR_BUS]  mem_cp0_wa_i;
+  wire [       `REG_BUS]  mem_cp0_wd_i;
+  wire                    mem_c_ds_o;
+  wire [   `EXCTYPE_BUS]  mem_exctype_o;
+  wire [ `INST_ADDR_BUS]  mem_cur_pc_o;
+  wire [       `REG_BUS]  mem_badvaddr_o;
+  wire                    mem_cp0_we_o;
+  wire [  `REG_ADDR_BUS]  mem_cp0_wa_o;
+  wire [       `REG_BUS]  mem_cp0_wd_o;
+  wire                    wb_cp0_we_i;
+  wire [  `REG_ADDR_BUS]  wb_cp0_wa_i;
+  wire [       `REG_BUS]  wb_cp0_wd_i;
+  wire                    wb_cp0_we_o;
+  wire [  `REG_ADDR_BUS]  wb_cp0_wa_o;
+  wire [       `REG_BUS]  wb_cp0_wd_o;
   /*------------------------------------------*/
 
 
@@ -199,6 +202,15 @@ module MiniMIPS32 (
   wire [ `INST_ADDR_BUS]  mem_debug_wb_pc_o;  // 上板测试时务必删除该信号
   wire [ `INST_ADDR_BUS]  wb_debug_wb_pc_i;  // 上板测试时务必删除该信号
 
+  reg  [          3 : 0 ] stall;
+  always @(*) begin
+    if (stallreg_exe == `STOP_ENABLE) begin
+      stall = 4'b1111;
+    end else if (stallreg_id == `STOP_ENABLE) begin
+      stall = 4'b1110;
+    end else stall = 4'b0000;
+  end
+
   // 接口完整
   if_stage if_stage0 (
       .cpu_clk_50M(cpu_clk_50M),
@@ -207,14 +219,13 @@ module MiniMIPS32 (
       .ice        (ice),
       .iaddr      (iaddr),
       .debug_wb_pc(if_debug_wb_pc),
-      //cp0
-      .flush      (flush),
-      .excaddr    (excaddr),
-      //跳转相关
       .jtsel      (jtsel),
       .jump_addr_1(jump_addr_1),
       .jump_addr_2(jump_addr_2),
-      .jump_addr_3(jump_addr_3)
+      .jump_addr_3(jump_addr_3),
+      .flush      (flush),
+      .stall      (stall),
+      .excaddr    (excaddr)
   );
 
   // 接口完整
@@ -225,8 +236,8 @@ module MiniMIPS32 (
       .if_debug_wb_pc(if_debug_wb_pc),
       .id_pc         (id_pc_i),
       .id_debug_wb_pc(id_debug_wb_pc_i),
-      //cp0
-      .flush         (flush)
+      .flush         (flush),
+      .stall         (stall)
   );
 
   // 接口完整
@@ -247,6 +258,11 @@ module MiniMIPS32 (
       .mem2id_wa     (mem2id_wa),
       .mem2id_wreg   (mem2id_wreg),
       .mem2id_wd     (mem2id_wd),
+      .jtsel         (jtsel),
+      .jump_addr_1   (jump_addr_1),
+      .jump_addr_2   (jump_addr_2),
+      .jump_addr_3   (jump_addr_3),
+      .c_ds_i        (id_c_ds_i),
 
       .id_aluop_o  (id_aluop_o),
       .id_alutype_o(id_alutype_o),
@@ -260,16 +276,13 @@ module MiniMIPS32 (
       .id_mreg_o   (id_mreg_o),
       .id_din_o    (id_din_o),
       .ret_addr    (id_ret_addr),
+      .c_ds_o      (id_c_ds_o),
+      .exctype     (id_exctype_o),
+      .cur_pc      (id_cur_pc_o),
+      .n_ds        (id_n_ds_o),
+      .stallreg_id (stallreg_id),
       .debug_wb_pc (id_debug_wb_pc_o),
-
-      //cp0
-      .c_ds_i (id_c_ds_i),
-      .c_ds_o (id_c_ds_o),
-      .exctype(id_exctype_o),
-      .cur_pc (id_cur_pc_o),
-      .n_ds   (id_n_ds_o),
-      //cp02
-      .cp0_rt (id_cp0_rt_o)
+      .cp0_rt      (id_cp0_rt_o)
   );
 
   // 接口完整
@@ -303,7 +316,8 @@ module MiniMIPS32 (
       .id_mreg       (id_mreg_o),
       .id_din        (id_din_o),
       .id_debug_wb_pc(id_debug_wb_pc_o),
-      .id_ret_addr(id_ret_addr),
+      .id_ret_addr   (id_ret_addr),
+      .stall         (stall),
 
       .exe_alutype    (exe_alutype_i),
       .exe_aluop      (exe_aluop_i),
@@ -316,7 +330,7 @@ module MiniMIPS32 (
       .exe_wlo        (exe_wlo_i),
       .exe_mreg       (exe_mreg_i),
       .exe_din        (exe_din_i),
-      .exe_ret_addr(exe_ret_addr),
+      .exe_ret_addr   (exe_ret_addr),
       .exe_debug_wb_pc(exe_debug_wb_pc_i),
 
       //cp0
@@ -336,6 +350,8 @@ module MiniMIPS32 (
 
   // 接口完整
   exe_stage exe_stage0 (
+      .cpu_clk_50M    (cpu_clk_50M),
+      .cpu_rst_n      (cpu_rst_n),
       .exe_alutype_i  (exe_alutype_i),
       .exe_aluop_i    (exe_aluop_i),
       .exe_src1_i     (exe_src1_i),
@@ -353,45 +369,42 @@ module MiniMIPS32 (
       .mem2exe_hilo   (mem2exe_hilo),
       .wb2exe_whilo   (wb2exe_whilo),
       .wb2exe_hilo    (wb2exe_hilo),
-      .exe_ret_addr(exe_ret_addr),
+      .exe_ret_addr   (exe_ret_addr),
+      .exe_c_ds_i     (exe_c_ds_i),
+      .exe_exctype_i  (exe_exctype_i),
+      .exe_cur_pc_i   (exe_cur_pc_i),
+      .exe_cp0_rt     (exe_cp0_rt_i),
+      .cp0_din        (cp0_din),
       .exe_debug_wb_pc(exe_debug_wb_pc_i),
 
-      .exe_aluop_o(exe_aluop_o),
-      .exe_wa_o   (exe_wa_o),
-      .exe_wreg_o (exe_wreg_o),
-      .exe_wd_o   (exe_wd_o),
-      .exe_mreg_o (exe_mreg_o),
-      .exe_din_o  (exe_din_o),
-      .exe_whilo_o(exe_whilo_o),
-      .exe_hilo_o (exe_hilo_o),
-      .exe_whi_o  (exe_whi_o),
-      .exe_wlo_o  (exe_wlo_o),
-      .exe2id_wa  (exe2id_wa),
-      .exe2id_wreg(exe2id_wreg),
-      .exe2id_wd  (exe2id_wd),
-      .debug_wb_pc(exe_debug_wb_pc_o),
-
-      //cp0
-      .exe_c_ds_i   (exe_c_ds_i),
-      .exe_exctype_i(exe_exctype_i),
-      .exe_cur_pc_i (exe_cur_pc_i),
+      .exe_aluop_o  (exe_aluop_o),
+      .exe_wa_o     (exe_wa_o),
+      .exe_wreg_o   (exe_wreg_o),
+      .exe_wd_o     (exe_wd_o),
+      .exe_mreg_o   (exe_mreg_o),
+      .exe_din_o    (exe_din_o),
+      .exe_whilo_o  (exe_whilo_o),
+      .exe_hilo_o   (exe_hilo_o),
+      .exe_whi_o    (exe_whi_o),
+      .exe_wlo_o    (exe_wlo_o),
+      .exe2id_wa    (exe2id_wa),
+      .exe2id_wreg  (exe2id_wreg),
+      .exe2id_wd    (exe2id_wd),
       .exe_c_ds_o   (exe_c_ds_o),
       .exe_exctype_o(exe_exctype_o),
       .exe_cur_pc_o (exe_cur_pc_o),
-      //cp02
-      .exe_cp0_rt   (exe_cp0_rt_i),
-      .cp0_din      (cp0_din),
       .exe_cp0_we_o (exe_cp0_we_o),
       .exe_cp0_ra_o (exe_cp0_ra_o),
       .exe_cp0_wa_o (exe_cp0_wa_o),
       .exe_cp0_wd_o (exe_cp0_wd_o),
-      //cp0 datarel
       .mem_cp0_we_o (mem_cp0_we_o),
       .mem_cp0_wa_o (mem_cp0_wa_o),
       .mem_cp0_wd_o (mem_cp0_wd_o),
       .wb_cp0_we_o  (wb_cp0_we_o),
       .wb_cp0_wa_o  (wb_cp0_wa_o),
-      .wb_cp0_wd_o  (wb_cp0_wd_o)
+      .wb_cp0_wd_o  (wb_cp0_wd_o),
+      .stallreg_exe (stallreg_exe),
+      .debug_wb_pc  (exe_debug_wb_pc_o)
 
   );
 
@@ -412,6 +425,7 @@ module MiniMIPS32 (
       .exe_mreg       (exe_mreg_o),
       .exe_debug_wb_pc(exe_debug_wb_pc_o),
       .exe_din        (exe_din_o),
+      .stall          (stall),
 
       .mem_aluop      (mem_aluop_i),
       .mem_wa         (mem_wa_i),
@@ -433,14 +447,13 @@ module MiniMIPS32 (
       .mem_c_ds   (mem_c_ds_i),
       .mem_exctype(mem_exctype_i),
       .mem_cur_pc (mem_cur_pc_i),
-
       //cp02
-      .exe_cp0_we(exe_cp0_we_o),
-      .exe_cp0_wa(exe_cp0_wa_o),
-      .exe_cp0_wd(exe_cp0_wd_o),
-      .mem_cp0_we(mem_cp0_we_i),
-      .mem_cp0_wa(mem_cp0_wa_i),
-      .mem_cp0_wd(mem_cp0_wd_i)
+      .exe_cp0_we (exe_cp0_we_o),
+      .exe_cp0_wa (exe_cp0_wa_o),
+      .exe_cp0_wd (exe_cp0_wd_o),
+      .mem_cp0_we (mem_cp0_we_i),
+      .mem_cp0_wa (mem_cp0_wa_i),
+      .mem_cp0_wd (mem_cp0_wd_i)
   );
 
   // 接口完整
@@ -455,45 +468,41 @@ module MiniMIPS32 (
       .mem_hilo_i     (mem_hilo_i),
       .mem_whi_i      (mem_whi_i),
       .mem_wlo_i      (mem_wlo_i),
+      .mem_c_ds_i     (mem_c_ds_i),
+      .mem_exctype_i  (mem_exctype_i),
+      .mem_cur_pc_i   (mem_cur_pc_i),
+      .mem_cp0_we_i   (mem_cp0_we_i),
+      .mem_cp0_wa_i   (mem_cp0_wa_i),
+      .mem_cp0_wd_i   (mem_cp0_wd_i),
       .mem_debug_wb_pc(mem_debug_wb_pc_i),
 
 
-      .mem_wa_o     (mem_wa_o),
-      .mem_wreg_o   (mem_wreg_o),
-      .mem_dreg_o   (mem_dreg_o),
-      .mem_mreg_o   (mem_mreg_o),
-      .mem_whilo_o  (mem_whilo_o),
-      .mem_hilo_o   (mem_hilo_o),
-      .mem_whi_o    (mem_whi_o),
-      .mem_wlo_o    (mem_wlo_o),
-      .dre          (dre),
-      .dce          (dce),
-      .daddr        (daddr),
-      .we           (we),
-      .din          (din),
-      .debug_wb_pc  (mem_debug_wb_pc_o),
-      .mem2id_wa    (mem2id_wa),
-      .mem2id_wreg  (mem2id_wreg),
-      .mem2id_wd    (mem2id_wd),
-      .mem2exe_whilo(mem2exe_whilo),
-      .mem2exe_hilo (mem2exe_hilo),
-
-      //cp0
-      .mem_c_ds_i    (mem_c_ds_i),
-      .mem_exctype_i (mem_exctype_i),
-      .mem_cur_pc_i  (mem_cur_pc_i),
+      .mem_wa_o      (mem_wa_o),
+      .mem_wreg_o    (mem_wreg_o),
+      .mem_dreg_o    (mem_dreg_o),
+      .mem_mreg_o    (mem_mreg_o),
+      .mem_whilo_o   (mem_whilo_o),
+      .mem_hilo_o    (mem_hilo_o),
+      .mem_whi_o     (mem_whi_o),
+      .mem_wlo_o     (mem_wlo_o),
+      .dre           (dre),
+      .dce           (dce),
+      .daddr         (daddr),
+      .we            (we),
+      .din           (din),
+      .debug_wb_pc   (mem_debug_wb_pc_o),
+      .mem2id_wa     (mem2id_wa),
+      .mem2id_wreg   (mem2id_wreg),
+      .mem2id_wd     (mem2id_wd),
+      .mem2exe_whilo (mem2exe_whilo),
+      .mem2exe_hilo  (mem2exe_hilo),
       .mem_c_ds_o    (mem_c_ds_o),
       .mem_exctype_o (mem_exctype_o),
       .mem_cur_pc_o  (mem_cur_pc_o),
       .mem_badvaddr_o(mem_badvaddr_o),
-
-      //cp02
-      .mem_cp0_we_i(mem_cp0_we_i),
-      .mem_cp0_wa_i(mem_cp0_wa_i),
-      .mem_cp0_wd_i(mem_cp0_wd_i),
-      .mem_cp0_we_o(mem_cp0_we_o),
-      .mem_cp0_wa_o(mem_cp0_wa_o),
-      .mem_cp0_wd_o(mem_cp0_wd_o)
+      .mem_cp0_we_o  (mem_cp0_we_o),
+      .mem_cp0_wa_o  (mem_cp0_wa_o),
+      .mem_cp0_wd_o  (mem_cp0_wd_o)
   );
 
   // 接口完整
@@ -511,6 +520,9 @@ module MiniMIPS32 (
       .mem_dre        (dre),
       .mem_whi        (mem_whi_o),
       .mem_wlo        (mem_wlo_o),
+      .wb_cp0_we      (wb_cp0_we_i),
+      .wb_cp0_wa      (wb_cp0_wa_i),
+      .wb_cp0_wd      (wb_cp0_wd_i),
       .mem_debug_wb_pc(mem_debug_wb_pc_o),
 
       .wb_whilo      (wb_whilo_i),
@@ -523,15 +535,10 @@ module MiniMIPS32 (
       .wb_dre        (wb_dre_i),
       .wb_whi        (wb_whi_i),
       .wb_wlo        (wb_wlo_i),
-      .wb_debug_wb_pc(wb_debug_wb_pc_i),
-
-      //cp0
-      .mem_cp0_we(mem_cp0_we_o),
-      .mem_cp0_wa(mem_cp0_wa_o),
-      .mem_cp0_wd(mem_cp0_wd_o),
-      .wb_cp0_we (wb_cp0_we_i),
-      .wb_cp0_wa (wb_cp0_wa_i),
-      .wb_cp0_wd (wb_cp0_wd_i)
+      .mem_cp0_we    (mem_cp0_we_o),
+      .mem_cp0_wa    (mem_cp0_wa_o),
+      .mem_cp0_wd    (mem_cp0_wd_o),
+      .wb_debug_wb_pc(wb_debug_wb_pc_i)
   );
 
 
@@ -546,6 +553,9 @@ module MiniMIPS32 (
       .wb_whi_i      (wb_whi_i),
       .wb_wlo_i      (wb_wlo_i),
       .dm            (dm),
+      .wb_cp0_we_i   (wb_cp0_we_i),
+      .wb_cp0_wa_i   (wb_cp0_wa_i),
+      .wb_cp0_wd_i   (wb_cp0_wd_i),
       .wb_debug_wb_pc(wb_debug_wb_pc_i),
 
       .wb_wa_o     (wb_wa_o),
@@ -557,16 +567,10 @@ module MiniMIPS32 (
       .wb_wlo_o    (wb_wlo_o),
       .wb2exe_whilo(wb2exe_whilo),
       .wb2exe_hilo (wb2exe_hilo),
+      .wb_cp0_we_o (wb_cp0_we_o),
+      .wb_cp0_wa_o (wb_cp0_wa_o),
+      .wb_cp0_wd_o (wb_cp0_wd_o),
 
-      //cp0
-      .wb_cp0_we_i(wb_cp0_we_i),
-      .wb_cp0_wa_i(wb_cp0_wa_i),
-      .wb_cp0_wd_i(wb_cp0_wd_i),
-      .wb_cp0_we_o(wb_cp0_we_o),
-      .wb_cp0_wa_o(wb_cp0_wa_o),
-      .wb_cp0_wd_o(wb_cp0_wd_o),
-
-      //debug
       .debug_wb_pc      (debug_wb_pc),
       .debug_wb_rf_wen  (debug_wb_rf_wen),
       .debug_wb_rf_wnum (debug_wb_rf_wnum),

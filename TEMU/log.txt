@@ -1,0 +1,13 @@
+bfc00000:   3c 02 00 00         lui   $v0,   0x0000
+bfc00004:   34 42 00 04         ori   $v0,   $v0,   0x0004
+bfc00008:   3c 03 00 00         lui   $v1,   0x0000
+bfc0000c:   34 63 00 1c         ori   $v1,   $v1,   0x001c
+bfc00010:   14 40 00 02         bne   $v0, $zero, 0x0002
+bfc0001c:   24 01 ff ff         addiu $at, $zero, 0xffff
+bfc00020:   14 41 00 04         bne   $v0, $at, 0x0004
+bfc00034:   00 00 18 12         mflo   $v1
+bfc00038:   00 00 40 12         mflo   $t0
+bfc0003c:   15 00 00 02         bne   $t0, $zero, 0x0002
+bfc00040:   00 00 00 00         sll   $zero,   $zero,   0x00
+bfc00040:   00 00 00 00         sll   $zero,   $zero,   0x00
+

@@ -56,14 +56,13 @@ module exemem_reg (
     output reg                   mem_c_ds,
     output reg  [  `EXCTYPE_BUS] mem_exctype,
     output reg  [`INST_ADDR_BUS] mem_cur_pc,
-
     //cp02
-    input  wire                 exe_cp0_we,
-    input  wire [`REG_ADDR_BUS] exe_cp0_wa,
-    input  wire [     `REG_BUS] exe_cp0_wd,
-    output reg                  mem_cp0_we,
-    output reg  [`REG_ADDR_BUS] mem_cp0_wa,
-    output reg  [     `REG_BUS] mem_cp0_wd
+    input  wire                  exe_cp0_we,
+    input  wire [ `REG_ADDR_BUS] exe_cp0_wa,
+    input  wire [      `REG_BUS] exe_cp0_wd,
+    output reg                   mem_cp0_we,
+    output reg  [ `REG_ADDR_BUS] mem_cp0_wa,
+    output reg  [      `REG_BUS] mem_cp0_wd
 );
 
     always @(posedge cpu_clk_50M) begin

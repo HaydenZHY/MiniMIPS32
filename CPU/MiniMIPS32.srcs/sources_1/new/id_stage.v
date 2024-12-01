@@ -57,7 +57,6 @@ module id_stage (
     output wire [`INST_ADDR_BUS]    jump_addr_1,
     output wire [`INST_ADDR_BUS]    jump_addr_2,
     output wire [`INST_ADDR_BUS]    jump_addr_3,
-    output wire [`INST_ADDR_BUS]    ret_addr,
 
     // cp0
     input  wire                     c_ds_i,
@@ -122,6 +121,7 @@ module id_stage (
   wire inst_lw = op[5] & ~op[4] & ~op[3] & ~op[2] & op[1] & op[0];
   wire inst_sb = op[5] & ~op[4] & op[3] & ~op[2] & ~op[1] & ~op[0];
   wire inst_sw = op[5] & ~op[4] & op[3] & ~op[2] & op[1] & op[0];
+  wire inst_sh = op[5] & ~op[4] & op[3] & ~op[2] & ~op[1] & op[0];
   wire inst_addi = ~op[5] & ~op[4] & op[3] & ~op[2] & ~op[1] & ~op[0];
   wire inst_slti = ~op[5] & ~op[4] & op[3] & ~op[2] & op[1] & ~op[0];
   wire inst_andi = ~op[5] & ~op[4] & op[3] & op[2] & ~op[1] & ~op[0];
@@ -129,7 +129,6 @@ module id_stage (
   wire inst_lbu = op[5] & ~op[4] & ~op[3] & op[2] & ~op[1] & ~op[0];
   wire inst_lh = op[5] & ~op[4] & ~op[3] & ~op[2] & ~op[1] & op[0];
   wire inst_lhu = op[5] & ~op[4] & ~op[3] & op[2] & ~op[1] & op[0];
-  wire inst_sh = op[5] & ~op[4] & op[3] & ~op[2] & ~op[1] & op[0];
   wire inst_j = ~op[5] & ~op[4] & ~op[3] & ~op[2] & op[1] & ~op[0];
   wire inst_jal = ~op[5] & ~op[4] & ~op[3] & ~op[2] & op[1] & op[0];
   wire inst_beq = ~op[5] & ~op[4] & ~op[3] & op[2] & ~op[1] & ~op[0];
@@ -143,18 +142,6 @@ module id_stage (
   wire inst_eret = ~op[5] & op[4] & ~op[3] & ~op[2] & ~op[1] & ~op[0] & ~func[5] & func[4] & func[3] & ~func[2] & ~func[1] & ~func[0];
   wire inst_mfc0 = ~op[5] & op[4] & ~op[3] & ~op[2] & ~op[1] & ~op[0] & ~id_inst[23];
   wire inst_mtc0 = ~op[5] & op[4] & ~op[3] & ~op[2] & ~op[1] & ~op[0] & id_inst[23];
-  wire inst_beq = ~op[5]&~op[4]&~op[3]&op[2]&~op[1]&~op[0];
-  wire inst_bne = ~op[5]&~op[4]&~op[3]&op[2]&~op[1]&op[0];
-  wire inst_bgez = ~op[5]&~op[4]&~op[3]&~op[2]&~op[1]&op[0]&rt[0]&~rt[4];
-  wire inst_bgtz = ~op[5]&~op[4]&~op[3]&op[2]&op[1]&op[0];
-  wire inst_blez = ~op[5]&~op[4]&~op[3]&op[2]&op[1]&~op[0];
-  wire inst_bltz = ~op[5]&~op[4]&~op[3]&~op[2]&~op[1]&op[0]&~rt[0]&~rt[4];
-  wire inst_bltzal = ~op[5]&~op[4]&~op[3]&~op[2]&~op[1]&op[0]&~rt[0]&rt[4];
-  wire inst_bgezal = ~op[5]&~op[4]&~op[3]&~op[2]&~op[1]&op[0]&rt[0]&rt[4];
-  wire inst_j = ~op[5]&~op[4]&~op[3]&~op[2]&op[1]&~op[0];
-  wire inst_jal = ~op[5]&~op[4]&~op[3]&~op[2]&op[1]&op[0];
-  wire inst_jr = inst_reg & ~func[5]&~func[4]&func[3]&~func[2]&~func[1]&~func[0];
-  wire inst_jalr = inst_reg & ~func[5]&~func[4]&func[3]&~func[2]&~func[1]&func[0];
 
   /*------------------------------------------------------------------------------*/
 
@@ -162,12 +149,15 @@ module id_stage (
   // ????alutype
   assign id_alutype_o[2] = (inst_sll | inst_sllv | inst_srl | inst_srlv | inst_sra | inst_srav |
   inst_beq | inst_bne | inst_bgez | inst_bgtz | inst_blez | inst_bltz| inst_bltzal|inst_bgezal |
-  inst_j | inst_jal | inst_jr | inst_jalr);
+  inst_j | inst_jal | inst_jr | inst_jalr | inst_mfc0 | inst_mtc0 | inst_syscall | inst_break | inst_eret);
   assign id_alutype_o[1] = (inst_and | inst_mfhi | inst_mflo | inst_ori | inst_lui | inst_andi |
   inst_xori | inst_or | inst_xor | inst_nor | inst_mtlo | inst_mthi | inst_beq| inst_bne | inst_bgez
   | inst_bgtz | inst_blez | inst_bltz | inst_bltzal| inst_bgezal | inst_j | inst_jal | inst_jr | 
-  inst_jalr);
-  assign id_alutype_o[0] = (inst_mfhi | inst_mflo | inst_lb | inst_lw | inst_sb | inst_sh | inst_sw | inst_add | inst_subu | inst_slt | inst_addiu | inst_sltiu | inst_addi | inst_slti | inst_addu | inst_sub | inst_sltu | inst_mtlo | inst_mthi | inst_lbu | inst_lh | inst_lhu);
+  inst_jalr | inst_mfc0 | inst_mtc0 | inst_syscall | inst_break | inst_eret);
+  assign id_alutype_o[0] = (inst_mfhi | inst_mflo | inst_lb | inst_lw | inst_sb | inst_sh | inst_sw | 
+  inst_add | inst_subu | inst_slt | inst_addiu | inst_sltiu | inst_addi | inst_slti | inst_addu | inst_sub | 
+  inst_sltu | inst_mtlo | inst_mthi | inst_lbu | inst_lh | inst_lhu | inst_mfc0 | inst_mtc0 | inst_syscall | 
+  inst_break | inst_eret);
 
   // ?????aluop
   assign id_aluop_o[7] = (inst_lb | inst_lw | inst_sb | inst_sw | inst_lbu | inst_lh | inst_lhu | inst_sh | inst_syscall | inst_eret | inst_break | inst_mfc0 | inst_mtc0);
@@ -218,7 +208,7 @@ module id_stage (
 
   //  l??
   assign id_mreg_o = (inst_lb | inst_lw | inst_lbu | inst_lh | inst_lhu);
-  assign id_whilo_o = (inst_mult | inst_multu | inst_div | inst_divu);
+  assign id_whilo_o = inst_mult|inst_multu|inst_mthi|inst_mtlo|inst_div|inst_divu;
 
   wire shift = inst_sll | inst_sra | inst_srl;
 

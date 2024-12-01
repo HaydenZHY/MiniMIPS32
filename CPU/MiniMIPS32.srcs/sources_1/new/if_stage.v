@@ -7,11 +7,7 @@ module if_stage (
     output reg                  ice,
     output reg [`INST_ADDR_BUS] pc,
     output     [`INST_ADDR_BUS] iaddr,
-    output     [`INST_ADDR_BUS] debug_wb_pc,, // 供调试使用的PC值，上板测试时务必删除该信号
-
-    //signal from cp0
-    input wire                  flush,
-    input wire [`INST_ADDR_BUS] excaddr,
+    output     [`INST_ADDR_BUS] debug_wb_pc,  // 供调试使用的PC值，上板测试时务必删除该信号
 
     // 转移相关 绿线
     input wire  [1:0]               jtsel,
@@ -27,7 +23,7 @@ module if_stage (
     input  wire  [`INST_ADDR_BUS]   excaddr
 );
 
-  wire [`INST_ADDR_BUS] pc_next;
+    wire [`INST_ADDR_BUS] pc_next;
 //  assign pc_next = pc + 4;  // 计算下一条指令的地址
     assign pc_next = (jtsel == 2'b01) ? jump_addr_1 : (jtsel == 2'b10) ? jump_addr_2 :
     (jtsel == 2'b11) ? jump_addr_3 : pc + 4;
