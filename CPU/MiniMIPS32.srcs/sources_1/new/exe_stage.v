@@ -1,60 +1,48 @@
 `include "defines.v"
 
 module exe_stage (
-    input wire                 cpu_clk_50M,
-    input wire                 cpu_rst_n,
-    // ??????????
-    input wire [ `ALUTYPE_BUS] exe_alutype_i,
-    input wire [   `ALUOP_BUS] exe_aluop_i,
-    input wire [     `REG_BUS] exe_src1_i,
-    input wire [     `REG_BUS] exe_src2_i,
-    input wire [`REG_ADDR_BUS] exe_wa_i,
-    input wire                 exe_wreg_i,
-    input wire                 exe_whilo_i,
-    input wire                 exe_mreg_i,
-    input wire [     `REG_BUS] exe_din_i,
+    input wire cpu_rst_n,
+    input wire cpu_clk_50M,
 
-    input wire exe_whi_i,
-    input wire exe_wlo_i,
-
+    input wire [  `ALUTYPE_BUS] exe_alutype_i,
+    input wire [    `ALUOP_BUS] exe_aluop_i,
+    input wire                  exe_whilo_i,
+    input wire [ `REG_ADDR_BUS] exe_wa_i,
+    input wire                  exe_wreg_i,
+    input wire                  exe_mreg_i,
+    input wire [      `REG_BUS] exe_din_i,
+    input wire [      `REG_BUS] exe_src1_i,
+    input wire [      `REG_BUS] exe_src2_i,
     input wire [`INST_ADDR_BUS] exe_ret_addr,
+    input wire [`INST_ADDR_BUS] exe_debug_wb_pc,
 
-
-    // ?hilo????????       
     input wire [`REG_BUS] hi_i,
     input wire [`REG_BUS] lo_i,
 
-    input  wire [ `INST_ADDR_BUS] exe_debug_wb_pc,  // ??????PC??????????????
-    // ?????????
-    output wire [     `ALUOP_BUS] exe_aluop_o,
-    output wire [  `REG_ADDR_BUS] exe_wa_o,
-    output wire                   exe_wreg_o,
-    output wire [       `REG_BUS] exe_wd_o,
-    output wire                   exe_whilo_o,
-    output wire [`DOUBLE_REG_BUS] exe_hilo_o,
-    output wire                   exe_mreg_o,
-    output wire [       `REG_BUS] exe_din_o,
-
-    output wire                  exe_whi_o,
-    output wire                  exe_wlo_o,
-    output wire [          31:0] debug_info,
-    output wire [`INST_ADDR_BUS] debug_wb_pc, // ??????PC??????????????
-
-    //exe2id????
-    output wire [`REG_ADDR_BUS] exe2id_wa,
-    output wire                 exe2id_wreg,
-    output wire [     `REG_BUS] exe2id_wd,
-
-    //hilo???????
     input wire [          1 : 0] mem2exe_whilo,
     input wire [`DOUBLE_REG_BUS] mem2exe_hilo,
     input wire [          1 : 0] wb2exe_whilo,
     input wire [`DOUBLE_REG_BUS] wb2exe_hilo,
 
+    output wire [     `ALUOP_BUS] exe_aluop_o,
+    output wire                   exe_whilo_o,
+    output wire [  `REG_ADDR_BUS] exe_wa_o,
+    output wire                   exe_wreg_o,
+    output wire                   exe_mreg_o,
+    output wire [       `REG_BUS] exe_din_o,
+    output wire [       `REG_BUS] exe_wd_o,
+    output wire [`DOUBLE_REG_BUS] exe_mulres_o,
+    output wire [ `INST_ADDR_BUS] debug_wb_pc,
+
+    //back to idstage
+    output wire [ `REG_ADDR_BUS] exe2id_wa,
+    output wire                  exe2id_wreg,
+    output wire [      `REG_BUS] exe2id_wd,
+    output wire [      `REG_BUS] exe2id_mreg,
+    output wire                  stallreg_exe,
     //cp0
     input  wire                  exe_c_ds_i,
     input  wire [  `EXCTYPE_BUS] exe_exctype_i,
-    pe_i,
     input  wire [`INST_ADDR_BUS] exe_cur_pc_i,
     output wire                  exe_c_ds_o,
     output reg  [  `EXCTYPE_BUS] exe_exctype_o,
@@ -75,106 +63,316 @@ module exe_stage (
     input  wire [      `REG_BUS] wb_cp0_wd_o
 );
 
-  // ????????
+
   assign exe_aluop_o = exe_aluop_i;
-  assign exe_whilo_o = exe_whilo_i;
-  assign exe_mreg_o  = exe_mreg_i;
-  assign exe_din_o   = exe_din_i;
+  reg                    ov;
+  reg  [       `REG_BUS] arithres;
+  reg  [       `REG_BUS] logicres;
+  reg  [`DOUBLE_REG_BUS] mulres;
+  reg  [       `REG_BUS] shiftres;
+  reg  [       `REG_BUS] moveres;
+  reg  [       `REG_BUS] jumpres;
+  reg  [`DOUBLE_REG_BUS] divres;
 
-  assign exe_whi_o   = exe_whi_i;
-  assign exe_wlo_o   = exe_wlo_i;
+  reg                    div_rd;
+  wire                   div_start;
 
+  assign stallreg_exe = ((exe_aluop_i == `MINIMIPS32_DIV || exe_aluop_i == `MINIMIPS32_DIVU) && div_rd == `DIV_NOT_READY) ? `STOP : `START;
+  assign div_start    = ((exe_aluop_i == `MINIMIPS32_DIV || exe_aluop_i == `MINIMIPS32_DIVU) && div_rd == `DIV_NOT_READY) ? `DIV_START : `DIV_STOP;
 
-  wire [       `REG_BUS] logicres;
-  wire [`DOUBLE_REG_BUS] sign_mulres;
-  wire [`DOUBLE_REG_BUS] unsign_mulres;
-  wire [       `REG_BUS] hi_t;
-  wire [       `REG_BUS] lo_t;
-  wire [       `REG_BUS] moveres;
-  wire [       `REG_BUS] shiftres;
-  wire [       `REG_BUS] arithres;
-  wire [       `REG_BUS] jumpres;
+  reg  [`REG_BUS]  div_data1;
+  reg  [`REG_BUS]  div_data2;
+  wire [    34:0 ] div_temp1;
+  wire [    34:0 ] div_temp2;
+  wire [    34:0 ] div_temp3;
+  wire [    34:0 ] div_temp;
+  reg  [    33:0 ] divisor1;
+  wire [    33:0 ] divisor2;
+  wire [    33:0 ] divisor3;
+  reg  [    65:0 ] div;
+  reg  [     1:0 ] state;
+  reg  [     4:0 ] cnt;
+  wire [     1:0 ] div_cnt;
+  assign divisor2  = divisor1 << 1;
+  assign divisor3  = divisor1 + divisor2;
+  assign div_temp1 = {3'b000, div[63:32]} - {1'b0, divisor1};
+  assign div_temp2 = {3'b000, div[63:32]} - {1'b0, divisor2};
+  assign div_temp3 = {3'b000, div[63:32]} - {1'b0, divisor3};
 
-//?????? ??
-  reg                  div_rd;
-  wire                 div_start;
-  assign stallreg_exe = ((exe_aluop_i == `MINIMIPS32_DIV || exe_aluop_i == `MINIMIPS32_DIVU) && div_rd == `DIV_NOT_READY ) ? `STOP : `START;
-  assign div_start = ((exe_aluop_i == `MINIMIPS32_DIV || exe_aluop_i == `MINIMIPS32_DIVU) && div_rd == `DIV_NOT_READY ) ? `DIV_START : `DIV_STOP;
-  assign logicres = (exe_aluop_i == `MINIMIPS32_AND )  ? (exe_src1_i & exe_src2_i) : 
-                      (exe_aluop_i == `MINIMIPS32_ORI) ? (exe_src1_i | exe_src2_i) :
-                      (exe_aluop_i == `MINIMIPS32_LUI) ? exe_src2_i : 
-                      (exe_aluop_i == `MINIMIPS32_ANDI) ? (exe_src1_i & exe_src2_i) :
-                      (exe_aluop_i == `MINIMIPS32_NOR) ? (~(exe_src1_i | exe_src2_i)) :
-                      (exe_aluop_i == `MINIMIPS32_OR) ? (exe_src1_i | exe_src2_i) : 
-                      (exe_aluop_i == `MINIMIPS32_XOR) ? (exe_src1_i ^ exe_src2_i) :
-                      (exe_aluop_i == `MINIMIPS32_XORI) ? (exe_src1_i ^ exe_src2_i) : `ZERO_WORD;
-
-  assign arithres = (exe_aluop_i == `MINIMIPS32_ADD) ? (exe_src1_i + exe_src2_i) : (exe_aluop_i == `MINIMIPS32_SUBU) ? (exe_src1_i + (~exe_src2_i) + 1) : (exe_aluop_i == `MINIMIPS32_SLT) ? ($signed(
-      exe_src1_i
-  ) < $signed(
-      exe_src2_i
-  ) ? 32'b1 : 32'b0) : (exe_aluop_i == `MINIMIPS32_ADDIU) ? (exe_src1_i + exe_src2_i) : (exe_aluop_i == `MINIMIPS32_SLTIU) ?
-      ((exe_src1_i < exe_src2_i) ? 32'b1 : 32'b0) : (exe_aluop_i == `MINIMIPS32_LB) ? (exe_src1_i + exe_src2_i) : (exe_aluop_i == `MINIMIPS32_LW) ? (exe_src1_i + exe_src2_i) : (exe_aluop_i == `MINIMIPS32_SB) ? (exe_src1_i + exe_src2_i) : (exe_aluop_i == `MINIMIPS32_SW) ?
-      (exe_src1_i + exe_src2_i) : (exe_aluop_i == `MINIMIPS32_ADDI) ? (exe_src1_i + exe_src2_i) : (exe_aluop_i == `MINIMIPS32_ADDU) ? (exe_src1_i + exe_src2_i) : (exe_aluop_i == `MINIMIPS32_SUB) ? (exe_src1_i + (~exe_src2_i) + 1) : (exe_aluop_i == `MINIMIPS32_SLTI) ? ($signed(
-      exe_src1_i
-  ) < $signed(
-      exe_src2_i
-  ) ? 32'b1 : 32'b0) : (exe_aluop_i == `MINIMIPS32_SLTU) ? ((exe_src1_i < exe_src2_i) ? 32'b1 : 32'b0) : (exe_aluop_i == `MINIMIPS32_LBU) ?
-      (exe_src1_i + exe_src2_i) : (exe_aluop_i == `MINIMIPS32_LH) ? (exe_src1_i + exe_src2_i) : (exe_aluop_i == `MINIMIPS32_LHU) ? (exe_src1_i + exe_src2_i) : (exe_aluop_i == `MINIMIPS32_SH) ? (exe_src1_i + exe_src2_i) : `ZERO_WORD;
+  assign div_temp  = (div_temp3[34] == 1'b0) ? div_temp3 : (div_temp2[34] == 1'b0) ? div_temp2 : div_temp1;
+  assign div_cnt   = (div_temp3[34] == 1'b0) ? 2'b11 : (div_temp2[34] == 1'b0) ? 2'b10 : 2'b01;
 
 
-  //  assign hi_t = hi_i;
+  always @(posedge cpu_clk_50M) begin
+    if (cpu_rst_n == `RST_ENABLE) begin
+      state  <= `DIV_FREE;
+      div_rd <= `DIV_NOT_READY;
+      divres <= `ZERO_DWORD;
+    end else begin
+      case (state)
+        `DIV_FREE: begin
+          if (div_start == `DIV_START) begin
+            if (exe_src2_i == `ZERO_WORD) begin
+              state <= `DIV_ZERO;
+            end else begin
+              state <= `DIV_ON;
+              cnt   <= 5'b000000;
+              if (exe_aluop_i == `MINIMIPS32_DIV && exe_src1_i[31] == 1'b1) begin
+                div_data1 = ~exe_src1_i + 1;
+              end else begin
+                div_data1 = exe_src1_i;
+              end
+              if (exe_aluop_i == `MINIMIPS32_DIV && exe_src2_i[31] == 1'b1) begin
+                div_data2 = ~exe_src2_i + 1;
+              end else begin
+                div_data2 = exe_src2_i;
+              end
+              div      <= {`ZERO_WORD, div_data1, 2'b00};
+              divisor1 <= div_data2;
+            end
+          end else begin
+            div_rd <= `DIV_NOT_READY;
+            divres <= `ZERO_DWORD;
+          end
+        end
+        `DIV_ZERO: begin
+          div   <= {2'b00, `ZERO_DWORD};
+          state <= `DIV_FINISHED;
+        end
+        `DIV_ON: begin
+          if (cnt < 5'b10000) begin
+            if (div_temp[34] == 1'b1) begin
+              div <= {div[63:0], 2'b00};
+            end else begin
+              div <= {div_temp[31:0], div[31:0], div_cnt};
+            end
+            cnt <= cnt + 1;
+          end else begin
+            if ((exe_src1_i[31] ^ (exe_src2_i[31]) == 1'b1) && exe_aluop_i == `MINIMIPS32_DIV) begin
+              div[31:0] <= (~div[31:0] + 1);
+            end
+            if (((exe_src1_i[31] ^ div[65]) == 1'b1) && exe_aluop_i == `MINIMIPS32_DIV) begin
+              div[65:34] <= (~div[65:34] + 1);
+            end
+            state <= `DIV_FINISHED;
+            cnt   <= 5'b00000;
+          end
+        end
+        `DIV_FINISHED: begin
+          divres <= {div[65:34], div[31:0]};
+          div_rd <= `DIV_READY;
+          if (div_start == `DIV_STOP) begin
+            state  <= `DIV_FREE;
+            div_rd <= `DIV_NOT_READY;
+            divres <= `ZERO_DWORD;
+          end
+        end
+      endcase
+    end
+  end
 
-  //  assign lo_t = lo_i;
-  // hilo???????
-  assign hi_t = (mem2exe_whilo[1] == `WHILO_ENABLE) ? mem2exe_hilo[63 : 32] : (wb2exe_whilo[1] == `WHILO_ENABLE) ? wb2exe_hilo[63 : 32] : hi_i;
+  integer src1, src2;
 
-  assign lo_t    = (mem2exe_whilo[0] == `WHILO_ENABLE) ? mem2exe_hilo[31 : 0] : (wb2exe_whilo[0] == `WHILO_ENABLE) ? wb2exe_hilo[31 : 0] : lo_i;
+  /*----------------------------ALU--------------------------------*/
+  always @(*) begin
+    src1 = exe_src1_i;
+    src2 = exe_src2_i;
+    case (exe_aluop_i)
+      `MINIMIPS32_ADD: begin
+        arithres = exe_src1_i + exe_src2_i;
+        if (exe_src1_i[31] == 0 && exe_src2_i[31] == 0 && arithres[31] == 1) ov = 1;
+        else if (exe_src1_i[31] == 1 && exe_src2_i[31] == 1 && arithres[31] == 0) ov = 1;
+        else ov = 0;
+      end
+      `MINIMIPS32_ADDI: begin
+        arithres = exe_src1_i + exe_src2_i;
+        if (exe_src1_i[31] == 0 && exe_src2_i[31] == 0 && arithres[31] == 1) ov = 1;
+        else if (exe_src1_i[31] == 1 && exe_src2_i[31] == 1 && arithres[31] == 0) ov = 1;
+        else ov = 0;
+      end
+      `MINIMIPS32_ADDU: begin
+        arithres = exe_src1_i + exe_src2_i;
+      end
+      `MINIMIPS32_ADDIU: begin
+        arithres = exe_src1_i + exe_src2_i;
+      end
+      `MINIMIPS32_SUB: begin
+        arithres = exe_src1_i - exe_src2_i;
+        if (exe_src1_i[31] == 1 && exe_src2_i[31] == 0 && arithres[31] == 0) ov = 1;
+        else if (exe_src1_i[31] == 0 && exe_src2_i[31] == 1 && arithres[31] == 1) ov = 1;
+        else ov = 0;
+      end
+      `MINIMIPS32_SUBU: begin
+        arithres = exe_src1_i - exe_src2_i;
+      end
+      `MINIMIPS32_SLT: begin
+        arithres = (src1 < src2);
+      end
+      `MINIMIPS32_SLTI: begin
+        arithres = (src1 < src2);
+      end
+      `MINIMIPS32_SLTU: begin
+        arithres = (exe_src1_i < exe_src2_i);
+      end
+      `MINIMIPS32_SLTIU: begin
+        arithres = (exe_src1_i < exe_src2_i);
+      end
+      `MINIMIPS32_MULT: begin
+        mulres = ($signed({{32{exe_src1_i[31]}}, exe_src1_i}) * $signed({{32{exe_src2_i[31]}}, exe_src2_i}));
+      end
+      `MINIMIPS32_MULTU: begin
+        mulres = ($signed({32'h00000000, exe_src1_i}) * $signed({32'h00000000, exe_src2_i}));
+      end
+      `MINIMIPS32_AND: begin
+        logicres = exe_src1_i & exe_src2_i;
+      end
+      `MINIMIPS32_ANDI: begin
+        logicres = exe_src1_i & exe_src2_i;
+      end
+      `MINIMIPS32_LUI: begin
+        logicres = {exe_src2_i[31 : 16], 16'b0000000000000000};
+      end
+      `MINIMIPS32_NOR: begin
+        logicres = ~(exe_src1_i | exe_src2_i);
+      end
+      `MINIMIPS32_OR: begin
+        logicres = exe_src1_i | exe_src2_i;
+      end
+      `MINIMIPS32_ORI: begin
+        logicres = exe_src1_i | exe_src2_i;
+      end
+      `MINIMIPS32_XOR: begin
+        logicres = exe_src1_i ^ exe_src2_i;
+      end
+      `MINIMIPS32_XORI: begin
+        logicres = exe_src1_i ^ exe_src2_i;
+      end
+      `MINIMIPS32_SLLV: begin
+        shiftres = exe_src2_i << exe_src1_i[4:0];
+      end
+      `MINIMIPS32_SLL: begin
+        shiftres = exe_src2_i << exe_src1_i;
+      end
+      `MINIMIPS32_SRAV: begin
+        shiftres = src2 >>> exe_src1_i[4:0];
+      end
+      `MINIMIPS32_SRA: begin
+        shiftres = src2 >>> exe_src1_i;
+      end
+      `MINIMIPS32_SRLV: begin
+        shiftres = exe_src2_i >> exe_src1_i[4:0];
+      end
+      `MINIMIPS32_SRL: begin
+        shiftres = exe_src2_i >> exe_src1_i;
+      end
+      `MINIMIPS32_LB: begin
+        arithres = exe_src1_i + exe_src2_i;
+      end
+      `MINIMIPS32_LBU: begin
+        arithres = exe_src1_i + exe_src2_i;
+      end
+      `MINIMIPS32_LH: begin
+        arithres = exe_src1_i + exe_src2_i;
+      end
+      `MINIMIPS32_LHU: begin
+        arithres = exe_src1_i + exe_src2_i;
+      end
+      `MINIMIPS32_LW: begin
+        arithres = exe_src1_i + exe_src2_i;
+      end
+      `MINIMIPS32_SB: begin
+        arithres = exe_src1_i + exe_src2_i;
+      end
+      `MINIMIPS32_SH: begin
+        arithres = exe_src1_i + exe_src2_i;
+      end
+      `MINIMIPS32_SW: begin
+        arithres = exe_src1_i + exe_src2_i;
+      end
+      `MINIMIPS32_BGEZAL: begin
+        jumpres = exe_ret_addr;
+      end
+      `MINIMIPS32_BLTZAL: begin
+        jumpres = exe_ret_addr;
+      end
+      `MINIMIPS32_JAL: begin
+        jumpres = exe_ret_addr;
+      end
+      `MINIMIPS32_JALR: begin
+        jumpres = exe_ret_addr;
+      end
+      default: begin
+        logicres = `ZERO_WORD;
+        mulres   = `ZERO_DWORD;
+        shiftres = `ZERO_WORD;
+        jumpres  = `ZERO_WORD;
+      end
+    endcase
+  end
 
-  assign moveres = (exe_aluop_i == `MINIMIPS32_MFHI) ? hi_t : (exe_aluop_i == `MINIMIPS32_MFLO) ? lo_t : (exe_alutype_i == `MINIMIPS32_MTHI || exe_alutype_i == `MINIMIPS32_MTLO) ? exe_src1_i : `ZERO_WORD;
+  reg [`REG_BUS] hi;
+  reg [`REG_BUS] lo;
+  always @(*) begin
+    if (mem2exe_whilo[1] == `WHILO_ENABLE) begin
+      hi = mem2exe_hilo[63 : 32];
+    end else if (wb2exe_whilo[1] == `WHILO_ENABLE) begin
+      hi = wb2exe_hilo[63 : 32];
+    end else begin
+      hi = hi_i;
+    end
 
-  wire signed [31:0] arith_shiftres;
-  wire signed [31:0] arith_shiftres_v;
-  assign arith_shiftres = $signed(exe_src2_i) >>> exe_src1_i;
-  assign arith_shiftres_v = $signed(exe_src2_i) >>> exe_src1_i[`REG_ADDR_BUS];
-
-  assign shiftres = (exe_aluop_i == `MINIMIPS32_SLL) ? (exe_src2_i << exe_src1_i) : 
-                      (exe_aluop_i == `MINIMIPS32_SLLV) ? (exe_src2_i << exe_src1_i[`REG_ADDR_BUS]) : 
-                      (exe_aluop_i == `MINIMIPS32_SRA) ? arith_shiftres :
-                      (exe_aluop_i == `MINIMIPS32_SRL) ? (exe_src2_i >> exe_src1_i) :
-                      (exe_aluop_i == `MINIMIPS32_SRAV) ? arith_shiftres_v :
-                      (exe_aluop_i == `MINIMIPS32_SRLV) ? (exe_src2_i >> exe_src1_i[`REG_ADDR_BUS]) : `ZERO_WORD;
-  assign jumpres = (exe_aluop_i == `MINIMIPS32_BGEZAL) ? exe_ret_addr : (exe_aluop_i == `MINIMIPS32_BLTZAL) ? exe_ret_addr : (exe_aluop_i == `MINIMIPS32_JAL) ? exe_ret_addr : (exe_aluop_i == `MINIMIPS32_JALR) ? exe_ret_addr : `ZERO_WORD;
-
-  wire                                                                                                                       [31 : 0] exe_src2_t = (exe_aluop_i == `MINIMIPS32_SUB) ? (~exe_src2_i) + 1 : exe_src2_i;
-  wire                                                                                                                       [31 : 0] arith_tmp = exe_src1_i + exe_src2_t;
-  wire ov = ((!exe_src1_i[31] && !exe_src2_t[31] && arith_tmp[31]) || (exe_src1_i[31] && exe_src2_t[31] && !arith_tmp[31]));
-  wire inst_ov = (exe_aluop_i == `MINIMIPS32_ADD || exe_aluop_i == `MINIMIPS32_ADDI || exe_aluop_i == `MINIMIPS32_SUB);
-
-
-  assign sign_mulres = ($signed(exe_src1_i) * $signed(exe_src2_i));
-  assign unsign_mulres = ($unsigned({1'b0, exe_src1_i}) * $unsigned({1'b0, exe_src2_i}));
-  assign exe_hilo_o    = (exe_aluop_i == `MINIMIPS32_MULT) ? sign_mulres : (exe_aluop_i == `MINIMIPS32_MULTU) ? unsign_mulres : (exe_aluop_i == `MINIMIPS32_MTHI) ? {exe_src1_i, lo_t} : (exe_aluop_i == `MINIMIPS32_MTLO) ? {hi_t, exe_src1_i} :
-  (exe_aluop_i == `MINIMIPS32_DIV || exe_aluop_i == `MINIMIPS32_DIVU) ? divres : `ZERO_WORD;
-
-
+    if (mem2exe_whilo[0] == `WHILO_ENABLE) begin
+      lo = mem2exe_hilo[31 : 0];
+    end else if (wb2exe_whilo[0] == `WHILO_ENABLE) begin
+      lo = wb2exe_hilo[31 : 0];
+    end else begin
+      lo = lo_i;
+    end
+  end
+  always @(*) begin
+    case (exe_aluop_i)
+      `MINIMIPS32_MFHI: begin
+        moveres = hi;
+      end
+      `MINIMIPS32_MFLO: begin
+        moveres = lo;
+      end
+      `MINIMIPS32_MTHI: begin
+        moveres = exe_src1_i;
+      end
+      `MINIMIPS32_MTLO: begin
+        moveres = exe_src1_i;
+      end
+      default: moveres = `ZERO_WORD;
+    endcase
+  end
+  assign exe_aluop_o = exe_aluop_i;
 
 
 
   reg [`REG_BUS] result;
-  assign result       = (exe_alutype_i == `LOGIC) ? logicres : (exe_alutype_i == `MOVE) ? moveres : (exe_alutype_i == `SHIFT) ? shiftres : 
-  (exe_alutype_i == `ARITH) ? arithres : (exe_alutype_i == `JUMP) ? jumpres : `ZERO_WORD;
-  assign exe_wd_o     = (exe_aluop_i != `MINIMIPS32_MFC0) ? result : (mem_cp0_we_o == 1 && mem_cp0_wa_o == exe_cp0_wa_o) ? mem_cp0_wd_o : (wb_cp0_we_o == 1 && wb_cp0_wa_o == exe_cp0_wa_o) ? wb_cp0_wd_o : cp0_din;
+  always @(*) begin
+    case (exe_alutype_i)
+      `ARITH: begin
+        result = arithres;
+      end
+      `LOGIC: begin
+        result = logicres;
+      end
+      `SHIFT: begin
+        result = shiftres;
+      end
+      `MOVE: begin
+        result = moveres;
+      end
+      `JUMP: begin
+        result = jumpres;
+      end
+      default: result = `ZERO_WORD;
+    endcase
+  end
 
-
-  assign debug_wb_pc  = exe_debug_wb_pc;  // ????????????
-  assign debug_info   = exe_src1_i;
-
-  //exe2id????
-  assign exe2id_wa    = (exe_aluop_i == `MINIMIPS32_MFC0) ? exe_cp0_rt : exe_wa_i;
-  assign exe2id_wd    = (exe_aluop_i != `MINIMIPS32_MFC0) ? result : (mem_cp0_we_o == 1 && mem_cp0_wa_o == exe_cp0_wa_o) ? mem_cp0_wd_o : (wb_cp0_we_o == 1 && wb_cp0_wa_o == exe_cp0_wa_o) ? wb_cp0_wd_o : cp0_din;
-  assign exe2id_wreg  = exe_wreg_i;
-
+  assign exe_mulres_o = (exe_aluop_i == `MINIMIPS32_DIV || exe_aluop_i == `MINIMIPS32_DIVU) ? divres : (exe_aluop_i == `MINIMIPS32_MULT || exe_aluop_i == `MINIMIPS32_MULTU) ? mulres : `ZERO_DWORD;
 
   //cp0
   assign exe_c_ds_o   = exe_c_ds_i;
@@ -189,34 +387,15 @@ module exe_stage (
   assign exe_cp0_wa_o = exe_wa_i;
   assign exe_cp0_wd_o = exe_src2_i;
 
-  reg [`REG_BUS] result
-    //cp0
-    assign exe_c_ds_o = exe_c_ds_i;
-    assign exe_cur_pc_o = exe_cur_pc_i;
-    always @(*) begin
-        if((exe_aluop_i == `MINIMIPS32_ADD||exe_aluop_i == `MINIMIPS32_ADDI||exe_aluop_i == `MINIMIPS32_SUB)&&ov==1)exe_exctype_o=`Ov;
-        else exe_exctype_o = exe_exctype_i; 
-    end
-    //cp02
-    assign exe_cp0_we_o = (exe_aluop_i == `MINIMIPS32_MTC0)?1:0;
-    assign exe_cp0_ra_o = exe_wa_i;
-    assign exe_cp0_wa_o = exe_wa_i;
-    assign exe_cp0_wd_o = exe_src2_i;
-
-    assign exe_wa_o   = (exe_aluop_i == `MINIMIPS32_MFC0)?exe_cp0_rt:exe_wa_i;
-    assign exe2id_wa = (exe_aluop_i == `MINIMIPS32_MFC0)?exe_cp0_rt:exe_wa_i;  
-    assign exe_wd_o =(exe_aluop_i != `MINIMIPS32_MFC0) ?
-                      result:(mem_cp0_we_o==1&&mem_cp0_wa_o==exe_cp0_wa_o)?mem_cp0_wd_o:
-                     (wb_cp0_we_o==1&&wb_cp0_wa_o==exe_cp0_wa_o)?wb_cp0_wd_o:cp0_din;
-    assign exe2id_wd = (exe_aluop_i != `MINIMIPS32_MFC0) ?
-                      result:(mem_cp0_we_o==1&&mem_cp0_wa_o==exe_cp0_wa_o)?mem_cp0_wd_o:
-                     (wb_cp0_we_o==1&&wb_cp0_wa_o==exe_cp0_wa_o)?wb_cp0_wd_o:cp0_din;
-    assign exe2id_mreg = exe_mreg_i;
-    assign debug_wb_pc = exe_debug_wb_pc;    // ?????????????????????????? 
-    assign exe2id_wreg = exe_wreg_i;
-    assign exe_wreg_o = exe_wreg_i;
-    assign exe_mreg_o = exe_mreg_i;
-    assign exe_whilo_o = exe_whilo_i;
-    assign exe_din_o = exe_din_i;
-  
+  assign exe_wa_o     = (exe_aluop_i == `MINIMIPS32_MFC0) ? exe_cp0_rt : exe_wa_i;
+  assign exe2id_wa    = (exe_aluop_i == `MINIMIPS32_MFC0) ? exe_cp0_rt : exe_wa_i;
+  assign exe_wd_o     = (exe_aluop_i != `MINIMIPS32_MFC0) ? result : (mem_cp0_we_o == 1 && mem_cp0_wa_o == exe_cp0_wa_o) ? mem_cp0_wd_o : (wb_cp0_we_o == 1 && wb_cp0_wa_o == exe_cp0_wa_o) ? wb_cp0_wd_o : cp0_din;
+  assign exe2id_wd    = (exe_aluop_i != `MINIMIPS32_MFC0) ? result : (mem_cp0_we_o == 1 && mem_cp0_wa_o == exe_cp0_wa_o) ? mem_cp0_wd_o : (wb_cp0_we_o == 1 && wb_cp0_wa_o == exe_cp0_wa_o) ? wb_cp0_wd_o : cp0_din;
+  assign exe2id_mreg  = exe_mreg_i;
+  assign debug_wb_pc  = exe_debug_wb_pc;
+  assign exe2id_wreg  = exe_wreg_i;
+  assign exe_wreg_o   = exe_wreg_i;
+  assign exe_mreg_o   = exe_mreg_i;
+  assign exe_whilo_o  = exe_whilo_i;
+  assign exe_din_o    = exe_din_i;
 endmodule

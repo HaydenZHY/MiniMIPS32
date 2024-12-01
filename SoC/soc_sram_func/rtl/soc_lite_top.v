@@ -60,7 +60,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //2. usually, please define SIMU_USE_PLL=0 to speed up simulation by assign
 //   cpu_clk/timer_clk = clk.
 //   at this time, cpu_clk/timer_clk frequency are both 100MHz, same as clk.
-`define SIMU_USE_PLL 1 //set 0 to speed up simulation
+`define SIMU_USE_PLL 0 //set 0 to speed up simulation
 
 module soc_lite_top #(parameter SIMULATION=1'b0)
 (
